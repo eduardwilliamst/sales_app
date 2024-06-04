@@ -45,7 +45,7 @@ class _ForgetPasswordPageState extends State<ForgetPasswordPage> {
                       TextFormField(
                         controller: _emailController,
                         decoration: InputDecoration(
-                          hintText: 'Placeholder',
+                          hintText: 'Please enter your email',
                           border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(10),
                           ),
@@ -73,8 +73,9 @@ class _ForgetPasswordPageState extends State<ForgetPasswordPage> {
                               print('Email: ${_emailController.text}');
                             }
                             Navigator.pushReplacement(
-                            context,
-                            MaterialPageRoute(builder: (context) => ForgetPassInfoPage()),
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => ForgetPassInfoPage()),
                             );
                           },
                           style: ElevatedButton.styleFrom(

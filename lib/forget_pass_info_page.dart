@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:sales_app/login_page.dart';
+import 'package:sales_app/new_pass_page.dart';
 
 class ForgetPassInfoPage extends StatelessWidget {
   @override
@@ -11,25 +12,22 @@ class ForgetPassInfoPage extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Image.asset(
-                'assets/images/Success.png',
-                width: 200,
-                height: 200
-              ),
+              Image.asset('assets/images/Success.png', width: 200, height: 200),
               SizedBox(height: 20),
-              Text(
-                'Silakan cek email untuk mengatur kata sandi baru Anda',
-                textAlign: TextAlign.center,
-                style: Theme.of(context).textTheme.bodyMedium,
-              ),
+              Text('Silakan cek email untuk mengatur kata sandi baru Anda',
+                  textAlign: TextAlign.center,
+                  style: TextStyle(fontWeight: FontWeight.bold)
+                  //Theme.of(context).textTheme.bodyMedium,
+                  ),
               SizedBox(height: 40),
               SizedBox(
                 width: double.infinity,
                 child: ElevatedButton(
                   onPressed: () {
                     Navigator.pushReplacement(
-                    context,
-                    MaterialPageRoute(builder: (context) => LoginPage()),
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => NewPasswordPage()),
                     );
                   },
                   style: ElevatedButton.styleFrom(

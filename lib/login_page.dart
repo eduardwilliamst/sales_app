@@ -52,7 +52,6 @@ class _LoginPageState extends State<LoginPage> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       SizedBox(height: 100),
-
                       Text(
                         'Masuk',
                         style: Theme.of(context).textTheme.headlineLarge,
@@ -65,7 +64,7 @@ class _LoginPageState extends State<LoginPage> {
                       TextFormField(
                         controller: _emailController,
                         decoration: InputDecoration(
-                          hintText: 'Placeholder',
+                          hintText: 'youremail@email.com',
                           border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(10),
                           ),

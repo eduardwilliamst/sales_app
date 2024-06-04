@@ -1,0 +1,1 @@
+ C:\\Users\\fathu\\Documents\\VSCode\ Projects\\sales_app\\.dart_tool\\flutter_build\\fcdd66181a5fa619343f5ea26df428b1\\native_assets.yaml: 
