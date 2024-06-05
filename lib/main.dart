@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:sales_app/profile_page.dart';
-import 'new_pass_page.dart';
-import 'splash_screen.dart';
-import 'login_page.dart';
-import 'forget_pass_page.dart';
-import 'home_page.dart';
+import 'package:sales_app/new_pass_page.dart';
+import 'package:sales_app/splash_screen.dart';
+import 'package:sales_app/login_page.dart';
+import 'package:sales_app/forget_pass_page.dart';
+import 'package:sales_app/home_page.dart';
 
 void main() {
   runApp(const MyApp());
