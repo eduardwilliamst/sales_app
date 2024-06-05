@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:sales_app/profile_page.dart';
 import 'new_pass_page.dart';
 import 'splash_screen.dart';
 import 'login_page.dart';
@@ -21,6 +22,11 @@ class MyApp extends StatelessWidget {
           headlineLarge: TextStyle(
               fontFamily: 'DMSerifText',
               fontSize: 24,
+              fontWeight: FontWeight.normal,
+              color: Colors.black),
+          headlineMedium: TextStyle(
+              fontFamily: 'DMSerifText',
+              fontSize: 16,
               fontWeight: FontWeight.normal,
               color: Colors.black),
           bodyLarge: TextStyle(
@@ -46,6 +52,7 @@ class MyApp extends StatelessWidget {
         '/forgetpassword': (context) => ForgetPasswordPage(),
         '/home': (context) => HomePage(),
         '/newpassword': (context) => NewPasswordPage(),
+        '/profile': (context) => ProfilePage(),
       },
     );
   }

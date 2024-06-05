@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:sales_app/login_page.dart';
-import 'new_pass_page.dart';
 
 class NewPassInfoPage extends StatelessWidget {
   @override

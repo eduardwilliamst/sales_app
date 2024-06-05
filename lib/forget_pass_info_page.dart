@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:sales_app/login_page.dart';
 import 'package:sales_app/new_pass_page.dart';
 
 class ForgetPassInfoPage extends StatelessWidget {

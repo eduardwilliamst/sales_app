@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:sales_app/new_pss_info_page.dart';
-import 'forget_pass_page.dart';
 
 class NewPasswordPage extends StatefulWidget {
   @override
