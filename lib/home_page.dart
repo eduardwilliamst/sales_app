@@ -2,8 +2,21 @@ import 'package:flutter/material.dart';
 import 'profile_page.dart';
 import 'schedule_page.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
   const HomePage({super.key});
+
+  @override
+  _HomePageState createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  int _selectedIndex = 0;
+
+  void _onItemTapped(int index) {
+    setState(() {
+      _selectedIndex = index;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -31,11 +44,13 @@ class HomePage extends StatelessWidget {
             label: 'Customer',
           ),
         ],
+        currentIndex: _selectedIndex,
+        onTap: _onItemTapped,
       ),
       body: Stack(
         children: [
           Container(
-            decoration: BoxDecoration(
+            decoration: const BoxDecoration(
               image: DecorationImage(
                 image: AssetImage('assets/images/Home.png'),
                 fit: BoxFit.cover,
@@ -49,11 +64,11 @@ class HomePage extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   _buildHeader(context),
-                  SizedBox(height: 20),
+                  const SizedBox(height: 20),
                   _buildStats(),
-                  SizedBox(height: 20),
+                  const SizedBox(height: 20),
                   _buildECatalog(),
-                  SizedBox(height: 20),
+                  const SizedBox(height: 20),
                   _buildSchedule(context),
                 ],
               ),
@@ -77,16 +92,16 @@ class HomePage extends StatelessWidget {
           },
           child: Row(
             children: [
-              Icon(Icons.person, size: 50),
-              SizedBox(width: 10),
+              const Icon(Icons.person, size: 50),
+              const SizedBox(width: 10),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text('Hi, Salesman 1',
+                  const Text('Hi, Salesman 1',
                       style:
                           TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
                   Container(
-                    margin: EdgeInsets.only(top: 4),
+                    margin: const EdgeInsets.only(top: 4),
                     height: 4,
                     width: 100,
                     color: Colors.blue,
@@ -122,9 +137,9 @@ class HomePage extends StatelessWidget {
     return Column(
       children: [
         Text(value,
-            style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold)),
-        SizedBox(height: 8),
-        Text(title, style: TextStyle(fontSize: 14)),
+            style: const TextStyle(fontSize: 24, fontWeight: FontWeight.bold)),
+        const SizedBox(height: 8),
+        Text(title, style: const TextStyle(fontSize: 14)),
       ],
     );
   }
@@ -133,13 +148,13 @@ class HomePage extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text('E-Catalog',
+        const Text('E-Catalog',
             style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
-        SizedBox(height: 10),
+        const SizedBox(height: 10),
         Container(
           height: 200,
           decoration: BoxDecoration(
-            image: DecorationImage(
+            image: const DecorationImage(
               image: AssetImage('assets/images/catalog.png'),
               fit: BoxFit.cover,
             ),
@@ -173,7 +188,7 @@ class HomePage extends StatelessWidget {
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Text(
+            const Text(
               'Jadwal Hari Ini',
               style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
             ),
@@ -184,13 +199,13 @@ class HomePage extends StatelessWidget {
                   MaterialPageRoute(builder: (context) => SchedulePage()),
                 );
               },
-              child: Icon(Icons.date_range, size: 24),
+              child: const Icon(Icons.date_range, size: 24),
             ),
           ],
         ),
-        SizedBox(height: 5),
-        Text('Kamis, 21 Maret 2024', style: TextStyle(fontSize: 14)),
-        SizedBox(height: 10),
+        const SizedBox(height: 5),
+        const Text('Kamis, 21 Maret 2024', style: TextStyle(fontSize: 14)),
+        const SizedBox(height: 10),
         _buildScheduleItem(
             '13.00 - 14.00', 'Follow Up SPJ', 'Nama Customer - Tempat'),
         _buildScheduleItem(
@@ -203,8 +218,8 @@ class HomePage extends StatelessWidget {
 
   Widget _buildScheduleItem(String time, String task, String details) {
     return Container(
-      margin: EdgeInsets.only(bottom: 10),
-      padding: EdgeInsets.all(16),
+      margin: const EdgeInsets.only(bottom: 10),
+      padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
         color: Colors.grey[300],
         borderRadius: BorderRadius.circular(10),
@@ -217,11 +232,11 @@ class HomePage extends StatelessWidget {
             children: [
               Text(
                 time,
-                style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
               ),
-              SizedBox(height: 5),
-              Text(task, style: TextStyle(fontSize: 14)),
-              Text(details, style: TextStyle(fontSize: 14)),
+              const SizedBox(height: 5),
+              Text(task, style: const TextStyle(fontSize: 14)),
+              Text(details, style: const TextStyle(fontSize: 14)),
             ],
           ),
         ],
