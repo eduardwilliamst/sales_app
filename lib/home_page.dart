@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'profile_page.dart';
+import 'schedule_page.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -53,7 +54,7 @@ class HomePage extends StatelessWidget {
                   SizedBox(height: 20),
                   _buildECatalog(),
                   SizedBox(height: 20),
-                  _buildSchedule(),
+                  _buildSchedule(context),
                 ],
               ),
             ),
@@ -165,16 +166,26 @@ class HomePage extends StatelessWidget {
     );
   }
 
-  Widget _buildSchedule() {
+  Widget _buildSchedule(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Text('Jadwal Hari Ini',
-                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
-            Icon(Icons.date_range, size: 24),
+            Text(
+              'Jadwal Hari Ini',
+              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+            ),
+            GestureDetector(
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => SchedulePage()),
+                );
+              },
+              child: Icon(Icons.date_range, size: 24),
+            ),
           ],
         ),
         SizedBox(height: 5),
@@ -192,8 +203,8 @@ class HomePage extends StatelessWidget {
 
   Widget _buildScheduleItem(String time, String task, String details) {
     return Container(
-      margin: const EdgeInsets.only(bottom: 10),
-      padding: const EdgeInsets.all(16),
+      margin: EdgeInsets.only(bottom: 10),
+      padding: EdgeInsets.all(16),
       decoration: BoxDecoration(
         color: Colors.grey[300],
         borderRadius: BorderRadius.circular(10),
@@ -204,8 +215,10 @@ class HomePage extends StatelessWidget {
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(time,
-                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
+              Text(
+                time,
+                style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+              ),
               SizedBox(height: 5),
               Text(task, style: TextStyle(fontSize: 14)),
               Text(details, style: TextStyle(fontSize: 14)),
