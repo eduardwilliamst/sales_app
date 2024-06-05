@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
-import 'forget_pass_page.dart';
+import 'package:sales_app/forget_pass_page.dart';
 
 class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -9,15 +11,17 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: LoginPage(),
+      home: const LoginPage(),
       routes: {
-        '/forgetpassword': (context) => ForgetPasswordPage(),
+        '/forgetpassword': (context) => const ForgetPasswordPage(),
       },
     );
   }
 }
 
 class LoginPage extends StatefulWidget {
+  const LoginPage({super.key});
+
   @override
   _LoginPageState createState() => _LoginPageState();
 }
@@ -34,7 +38,7 @@ class _LoginPageState extends State<LoginPage> {
       body: Stack(
         children: [
           Container(
-            decoration: BoxDecoration(
+            decoration: const BoxDecoration(
               image: DecorationImage(
                 image: AssetImage('assets/images/Background.png'),
                 alignment: Alignment.topCenter,
@@ -51,12 +55,12 @@ class _LoginPageState extends State<LoginPage> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      SizedBox(height: 100),
+                      const SizedBox(height: 100),
                       Text(
                         'Masuk',
                         style: Theme.of(context).textTheme.headlineLarge,
                       ),
-                      SizedBox(height: 16),
+                      const SizedBox(height: 16),
                       Text(
                         'Email',
                         style: Theme.of(context).textTheme.bodyLarge,
@@ -77,7 +81,7 @@ class _LoginPageState extends State<LoginPage> {
                           return null;
                         },
                       ),
-                      SizedBox(height: 16),
+                      const SizedBox(height: 16),
                       Text(
                         'Kata Sandi',
                         style: Theme.of(context).textTheme.bodyLarge,
@@ -110,14 +114,14 @@ class _LoginPageState extends State<LoginPage> {
                           return null;
                         },
                       ),
-                      SizedBox(height: 12),
+                      const SizedBox(height: 12),
                       Align(
                         alignment: Alignment.centerLeft,
                         child: InkWell(
                           onTap: () {
                             Navigator.pushNamed(context, '/forgetpassword');
                           },
-                          child: Text(
+                          child: const Text(
                             'Lupa Kata Sandi?',
                             style: TextStyle(
                               color: Colors.blue,
@@ -125,21 +129,21 @@ class _LoginPageState extends State<LoginPage> {
                           ),
                         ),
                       ),
-                      SizedBox(height: 20),
+                      const SizedBox(height: 20),
                       SizedBox(
                         width: double.infinity,
                         child: ElevatedButton(
                           onPressed: () {
                             if (_formKey.currentState!.validate()) {
                               // Perform login action
-                              print('Email: ${_emailController.text}');
-                              print('Password: ${_passwordController.text}');
+                              debugPrint('Email: ${_emailController.text}');
+                              debugPrint('Password: ${_passwordController.text}');
                               Navigator.pushReplacementNamed(context, '/home');
                             }
                           },
                           style: ElevatedButton.styleFrom(
-                            backgroundColor: Color.fromARGB(164, 114, 61, 1),
-                            padding: EdgeInsets.symmetric(vertical: 16),
+                            backgroundColor: const Color.fromARGB(164, 114, 61, 1),
+                            padding: const EdgeInsets.symmetric(vertical: 16),
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(10),
                             ),

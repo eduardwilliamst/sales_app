@@ -2,11 +2,13 @@ import 'package:flutter/material.dart';
 import 'profile_page.dart';
 
 class HomePage extends StatelessWidget {
+  const HomePage({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       bottomNavigationBar: BottomNavigationBar(
-        items: [
+        items: const [
           BottomNavigationBarItem(
             icon: Icon(Icons.home),
             label: 'Beranda',
@@ -93,7 +95,7 @@ class HomePage extends StatelessWidget {
             ],
           ),
         ),
-        Row(
+        const Row(
           children: [
             Icon(Icons.notifications),
             SizedBox(width: 20),
@@ -143,7 +145,7 @@ class HomePage extends StatelessWidget {
             borderRadius: BorderRadius.circular(10),
           ),
         ),
-        SizedBox(height: 10),
+        const SizedBox(height: 10),
         Container(
           height: 200,
           decoration: BoxDecoration(
@@ -151,7 +153,7 @@ class HomePage extends StatelessWidget {
             borderRadius: BorderRadius.circular(10),
           ),
         ),
-        SizedBox(height: 10),
+        const SizedBox(height: 10),
         Container(
           height: 200,
           decoration: BoxDecoration(
@@ -190,8 +192,8 @@ class HomePage extends StatelessWidget {
 
   Widget _buildScheduleItem(String time, String task, String details) {
     return Container(
-      margin: EdgeInsets.only(bottom: 10),
-      padding: EdgeInsets.all(16),
+      margin: const EdgeInsets.only(bottom: 10),
+      padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
         color: Colors.grey[300],
         borderRadius: BorderRadius.circular(10),

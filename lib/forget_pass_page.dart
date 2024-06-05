@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'forget_pass_info_page.dart';
 
 class ForgetPasswordPage extends StatefulWidget {
+  const ForgetPasswordPage({super.key});
+
   @override
   _ForgetPasswordPageState createState() => _ForgetPasswordPageState();
 }
@@ -16,7 +18,7 @@ class _ForgetPasswordPageState extends State<ForgetPasswordPage> {
       body: Stack(
         children: [
           Container(
-            decoration: BoxDecoration(
+            decoration: const BoxDecoration(
               image: DecorationImage(
                 image: AssetImage('assets/images/Background.png'),
                 alignment: Alignment.topCenter,
@@ -37,7 +39,7 @@ class _ForgetPasswordPageState extends State<ForgetPasswordPage> {
                         'Lupa Kata Sandi',
                         style: Theme.of(context).textTheme.headlineLarge,
                       ),
-                      SizedBox(height: 16),
+                      const SizedBox(height: 16),
                       Text(
                         'Email',
                         style: Theme.of(context).textTheme.bodyLarge,
@@ -58,29 +60,29 @@ class _ForgetPasswordPageState extends State<ForgetPasswordPage> {
                           return null;
                         },
                       ),
-                      SizedBox(height: 8),
+                      const SizedBox(height: 8),
                       Text(
                         'Kami akan mengirim email untuk pemulihan akun Anda.',
                         style: Theme.of(context).textTheme.bodySmall,
                       ),
-                      SizedBox(height: 16),
+                      const SizedBox(height: 16),
                       SizedBox(
                         width: double.infinity,
                         child: ElevatedButton(
                           onPressed: () {
                             if (_formKey.currentState!.validate()) {
                               // Perform password recovery action
-                              print('Email: ${_emailController.text}');
+                              debugPrint('Email: ${_emailController.text}');
                             }
                             Navigator.pushReplacement(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => ForgetPassInfoPage()),
+                                  builder: (context) => const ForgetPassInfoPage()),
                             );
                           },
                           style: ElevatedButton.styleFrom(
-                            backgroundColor: Color.fromARGB(164, 114, 61, 1),
-                            padding: EdgeInsets.symmetric(vertical: 16),
+                            backgroundColor: const Color.fromARGB(164, 114, 61, 1),
+                            padding: const EdgeInsets.symmetric(vertical: 16),
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(10),
                             ),
