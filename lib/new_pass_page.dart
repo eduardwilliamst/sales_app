@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:sales_app/new_pss_info_page.dart';
-import 'forget_pass_page.dart';
 
 class NewPasswordPage extends StatefulWidget {
+  const NewPasswordPage({super.key});
+
   @override
   _NewPasswordPageState createState() => _NewPasswordPageState();
 }
@@ -19,18 +20,18 @@ class _NewPasswordPageState extends State<NewPasswordPage> {
     setState(() {
       if (_passwordController.text == _repasswordController.text) {
         checkpass = true;
-        print('Password: ${_passwordController.text}');
-        print('RePassword: ${_repasswordController.text}');
-        print(checkpass);
+        debugPrint('Password: ${_passwordController.text}');
+        debugPrint('RePassword: ${_repasswordController.text}');
+        debugPrint("true");
         Navigator.push(
           context,
-          MaterialPageRoute(builder: (context) => NewPassInfoPage()),
+          MaterialPageRoute(builder: (context) => const NewPassInfoPage()),
         );
       } else {
         checkpass = false;
-        print('Password: ${_passwordController.text}');
-        print('RePassword: ${_repasswordController.text}');
-        print(checkpass);
+        debugPrint('Password: ${_passwordController.text}');
+        debugPrint('RePassword: ${_repasswordController.text}');
+        debugPrint("false");
       }
     });
   }
@@ -41,7 +42,7 @@ class _NewPasswordPageState extends State<NewPasswordPage> {
       body: Stack(
         children: [
           Container(
-            decoration: BoxDecoration(
+            decoration: const BoxDecoration(
               image: DecorationImage(
                 image: AssetImage('assets/images/Background.png'),
                 alignment: Alignment.topCenter,
@@ -51,19 +52,19 @@ class _NewPasswordPageState extends State<NewPasswordPage> {
           Center(
             child: SingleChildScrollView(
               child: Padding(
-                padding: EdgeInsets.all(16.0),
+                padding: const EdgeInsets.all(16.0),
                 child: Form(
                   key: _formKey,
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      SizedBox(height: 100),
+                      const SizedBox(height: 100),
                       Text(
                         'Kata Sandi Baru',
                         style: Theme.of(context).textTheme.headlineLarge,
                       ),
-                      SizedBox(height: 16),
+                      const SizedBox(height: 16),
                       Text(
                         'Kata Sandi',
                         style: Theme.of(context).textTheme.bodyLarge,
@@ -96,7 +97,7 @@ class _NewPasswordPageState extends State<NewPasswordPage> {
                           return null;
                         },
                       ),
-                      SizedBox(height: 16),
+                      const SizedBox(height: 16),
                       Text(
                         'Ulangi Kata Sandi',
                         style: Theme.of(context).textTheme.bodyLarge,
@@ -129,7 +130,7 @@ class _NewPasswordPageState extends State<NewPasswordPage> {
                           return null;
                         },
                       ),
-                      SizedBox(height: 20),
+                      const SizedBox(height: 20),
                       SizedBox(
                         width: double.infinity,
                         child: ElevatedButton(
@@ -148,8 +149,8 @@ class _NewPasswordPageState extends State<NewPasswordPage> {
                           //   }
                           // },
                           style: ElevatedButton.styleFrom(
-                            backgroundColor: Color.fromARGB(164, 114, 61, 1),
-                            padding: EdgeInsets.symmetric(vertical: 16),
+                            backgroundColor: const Color.fromARGB(164, 114, 61, 1),
+                            padding: const EdgeInsets.symmetric(vertical: 16),
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(10),
                             ),
@@ -160,7 +161,7 @@ class _NewPasswordPageState extends State<NewPasswordPage> {
                           ),
                         ),
                       ),
-                      SizedBox(height: 15),
+                      const SizedBox(height: 15),
                       if (checkpass == false)
                         Center(
                             child: Text(

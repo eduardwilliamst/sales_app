@@ -1,4 +1,4 @@
-#Tue Jun 04 23:00:46 WIB 2024
+#Wed Jun 05 13:41:03 WIB 2024
 base.0=C\:\\Users\\fathu\\Documents\\VSCode Projects\\sales_app\\build\\app\\intermediates\\dex\\debug\\mergeExtDexDebug\\classes.dex
 base.1=C\:\\Users\\fathu\\Documents\\VSCode Projects\\sales_app\\build\\app\\intermediates\\dex\\debug\\mergeProjectDexDebug\\0\\classes.dex
 base.2=C\:\\Users\\fathu\\Documents\\VSCode Projects\\sales_app\\build\\app\\intermediates\\dex\\debug\\mergeProjectDexDebug\\1\\classes.dex

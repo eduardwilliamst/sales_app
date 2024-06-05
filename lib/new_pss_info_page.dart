@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:sales_app/login_page.dart';
-import 'new_pass_page.dart';
 
 class NewPassInfoPage extends StatelessWidget {
+  const NewPassInfoPage({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -13,25 +14,25 @@ class NewPassInfoPage extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Image.asset('assets/images/Success.png', width: 200, height: 200),
-              SizedBox(height: 20),
-              Text('Kata sandi baru anda telah berhasil dibuat.',
+              const SizedBox(height: 20),
+              const Text('Kata sandi baru anda telah berhasil dibuat.',
                   textAlign: TextAlign.center,
                   style: TextStyle(fontWeight: FontWeight.bold)
                   //Theme.of(context).textTheme.bodyMedium,
                   ),
-              SizedBox(height: 40),
+              const SizedBox(height: 40),
               SizedBox(
                 width: double.infinity,
                 child: ElevatedButton(
                   onPressed: () {
                     Navigator.pushReplacement(
                       context,
-                      MaterialPageRoute(builder: (context) => LoginPage()),
+                      MaterialPageRoute(builder: (context) => const LoginPage()),
                     );
                   },
                   style: ElevatedButton.styleFrom(
-                    backgroundColor: Color.fromARGB(164, 114, 61, 1),
-                    padding: EdgeInsets.symmetric(vertical: 16),
+                    backgroundColor: const Color.fromARGB(164, 114, 61, 1),
+                    padding: const EdgeInsets.symmetric(vertical: 16),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(10),
                     ),
