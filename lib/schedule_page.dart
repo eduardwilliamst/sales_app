@@ -1,8 +1,9 @@
-// kurang back end penunjuk tanggal (bug) dan tambah jadwal
+// kurang back end
 
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:intl/date_symbol_data_local.dart';
+import 'package:sales_app/constants.dart';
 import 'package:sales_app/add_schedule.dart';
 import 'package:sales_app/home_page.dart';
 import 'package:table_calendar/table_calendar.dart';
@@ -11,7 +12,7 @@ class SchedulePage extends StatefulWidget {
   const SchedulePage({super.key});
 
   @override
-  _SchedulePageState createState() => _SchedulePageState();
+  State<SchedulePage> createState() => _SchedulePageState();
 }
 
 class _SchedulePageState extends State<SchedulePage> {
@@ -48,7 +49,7 @@ class _SchedulePageState extends State<SchedulePage> {
           SafeArea(
             child: SingleChildScrollView(
               child: Padding(
-                padding: const EdgeInsets.all(16.0),
+                padding: const EdgeInsets.all(kDefaultPadding),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -66,7 +67,7 @@ class _SchedulePageState extends State<SchedulePage> {
                                 );
                               },
                               icon: Image.asset('assets/images/arrow-left.png',
-                                  height: 25),
+                                  height: 30),
                             ),
                             const SizedBox(width: 10),
                             Column(
@@ -83,16 +84,15 @@ class _SchedulePageState extends State<SchedulePage> {
                       ],
                     ),
                     Container(
-                      margin: const EdgeInsets.all(16.0),
+                      margin: const EdgeInsets.all(kDefaultPadding),
                       padding: const EdgeInsets.only(
                           left: 8.0, right: 8.0, bottom: 8.0),
                       decoration: BoxDecoration(
                         color: Colors.transparent,
                         borderRadius: BorderRadius.circular(10),
                         border: Border.all(
-                          color: const Color.fromRGBO(122, 167, 165, 100),
-                          width: 3.0
-                        ),
+                            color: const Color.fromRGBO(122, 167, 165, 100),
+                            width: 3.0),
                       ),
                       child: TableCalendar(
                         locale: 'id_ID',
@@ -110,15 +110,14 @@ class _SchedulePageState extends State<SchedulePage> {
                       ),
                     ),
                     Container(
-                      margin: const EdgeInsets.all(16.0),
-                      padding: const EdgeInsets.all(16.0),
+                      margin: const EdgeInsets.all(kDefaultPadding),
+                      padding: const EdgeInsets.all(kDefaultPadding),
                       decoration: BoxDecoration(
                         color: Colors.transparent,
                         borderRadius: BorderRadius.circular(10),
                         border: Border.all(
-                          color: const Color.fromRGBO(122, 167, 165, 100),
-                          width: 3.0
-                        ),
+                            color: const Color.fromRGBO(122, 167, 165, 100),
+                            width: 3.0),
                       ),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
@@ -151,17 +150,24 @@ class _SchedulePageState extends State<SchedulePage> {
           )
         ],
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          Navigator.push(
-            context,
-            MaterialPageRoute(builder: (context) => const AddSchedulePage()),
-          );
-        }, // Path ke gambar add button Anda
-        backgroundColor: Colors
-            .transparent, // Menghapus background color untuk membuatnya transparan
-        elevation: 0,
-        child: Image.asset('assets/images/add-circle.png'), // Menghapus shadow
+      floatingActionButton: SizedBox(
+        width: 100,
+        height: 100,
+        child: FloatingActionButton(
+          onPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => const AddSchedulePage()),
+            );
+          }, // Path ke gambar add button Anda
+          backgroundColor: Colors
+              .transparent, // Menghapus background color untuk membuatnya transparan
+          elevation: 0, foregroundColor: kPrimaryColor,
+          child: const Icon(
+            Icons.add_circle_sharp,
+            size: 75,
+          ), // Menghapus shadow
+        ),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
     );
@@ -170,7 +176,7 @@ class _SchedulePageState extends State<SchedulePage> {
   Widget _buildScheduleItem(String time, String task, String details) {
     return Container(
       margin: const EdgeInsets.only(bottom: 10),
-      padding: const EdgeInsets.all(16),
+      padding: const EdgeInsets.all(kDefaultPadding),
       decoration: BoxDecoration(
         color: Colors.grey[300],
         borderRadius: BorderRadius.circular(10),

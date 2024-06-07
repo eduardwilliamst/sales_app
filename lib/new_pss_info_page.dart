@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:sales_app/constants.dart';
 import 'package:sales_app/login_page.dart';
 
 class NewPassInfoPage extends StatelessWidget {
@@ -9,7 +10,7 @@ class NewPassInfoPage extends StatelessWidget {
     return Scaffold(
       body: Center(
         child: Padding(
-          padding: const EdgeInsets.all(16.0),
+          padding: const EdgeInsets.all(kDefaultPadding),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
@@ -27,12 +28,14 @@ class NewPassInfoPage extends StatelessWidget {
                   onPressed: () {
                     Navigator.pushReplacement(
                       context,
-                      MaterialPageRoute(builder: (context) => const LoginPage()),
+                      MaterialPageRoute(
+                          builder: (context) => const LoginPage()),
                     );
                   },
                   style: ElevatedButton.styleFrom(
-                    backgroundColor: const Color.fromARGB(164, 114, 61, 1),
-                    padding: const EdgeInsets.symmetric(vertical: 16),
+                    backgroundColor: kPrimaryColor,
+                    padding:
+                        const EdgeInsets.symmetric(vertical: kDefaultPadding),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(10),
                     ),

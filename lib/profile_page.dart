@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:sales_app/constants.dart';
 import 'package:sales_app/home_page.dart';
 import 'package:sales_app/login_page.dart';
 import 'package:sales_app/reset_pass_page.dart';
 
 class ProfilePage extends StatelessWidget {
+  const ProfilePage({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -14,7 +17,7 @@ class ProfilePage extends StatelessWidget {
             children: [
               Card(
                 margin: EdgeInsets.zero,
-                shape: RoundedRectangleBorder(
+                shape: const RoundedRectangleBorder(
                   borderRadius: BorderRadius.only(
                     bottomLeft: Radius.circular(20),
                     bottomRight: Radius.circular(20),
@@ -23,8 +26,9 @@ class ProfilePage extends StatelessWidget {
                 elevation: 5,
                 child: Container(
                   width: double.infinity,
-                  padding: EdgeInsets.fromLTRB(16, 16, 16, 30),
-                  decoration: BoxDecoration(
+                  padding: const EdgeInsets.fromLTRB(
+                      kDefaultPadding, kDefaultPadding, kDefaultPadding, 30),
+                  decoration: const BoxDecoration(
                     borderRadius: BorderRadius.only(
                       bottomLeft: Radius.circular(20),
                       bottomRight: Radius.circular(20),
@@ -44,7 +48,7 @@ class ProfilePage extends StatelessWidget {
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                    builder: (context) => HomePage()),
+                                    builder: (context) => const HomePage()),
                               );
                             },
                             icon: Image.asset('assets/images/arrow-left.png',
@@ -57,8 +61,8 @@ class ProfilePage extends StatelessWidget {
                           ),
                         ],
                       ),
-                      SizedBox(height: 20),
-                      Center(
+                      const SizedBox(height: 20),
+                      const Center(
                         child: Column(
                           children: [
                             CircleAvatar(
@@ -80,17 +84,17 @@ class ProfilePage extends StatelessWidget {
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.all(16.0),
+                padding: const EdgeInsets.all(kDefaultPadding),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    SizedBox(height: 10),
+                    const SizedBox(height: 10),
                     Container(
                       width: double.infinity,
-                      padding:
-                          EdgeInsets.symmetric(vertical: 10, horizontal: 20),
+                      padding: const EdgeInsets.symmetric(
+                          vertical: 10, horizontal: 20),
                       decoration: BoxDecoration(
-                        color: Color.fromARGB(127, 212, 232, 231),
+                        color: const Color.fromARGB(127, 212, 232, 231),
                         borderRadius: BorderRadius.circular(10),
                       ),
                       child: Column(
@@ -99,7 +103,7 @@ class ProfilePage extends StatelessWidget {
                             'assets/images/crown.png',
                             height: 25,
                           ),
-                          SizedBox(height: 10),
+                          const SizedBox(height: 10),
                           Text(
                             '72 POIN SILVER',
                             style: Theme.of(context).textTheme.headlineMedium,
@@ -107,7 +111,7 @@ class ProfilePage extends StatelessWidget {
                         ],
                       ),
                     ),
-                    SizedBox(height: 16),
+                    const SizedBox(height: 16),
                     Align(
                       alignment: Alignment.centerLeft,
                       child: Text(
@@ -119,13 +123,13 @@ class ProfilePage extends StatelessWidget {
                     TextField(
                       decoration: InputDecoration(
                         filled: true,
-                        fillColor: Color(0xFFF5F5F5),
+                        fillColor: const Color(0xFFF5F5F5),
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(10),
                         ),
                       ),
                     ),
-                    SizedBox(height: 16),
+                    const SizedBox(height: 16),
                     Align(
                       alignment: Alignment.centerLeft,
                       child: Text(
@@ -138,7 +142,7 @@ class ProfilePage extends StatelessWidget {
                       obscureText: true,
                       decoration: InputDecoration(
                         filled: true,
-                        fillColor: Color(0xFFF5F5F5),
+                        fillColor: const Color(0xFFF5F5F5),
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(10),
                         ),
@@ -151,32 +155,34 @@ class ProfilePage extends StatelessWidget {
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => ResetPasswordPage()),
+                                  builder: (context) =>
+                                      const ResetPasswordPage()),
                             );
                           },
                         ),
                       ),
                     ),
-                    SizedBox(height: 20),
+                    const SizedBox(height: 20),
                     ElevatedButton(
                       style: ElevatedButton.styleFrom(
-                        backgroundColor: Colors.red,
-                        padding: EdgeInsets.symmetric(vertical: 15),
-                        textStyle: TextStyle(fontSize: 16),
+                        backgroundColor: kErrorColor,
+                        padding: const EdgeInsets.symmetric(vertical: 15),
+                        textStyle: const TextStyle(fontSize: 16),
                       ),
                       onPressed: () {
                         Navigator.push(
                           context,
-                          MaterialPageRoute(builder: (context) => LoginPage()),
+                          MaterialPageRoute(
+                              builder: (context) => const LoginPage()),
                         );
                       },
                       child: Stack(
                         children: [
-                          Padding(
-                            padding: const EdgeInsets.symmetric(horizontal: 12),
+                          const Padding(
+                            padding: EdgeInsets.symmetric(horizontal: 12),
                             child: Align(
                               alignment: Alignment.centerLeft,
-                              child: Icon(Icons.logout),
+                              child: Icon(Icons.logout, color: kSecondaryColor),
                             ),
                           ),
                           Center(

@@ -1,12 +1,13 @@
-//-1 backend 
+//-1 backend
 import 'package:flutter/material.dart';
+import 'package:sales_app/constants.dart';
 import 'package:sales_app/schedule_page.dart';
 
 class AddSchedulePage extends StatefulWidget {
   const AddSchedulePage({super.key});
 
   @override
-  _AddSchedulePageState createState() => _AddSchedulePageState();
+  State<AddSchedulePage> createState() => _AddSchedulePageState();
 }
 
 class _AddSchedulePageState extends State<AddSchedulePage> {
@@ -74,263 +75,281 @@ class _AddSchedulePageState extends State<AddSchedulePage> {
           SafeArea(
             child: SingleChildScrollView(
               child: Padding(
-                padding: const EdgeInsets.all(16.0),
+                padding: const EdgeInsets.all(kDefaultPadding),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Row(
-                          children: [
-                            const SizedBox(width: 16.0),
-                            Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text('Buat Jadwal Baru',
-                                    style: Theme.of(context)
-                                        .textTheme
-                                        .headlineLarge),
-                              ],
-                            ),
-                            const SizedBox(width: 15),
-                            IconButton(
-                              onPressed: () {
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) =>
-                                          const SchedulePage()),
-                                );
-                              },
-                              icon: Image.asset(
-                                  'assets/images/close-square.png',
-                                  height: 25),
-                            ),
-                          ],
-                        ),
-                      ],
+                    Container(
+                      margin: const EdgeInsets.only(
+                          left: kDefaultPadding, right: 8.0),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text('Buat Jadwal Baru',
+                                  style: Theme.of(context)
+                                      .textTheme
+                                      .headlineLarge),
+                            ],
+                          ),
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.end,
+                            children: [
+                              Container(
+                                decoration: BoxDecoration(
+                                  border: Border.all(
+                                      color: Colors.black, width: 1.0),
+                                  borderRadius: BorderRadius.circular(10.0),
+                                ),
+                                child: IconButton(
+                                  onPressed: () {
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) =>
+                                              const SchedulePage()),
+                                    );
+                                  },
+                                  icon: const Icon(
+                                    Icons.close_sharp,
+                                    color: Colors.black,
+                                    size: 30,
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ],
+                      ),
                     ),
-                    Center(
-                      child: SingleChildScrollView(
-                        child: Padding(
-                          padding: const EdgeInsets.all(16.0),
-                          child: Form(
-                            key: _formKey,
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                const SizedBox(height: 16),
-                                Text(
-                                  'Judul',
-                                  style: Theme.of(context).textTheme.bodyLarge,
-                                ),
-                                TextFormField(
-                                  controller: _emailController,
-                                  decoration: InputDecoration(
-                                    hintText: 'Judul',
-                                    border: OutlineInputBorder(
-                                      borderRadius: BorderRadius.circular(10),
-                                    ),
-                                  ),
-                                  keyboardType: TextInputType.emailAddress,
-                                ),
-                                const SizedBox(height: 16),
-                                Text(
-                                  'Nama Customer',
-                                  style: Theme.of(context).textTheme.bodyLarge,
-                                ),
-                                TextFormField(
-                                  controller: _passwordController,
-                                  decoration: InputDecoration(
-                                    hintText: 'Nama Customer',
-                                    border: OutlineInputBorder(
-                                      borderRadius: BorderRadius.circular(10),
-                                    ),
-                                  ),
-                                ),
-                                const SizedBox(height: 16),
-                                Text(
-                                  'Tempat',
-                                  style: Theme.of(context).textTheme.bodyLarge,
-                                ),
-                                TextFormField(
-                                  controller: _emailController,
-                                  decoration: InputDecoration(
-                                    hintText: 'alamat',
-                                    border: OutlineInputBorder(
-                                      borderRadius: BorderRadius.circular(10),
-                                    ),
-                                  ),
-                                  keyboardType: TextInputType.streetAddress,
-                                ),
-                                const SizedBox(height: 16),
-                                Text(
-                                  'Catatan',
-                                  style: Theme.of(context).textTheme.bodyLarge,
-                                ),
-                                TextFormField(
-                                  controller: _passwordController,
-                                  decoration: InputDecoration(
-                                    hintText: 'Password',
-                                    border: OutlineInputBorder(
-                                      borderRadius: BorderRadius.circular(10),
-                                    ),
-                                  ),
-                                ),
-                                const SizedBox(height: 16.0),
-                                Text(
-                                  'Tanggal',
-                                  style: Theme.of(context).textTheme.bodyLarge,
-                                ),
-                                TextField(
-                                  controller: _dateTimeController,
-                                  decoration: InputDecoration(
-                                    hintText: 'Select Date and Time',
-                                    border: OutlineInputBorder(
-                                        borderRadius:
-                                            BorderRadius.circular(10)),
-                                    suffixIcon: Icon(Icons.calendar_today),
-                                  ),
-                                  readOnly: true,
-                                  onTap: () => _selectDateTime(context),
-                                ),
-                                const SizedBox(height: 16.0),
-                                Row(
+                    const SizedBox(
+                      height: 16.0,
+                    ),
+                    Container(
+                        decoration: BoxDecoration(
+                            color: const Color.fromRGBO(242, 242, 242, 0.4),
+                            borderRadius: BorderRadius.circular(10)),
+                        child: Center(
+                          child: SingleChildScrollView(
+                            child: Padding(
+                              padding: const EdgeInsets.all(kDefaultPadding),
+                              child: Form(
+                                key: _formKey,
+                                child: Column(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
-                                    Expanded(
-                                      child: Column(
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.start,
-                                        children: [
-                                          Text(
-                                            'Mulai',
-                                            style: Theme.of(context)
-                                                .textTheme
-                                                .bodyLarge,
-                                          ),
-                                          TextField(
-                                            controller: _startTimeController,
-                                            decoration: InputDecoration(
-                                              hintText: 'Jam Mulai',
-                                              border: OutlineInputBorder(
-                                                  borderRadius:
-                                                      BorderRadius.circular(
-                                                          10)),
-                                              suffixIcon:
-                                                  const Icon(Icons.access_time),
-                                            ),
-                                            readOnly: true,
-                                            onTap: () => _selectTime(
-                                                context, _startTimeController),
-                                          ),
-                                        ],
-                                      ),
+                                    Text(
+                                      'Judul',
+                                      style:
+                                          Theme.of(context).textTheme.bodyLarge,
                                     ),
-                                    SizedBox(width: 16.0),
-                                    Expanded(
-                                      child: Column(
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.start,
-                                        children: [
-                                          Text(
-                                            'Selesai',
-                                            style: Theme.of(context)
-                                                .textTheme
-                                                .bodyLarge,
+                                    TextFormField(
+                                      // controller: _emailController,
+                                      decoration: InputDecoration(
+                                          hintText: 'Masukkan nama event',
+                                          border: OutlineInputBorder(
+                                            borderRadius:
+                                                BorderRadius.circular(10),
                                           ),
-                                          const SizedBox(height: 8.0),
-                                          TextField(
-                                            controller: _endTimeController,
-                                            decoration: InputDecoration(
-                                              hintText: 'Jam Selesai',
-                                              border: OutlineInputBorder(
-                                                  borderRadius:
-                                                      BorderRadius.circular(
-                                                          10)),
-                                              suffixIcon:
-                                                  Icon(Icons.access_time),
+                                          filled: true,
+                                          fillColor: kSecondaryColor),
+                                      keyboardType: TextInputType.text,
+                                    ),
+                                    const SizedBox(height: 16.0),
+                                    Text(
+                                      'Nama Customer',
+                                      style:
+                                          Theme.of(context).textTheme.bodyLarge,
+                                    ),
+                                    TextFormField(
+                                      // controller: _passwordController,
+                                      decoration: InputDecoration(
+                                          hintText: 'Nama Customer',
+                                          border: OutlineInputBorder(
+                                            borderRadius:
+                                                BorderRadius.circular(10),
+                                          ),
+                                          filled: true,
+                                          fillColor: kSecondaryColor),
+                                      keyboardType: TextInputType.name,
+                                    ),
+                                    const SizedBox(height: 16.0),
+                                    Text(
+                                      'Tempat',
+                                      style:
+                                          Theme.of(context).textTheme.bodyLarge,
+                                    ),
+                                    TextFormField(
+                                      // controller: _emailController,
+                                      decoration: InputDecoration(
+                                          hintText: 'Alamat/Nama temoat',
+                                          border: OutlineInputBorder(
+                                            borderRadius:
+                                                BorderRadius.circular(10),
+                                          ),
+                                          filled: true,
+                                          fillColor: kSecondaryColor),
+                                      keyboardType: TextInputType.streetAddress,
+                                    ),
+                                    const SizedBox(height: 16.0),
+                                    Text(
+                                      'Catatan',
+                                      style:
+                                          Theme.of(context).textTheme.bodyLarge,
+                                    ),
+                                    TextFormField(
+                                        // controller: _passwordController,
+                                        decoration: InputDecoration(
+                                            hintText: 'Masukkan catatan',
+                                            border: OutlineInputBorder(
+                                              borderRadius:
+                                                  BorderRadius.circular(10),
                                             ),
-                                            readOnly: true,
-                                            onTap: () => _selectTime(
-                                                context, _endTimeController),
+                                            filled: true,
+                                            fillColor: kSecondaryColor),
+                                        keyboardType: TextInputType.text,
+                                        minLines: 10,
+                                        maxLines: null),
+                                    const SizedBox(height: 16.0),
+                                    Text(
+                                      'Tanggal',
+                                      style:
+                                          Theme.of(context).textTheme.bodyLarge,
+                                    ),
+                                    TextField(
+                                      controller: _dateTimeController,
+                                      decoration: InputDecoration(
+                                        hintText: 'Select Date and Time',
+                                        border: OutlineInputBorder(
+                                            borderRadius:
+                                                BorderRadius.circular(10)),
+                                        filled: true,
+                                        fillColor: kSecondaryColor,
+                                        suffixIcon:
+                                            const Icon(Icons.calendar_today),
+                                      ),
+                                      keyboardType: TextInputType.datetime,
+                                      readOnly: true,
+                                      onTap: () => _selectDateTime(context),
+                                    ),
+                                    const SizedBox(height: 16.0),
+                                    Row(
+                                      children: [
+                                        Expanded(
+                                          child: Column(
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
+                                            children: [
+                                              Text(
+                                                'Mulai',
+                                                style: Theme.of(context)
+                                                    .textTheme
+                                                    .bodyLarge,
+                                              ),
+                                              TextField(
+                                                controller:
+                                                    _startTimeController,
+                                                decoration: InputDecoration(
+                                                  hintText: 'Jam Mulai',
+                                                  border: OutlineInputBorder(
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              10)),
+                                                  filled: true,
+                                                  fillColor: kSecondaryColor,
+                                                  suffixIcon: const Icon(
+                                                      Icons.access_time),
+                                                ),
+                                                readOnly: true,
+                                                onTap: () => _selectTime(
+                                                    context,
+                                                    _startTimeController),
+                                              ),
+                                            ],
                                           ),
-                                        ],
+                                        ),
+                                        const SizedBox(width: 16.0),
+                                        Expanded(
+                                          child: Column(
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
+                                            children: [
+                                              Text(
+                                                'Selesai',
+                                                style: Theme.of(context)
+                                                    .textTheme
+                                                    .bodyLarge,
+                                              ),
+                                              TextField(
+                                                controller: _endTimeController,
+                                                decoration: InputDecoration(
+                                                  hintText: 'Jam Selesai',
+                                                  border: OutlineInputBorder(
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              10)),
+                                                  filled: true,
+                                                  fillColor: kSecondaryColor,
+                                                  suffixIcon: const Icon(
+                                                      Icons.access_time),
+                                                ),
+                                                readOnly: true,
+                                                onTap: () => _selectTime(
+                                                    context,
+                                                    _endTimeController),
+                                              ),
+                                            ],
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                    const SizedBox(height: 32),
+                                    SizedBox(
+                                      width: double.infinity,
+                                      child: ElevatedButton(
+                                        onPressed: () {
+                                          if (_formKey.currentState!
+                                              .validate()) {
+                                            // Perform login action
+                                            debugPrint(
+                                                'Email: ${_emailController.text}');
+                                            debugPrint(
+                                                'Password: ${_passwordController.text}');
+                                            Navigator.pushReplacementNamed(
+                                                context, '/home');
+                                          }
+                                        },
+                                        style: ElevatedButton.styleFrom(
+                                          backgroundColor: kPrimaryColor,
+                                          padding: const EdgeInsets.symmetric(
+                                              vertical: kDefaultPadding),
+                                          shape: RoundedRectangleBorder(
+                                            borderRadius:
+                                                BorderRadius.circular(10),
+                                          ),
+                                        ),
+                                        child: Text(
+                                          'Simpan',
+                                          style: Theme.of(context)
+                                              .textTheme
+                                              .labelLarge,
+                                        ),
                                       ),
                                     ),
                                   ],
                                 ),
-                                const SizedBox(height: 32),
-                                SizedBox(
-                                  width: double.infinity,
-                                  child: ElevatedButton(
-                                    onPressed: () {
-                                      if (_formKey.currentState!.validate()) {
-                                        // Perform login action
-                                        debugPrint(
-                                            'Email: ${_emailController.text}');
-                                        debugPrint(
-                                            'Password: ${_passwordController.text}');
-                                        Navigator.pushReplacementNamed(
-                                            context, '/home');
-                                      }
-                                    },
-                                    style: ElevatedButton.styleFrom(
-                                      backgroundColor:
-                                          const Color.fromARGB(164, 114, 61, 1),
-                                      padding: const EdgeInsets.symmetric(
-                                          vertical: 16),
-                                      shape: RoundedRectangleBorder(
-                                        borderRadius: BorderRadius.circular(10),
-                                      ),
-                                    ),
-                                    child: Text(
-                                      'Simpan',
-                                      style: Theme.of(context)
-                                          .textTheme
-                                          .labelLarge,
-                                    ),
-                                  ),
-                                ),
-                              ],
+                              ),
                             ),
                           ),
-                        ),
-                      ),
-                    )
+                        ))
                   ],
                 ),
               ),
             ),
           )
-        ],
-      ),
-    );
-  }
-
-  Widget _buildScheduleItem(String time, String task, String details) {
-    return Container(
-      margin: const EdgeInsets.only(bottom: 10),
-      padding: const EdgeInsets.all(16),
-      decoration: BoxDecoration(
-        color: Colors.grey[300],
-        borderRadius: BorderRadius.circular(10),
-      ),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(time,
-                  style: const TextStyle(
-                      fontSize: 16, fontWeight: FontWeight.bold)),
-              const SizedBox(height: 5),
-              Text(task, style: const TextStyle(fontSize: 14)),
-              Text(details, style: const TextStyle(fontSize: 14)),
-            ],
-          ),
         ],
       ),
     );
