@@ -121,6 +121,10 @@ class ProfilePage extends StatelessWidget {
                       ),
                     ),
                     TextField(
+                      style: Theme.of(context)
+                          .textTheme
+                          .bodyLarge!
+                          .copyWith(fontSize: 12),
                       decoration: InputDecoration(
                         filled: true,
                         fillColor: const Color(0xFFF5F5F5),
@@ -140,6 +144,10 @@ class ProfilePage extends StatelessWidget {
                     ),
                     TextField(
                       obscureText: true,
+                      style: Theme.of(context)
+                          .textTheme
+                          .bodyLarge!
+                          .copyWith(fontSize: 12),
                       decoration: InputDecoration(
                         filled: true,
                         fillColor: const Color(0xFFF5F5F5),

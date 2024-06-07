@@ -30,8 +30,8 @@ class _SchedulePageState extends State<SchedulePage> {
     });
   }
 
-  String getFormattedDate() {
-    return DateFormat('EEEE, d MMMM yyyy', 'id_ID').format(today);
+  String getFormattedDate(DateTime date) {
+    return DateFormat('EEEE, d MMMM yyyy', 'id_ID').format(date);
   }
 
   @override
@@ -122,24 +122,61 @@ class _SchedulePageState extends State<SchedulePage> {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          const Text('Jadwal Hari Ini',
-                              style: TextStyle(
-                                  fontFamily: 'DMSerifText',
-                                  fontSize: 20,
-                                  fontWeight: FontWeight.normal)),
+                          Text(
+                            'Jadwal Hari Ini',
+                            style: Theme.of(context)
+                                .textTheme
+                                .headlineLarge!
+                                .copyWith(fontSize: 20),
+                          ),
                           const SizedBox(height: 5),
-                          Text(getFormattedDate(),
-                              style: const TextStyle(
-                                  fontSize: 14,
-                                  fontFamily: 'Lato',
-                                  fontWeight: FontWeight.w400)),
+                          Text(
+                            getFormattedDate(today),
+                            style: Theme.of(context)
+                                .textTheme
+                                .bodyMedium!
+                                .copyWith(fontSize: 14),
+                          ),
                           const SizedBox(height: 10),
-                          _buildScheduleItem('13.00 - 14.00', 'Follow Up SPJ',
-                              'Nama Customer - Tempat'),
-                          _buildScheduleItem('13.00 - 14.00', 'Follow Up SPJ',
-                              'Nama Customer - Tempat'),
-                          _buildScheduleItem('13.00 - 14.00', 'Follow Up SPJ',
-                              'Nama Customer - Tempat')
+                          Container(
+                            margin: const EdgeInsets.only(bottom: 10),
+                            padding: const EdgeInsets.all(kDefaultPadding),
+                            decoration: BoxDecoration(
+                              color: Colors.grey[300],
+                              borderRadius: BorderRadius.circular(10),
+                            ),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Column(
+                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                  children: [
+                                    Text(
+                                      'Waktu',
+                                      style: Theme.of(context)
+                                          .textTheme
+                                          .headlineLarge!
+                                          .copyWith(fontSize: 16),
+                                    ),
+                                  ],
+                                ),
+                                const Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text(
+                                      'Nama Event',
+                                      style: TextStyle(fontSize: 14),
+                                    ),
+                                    SizedBox(height: 5),
+                                    Text(
+                                      'Nama Customer - Tempat',
+                                      style: TextStyle(fontSize: 14),
+                                    ),
+                                  ],
+                                ),
+                              ],
+                            ),
+                          ),
                         ],
                       ),
                     ),
@@ -170,33 +207,6 @@ class _SchedulePageState extends State<SchedulePage> {
         ),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
-    );
-  }
-
-  Widget _buildScheduleItem(String time, String task, String details) {
-    return Container(
-      margin: const EdgeInsets.only(bottom: 10),
-      padding: const EdgeInsets.all(kDefaultPadding),
-      decoration: BoxDecoration(
-        color: Colors.grey[300],
-        borderRadius: BorderRadius.circular(10),
-      ),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(time,
-                  style: const TextStyle(
-                      fontSize: 16, fontWeight: FontWeight.bold)),
-              const SizedBox(height: 5),
-              Text(task, style: const TextStyle(fontSize: 14)),
-              Text(details, style: const TextStyle(fontSize: 14)),
-            ],
-          ),
-        ],
-      ),
     );
   }
 }

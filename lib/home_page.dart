@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
+import 'package:intl/date_symbol_data_local.dart';
 import 'package:sales_app/constants.dart';
 import 'package:sales_app/notifications_modal.dart';
 import 'package:sales_app/order_page.dart';
@@ -7,7 +9,6 @@ import 'schedule_page.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
-
   @override
   State<HomePage> createState() => _HomePageState();
 }
@@ -28,7 +29,7 @@ class _HomePageState extends State<HomePage> {
         destinations: const <Widget>[
           NavigationDestination(icon: Icon(Icons.home), label: 'Beranda'),
           NavigationDestination(
-              icon: Icon(Icons.shopping_cart_outlined), label: 'Beranda'),
+              icon: Icon(Icons.shopping_cart_outlined), label: 'Pesanan'),
           NavigationDestination(
               icon: Icon(Icons.add_circle_outline), label: 'New'),
           NavigationDestination(icon: Icon(Icons.map), label: 'Sitemap'),
@@ -62,6 +63,17 @@ class HomeContent extends StatefulWidget {
 }
 
 class _HomeContentState extends State<HomeContent> {
+  DateTime today = DateTime.now();
+  @override
+  void initState() {
+    super.initState();
+    initializeDateFormatting('id_ID', null);
+  }
+
+  String getFormattedDate(DateTime date) {
+    return DateFormat('EEEE, d MMMM yyyy', 'id_ID').format(date);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -205,13 +217,15 @@ class _HomeContentState extends State<HomeContent> {
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            const Text(
+                            Text(
                               'Jadwal Hari Ini',
-                              style: TextStyle(
-                                  fontSize: 18, fontWeight: FontWeight.bold),
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .headlineLarge!
+                                  .copyWith(fontSize: 20),
                             ),
-                            GestureDetector(
-                              onTap: () {
+                            IconButton(
+                              onPressed: () {
                                 Navigator.push(
                                   context,
                                   MaterialPageRoute(
@@ -219,13 +233,18 @@ class _HomeContentState extends State<HomeContent> {
                                           const SchedulePage()),
                                 );
                               },
-                              child: const Icon(Icons.date_range, size: 24),
+                              icon: const Icon(Icons.date_range, size: 24),
                             ),
                           ],
                         ),
                         const SizedBox(height: 5),
-                        const Text('Kamis, 21 Maret 2024',
-                            style: TextStyle(fontSize: 14)),
+                        Text(
+                          getFormattedDate(DateTime.now()),
+                          style: Theme.of(context)
+                              .textTheme
+                              .bodyMedium!
+                              .copyWith(fontSize: 14),
+                        ),
                         const SizedBox(height: 10),
                         Container(
                           margin: const EdgeInsets.only(bottom: 10),
@@ -234,21 +253,33 @@ class _HomeContentState extends State<HomeContent> {
                             color: Colors.grey[300],
                             borderRadius: BorderRadius.circular(10),
                           ),
-                          child: const Row(
+                          child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               Column(
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                children: [
+                                  Text(
+                                    'Waktu',
+                                    style: Theme.of(context)
+                                        .textTheme
+                                        .headlineLarge!
+                                        .copyWith(fontSize: 16),
+                                  ),
+                                ],
+                              ),
+                              const Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Text(
-                                    'Gabut',
-                                    style: TextStyle(
-                                        fontSize: 16,
-                                        fontWeight: FontWeight.bold),
+                                    'Nama Event',
+                                    style: TextStyle(fontSize: 14),
                                   ),
                                   SizedBox(height: 5),
-                                  Text('Task', style: TextStyle(fontSize: 14)),
-                                  Text('gabut', style: TextStyle(fontSize: 14)),
+                                  Text(
+                                    'Nama Customer - Tempat',
+                                    style: TextStyle(fontSize: 14),
+                                  ),
                                 ],
                               ),
                             ],

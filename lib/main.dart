@@ -26,7 +26,6 @@ class MyApp extends StatelessWidget {
           backgroundColor: kSecondaryColor,
           labelBehavior: NavigationDestinationLabelBehavior.alwaysShow,
           iconTheme: WidgetStatePropertyAll(IconThemeData(color: Colors.black)),
-          
           indicatorColor: Color.fromRGBO(
             170,
             142,
