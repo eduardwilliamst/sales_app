@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:sales_app/constants.dart';
+import 'package:sales_app/home_page.dart';
+import 'package:sales_app/order_page.dart';
 import 'package:sales_app/profile_page.dart';
 import 'package:sales_app/new_pass_page.dart';
-import 'package:sales_app/splash_screen.dart';
 import 'package:sales_app/login_page.dart';
 import 'package:sales_app/forget_pass_page.dart';
-import 'package:sales_app/home_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -16,14 +17,22 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      supportedLocales: const [
-        Locale('en', 'US'),
-        Locale('id', 'ID')
-      ],
+      supportedLocales: const [Locale('en', 'US'), Locale('id', 'ID')],
       debugShowCheckedModeBanner: false,
       title: 'Sales App',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        useMaterial3: true,
+        navigationBarTheme: const NavigationBarThemeData(
+          backgroundColor: kSecondaryColor,
+          labelBehavior: NavigationDestinationLabelBehavior.alwaysShow,
+          iconTheme: WidgetStatePropertyAll(IconThemeData(color: Colors.black)),
+          indicatorColor: Color.fromRGBO(
+            170,
+            142,
+            111,
+            1.0,
+          ),
+        ),
         textTheme: const TextTheme(
           headlineLarge: TextStyle(
               fontFamily: 'DMSerifText',
@@ -49,16 +58,17 @@ class MyApp extends StatelessWidget {
               fontFamily: 'Lato',
               fontSize: 16,
               fontWeight: FontWeight.bold,
-              color: Colors.white),
+              color: kSecondaryColor),
         ),
       ),
-      home: const SplashScreen(),
+      home: const HomePage(),
       routes: {
-        '/login': (context) => LoginPage(),
-        '/forgetpassword': (context) => ForgetPasswordPage(),
-        '/home': (context) => HomePage(),
-        '/newpassword': (context) => NewPasswordPage(),
-        '/profile': (context) => ProfilePage(),
+        '/login': (context) => const LoginPage(),
+        '/forgetpassword': (context) => const ForgetPasswordPage(),
+        '/home': (context) => const HomePage(),
+        '/newpassword': (context) => const NewPasswordPage(),
+        '/profile': (context) => const ProfilePage(),
+        '/order': (context) => const OrderPage(),
       },
     );
   }

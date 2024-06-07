@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:sales_app/constants.dart';
 import 'package:sales_app/new_pass_page.dart';
 
 class ForgetPassInfoPage extends StatelessWidget {
@@ -9,13 +10,14 @@ class ForgetPassInfoPage extends StatelessWidget {
     return Scaffold(
       body: Center(
         child: Padding(
-          padding: const EdgeInsets.all(16.0),
+          padding: const EdgeInsets.all(kDefaultPadding),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Image.asset('assets/images/Success.png', width: 200, height: 200),
               const SizedBox(height: 20),
-              const Text('Silakan cek email untuk mengatur kata sandi baru Anda',
+              const Text(
+                  'Silakan cek email untuk mengatur kata sandi baru Anda',
                   textAlign: TextAlign.center,
                   style: TextStyle(fontWeight: FontWeight.bold)
                   //Theme.of(context).textTheme.bodyMedium,
@@ -32,8 +34,9 @@ class ForgetPassInfoPage extends StatelessWidget {
                     );
                   },
                   style: ElevatedButton.styleFrom(
-                    backgroundColor: const Color.fromARGB(164, 114, 61, 1),
-                    padding: const EdgeInsets.symmetric(vertical: 16),
+                    backgroundColor: kPrimaryColor,
+                    padding:
+                        const EdgeInsets.symmetric(vertical: kDefaultPadding),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(10),
                     ),

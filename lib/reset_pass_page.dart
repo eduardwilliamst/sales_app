@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:sales_app/constants.dart';
 import 'package:sales_app/new_pss_info_page.dart';
 import 'package:sales_app/profile_page.dart';
 
 class ResetPasswordPage extends StatefulWidget {
+  const ResetPasswordPage({super.key});
+
   @override
-  _ResetPasswordPageState createState() => _ResetPasswordPageState();
+  State<ResetPasswordPage> createState() => _ResetPasswordPageState();
 }
 
 class _ResetPasswordPageState extends State<ResetPasswordPage> {
@@ -19,18 +22,18 @@ class _ResetPasswordPageState extends State<ResetPasswordPage> {
     setState(() {
       if (_passwordController.text == _repasswordController.text) {
         checkpass = true;
-        print('Password: ${_passwordController.text}');
-        print('RePassword: ${_repasswordController.text}');
-        print(checkpass);
+        debugPrint('Password: ${_passwordController.text}');
+        debugPrint('RePassword: ${_repasswordController.text}');
+        debugPrint('$checkpass');
         Navigator.push(
           context,
-          MaterialPageRoute(builder: (context) => NewPassInfoPage()),
+          MaterialPageRoute(builder: (context) => const NewPassInfoPage()),
         );
       } else {
         checkpass = false;
-        print('Password: ${_passwordController.text}');
-        print('RePassword: ${_repasswordController.text}');
-        print(checkpass);
+        debugPrint('Password: ${_passwordController.text}');
+        debugPrint('RePassword: ${_repasswordController.text}');
+        debugPrint('$checkpass');
       }
     });
   }
@@ -42,8 +45,9 @@ class _ResetPasswordPageState extends State<ResetPasswordPage> {
         child: Stack(
           children: [
             Container(
-              padding: EdgeInsets.fromLTRB(16, 16, 16, 30),
-              decoration: BoxDecoration(
+              padding: const EdgeInsets.fromLTRB(
+                  kDefaultPadding, kDefaultPadding, kDefaultPadding, 30),
+              decoration: const BoxDecoration(
                 image: DecorationImage(
                   image: AssetImage('assets/images/Background.png'),
                   alignment: Alignment.topCenter,
@@ -58,7 +62,8 @@ class _ResetPasswordPageState extends State<ResetPasswordPage> {
                         onPressed: () {
                           Navigator.push(
                             context,
-                            MaterialPageRoute(builder: (context) => ProfilePage()),
+                            MaterialPageRoute(
+                                builder: (context) => const ProfilePage()),
                           );
                         },
                         icon: Image.asset('assets/images/arrow-left.png',
@@ -77,19 +82,19 @@ class _ResetPasswordPageState extends State<ResetPasswordPage> {
             Center(
               child: SingleChildScrollView(
                 child: Padding(
-                  padding: EdgeInsets.all(16.0),
+                  padding: const EdgeInsets.all(kDefaultPadding),
                   child: Form(
                     key: _formKey,
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        SizedBox(height: 100),
+                        const SizedBox(height: 100),
                         Text(
                           'Ubah Kata Sandi',
                           style: Theme.of(context).textTheme.headlineLarge,
                         ),
-                        SizedBox(height: 16),
+                        const SizedBox(height: 16),
                         Text(
                           'Kata Sandi',
                           style: Theme.of(context).textTheme.bodyLarge,
@@ -122,7 +127,7 @@ class _ResetPasswordPageState extends State<ResetPasswordPage> {
                             return null;
                           },
                         ),
-                        SizedBox(height: 16),
+                        const SizedBox(height: 16),
                         Text(
                           'Ulangi Kata Sandi',
                           style: Theme.of(context).textTheme.bodyLarge,
@@ -155,14 +160,15 @@ class _ResetPasswordPageState extends State<ResetPasswordPage> {
                             return null;
                           },
                         ),
-                        SizedBox(height: 20),
+                        const SizedBox(height: 20),
                         SizedBox(
                           width: double.infinity,
                           child: ElevatedButton(
                             onPressed: _submit,
                             style: ElevatedButton.styleFrom(
-                              backgroundColor: Color.fromARGB(164, 114, 61, 1),
-                              padding: EdgeInsets.symmetric(vertical: 16),
+                              backgroundColor: kPrimaryColor,
+                              padding: const EdgeInsets.symmetric(
+                                  vertical: kDefaultPadding),
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(10),
                               ),
@@ -173,7 +179,7 @@ class _ResetPasswordPageState extends State<ResetPasswordPage> {
                             ),
                           ),
                         ),
-                        SizedBox(height: 15),
+                        const SizedBox(height: 15),
                         if (checkpass == false)
                           Center(
                               child: Text(
