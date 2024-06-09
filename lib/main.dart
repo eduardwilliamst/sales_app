@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
+import 'dart:async';
 import 'package:sales_app/constants.dart';
-import 'package:sales_app/home_page.dart';
-import 'package:sales_app/order_page.dart';
-import 'package:sales_app/profile_page.dart';
-import 'package:sales_app/new_pass_page.dart';
-import 'package:sales_app/login_page.dart';
-import 'package:sales_app/forget_pass_page.dart';
+import 'package:sales_app/pages/home_page.dart';
+import 'package:sales_app/pages/new_order_page.dart';
+import 'package:sales_app/pages/order_page.dart';
+import 'package:sales_app/pages/profile_page.dart';
+import 'package:sales_app/pages/new_pass_page.dart';
+import 'package:sales_app/pages/login_page.dart';
+import 'package:sales_app/pages/forget_pass_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -48,11 +50,13 @@ class MyApp extends StatelessWidget {
             fontFamily: 'Lato',
             fontSize: 16,
             fontWeight: FontWeight.bold,
+            color: Colors.black,
           ),
           bodyMedium: TextStyle(
             fontFamily: 'Lato',
             fontSize: 16,
             fontWeight: FontWeight.normal,
+            color: Colors.black,
           ),
           labelLarge: TextStyle(
               fontFamily: 'Lato',
@@ -61,15 +65,53 @@ class MyApp extends StatelessWidget {
               color: kSecondaryColor),
         ),
       ),
-      home: const HomePage(),
+      home: const SplashScreen(),
       routes: {
         '/login': (context) => const LoginPage(),
         '/forgetpassword': (context) => const ForgetPasswordPage(),
         '/home': (context) => const HomePage(),
         '/newpassword': (context) => const NewPasswordPage(),
         '/profile': (context) => const ProfilePage(),
-        '/order': (context) => const OrderPage(),
+        '/orderhistory': (context) => const OrderPage(),
+        '/neworder': (context) => const NewOrderPage(),
       },
+    );
+  }
+}
+
+class SplashScreen extends StatefulWidget {
+  const SplashScreen({super.key});
+
+  @override
+  State<SplashScreen> createState() => _SplashScreenState();
+}
+
+class _SplashScreenState extends State<SplashScreen> {
+  @override
+  void initState() {
+    super.initState();
+    Timer(const Duration(seconds: 2), () {
+      Navigator.of(context).pushReplacement(MaterialPageRoute(
+        builder: (context) => const LoginPage(),
+      ));
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: Stack(
+        children: [
+          Container(
+            decoration: const BoxDecoration(
+              image: DecorationImage(
+                image: AssetImage('assets/images/Onboarding1.png'),
+                fit: BoxFit.cover,
+              ),
+            ),
+          ),
+        ],
+      ),
     );
   }
 }

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:sales_app/constants.dart';
-import 'package:sales_app/home_page.dart';
-import 'package:sales_app/login_page.dart';
-import 'package:sales_app/reset_pass_page.dart';
+import 'package:sales_app/pages/home_page.dart';
+import 'package:sales_app/pages/login_page.dart';
+import 'package:sales_app/pages/reset_pass_page.dart';
 
 class ProfilePage extends StatelessWidget {
   const ProfilePage({super.key});
@@ -34,7 +34,8 @@ class ProfilePage extends StatelessWidget {
                       bottomRight: Radius.circular(20),
                     ),
                     image: DecorationImage(
-                      image: AssetImage('assets/images/Background.png'),
+                      image:
+                          AssetImage('assets/images/LoginMobileBackGround.png'),
                       fit: BoxFit.cover,
                     ),
                   ),
@@ -45,7 +46,7 @@ class ProfilePage extends StatelessWidget {
                         children: [
                           IconButton(
                             onPressed: () {
-                              Navigator.push(
+                              Navigator.pushReplacement(
                                 context,
                                 MaterialPageRoute(
                                     builder: (context) => const HomePage()),
@@ -132,6 +133,7 @@ class ProfilePage extends StatelessWidget {
                           borderRadius: BorderRadius.circular(10),
                         ),
                       ),
+                      readOnly: true,
                     ),
                     const SizedBox(height: 16),
                     Align(
@@ -169,6 +171,7 @@ class ProfilePage extends StatelessWidget {
                           },
                         ),
                       ),
+                      readOnly: true,
                     ),
                     const SizedBox(height: 20),
                     ElevatedButton(

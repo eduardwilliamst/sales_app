@@ -1,7 +1,7 @@
 //-1 backend
 import 'package:flutter/material.dart';
 import 'package:sales_app/constants.dart';
-import 'package:sales_app/schedule_page.dart';
+import 'package:sales_app/pages/schedule_page.dart';
 
 class AddSchedulePage extends StatefulWidget {
   const AddSchedulePage({super.key});
@@ -12,37 +12,27 @@ class AddSchedulePage extends StatefulWidget {
 
 class _AddSchedulePageState extends State<AddSchedulePage> {
   final _formKey = GlobalKey<FormState>();
-  final TextEditingController _emailController = TextEditingController();
-  final TextEditingController _passwordController = TextEditingController();
+  final TextEditingController _eventNameController = TextEditingController();
+  final TextEditingController _customerNameController = TextEditingController();
+  final TextEditingController _placeController = TextEditingController();
+  final TextEditingController _notesController = TextEditingController();
   final TextEditingController _dateTimeController = TextEditingController();
   final TextEditingController _startTimeController = TextEditingController();
   final TextEditingController _endTimeController = TextEditingController();
 
-  Future<void> _selectDateTime(BuildContext context) async {
+  Future<void> _selectDateTime(
+      BuildContext context, TextEditingController controller) async {
     DateTime selectedDate = DateTime.now();
-    TimeOfDay selectedTime = TimeOfDay.now();
-
     final DateTime? pickedDate = await showDatePicker(
       context: context,
       initialDate: selectedDate,
       firstDate: DateTime(2000),
       lastDate: DateTime(2101),
     );
-
-    if (pickedDate != null) {
-      selectedDate = pickedDate;
-      final TimeOfDay? pickedTime = await showTimePicker(
-        context: context,
-        initialTime: selectedTime,
-      );
-
-      if (pickedTime != null) {
-        selectedTime = pickedTime;
-        setState(() {
-          _dateTimeController.text =
-              "${selectedDate.toLocal()} ${selectedTime.format(context)}";
-        });
-      }
+    if (pickedDate != null && pickedDate != DateTime.now()) {
+      setState(() {
+        controller.text = "${pickedDate.toLocal()}".split(' ')[0];
+      });
     }
   }
 
@@ -97,26 +87,18 @@ class _AddSchedulePageState extends State<AddSchedulePage> {
                           Column(
                             crossAxisAlignment: CrossAxisAlignment.end,
                             children: [
-                              Container(
-                                decoration: BoxDecoration(
-                                  border: Border.all(
-                                      color: Colors.black, width: 1.0),
-                                  borderRadius: BorderRadius.circular(10.0),
-                                ),
-                                child: IconButton(
-                                  onPressed: () {
-                                    Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                          builder: (context) =>
-                                              const SchedulePage()),
-                                    );
-                                  },
-                                  icon: const Icon(
-                                    Icons.close_sharp,
-                                    color: Colors.black,
-                                    size: 30,
-                                  ),
+                              IconButton(
+                                onPressed: () {
+                                  Navigator.pushReplacement(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) =>
+                                            const SchedulePage()),
+                                  );
+                                },
+                                icon: Image.asset(
+                                  'assets/images/close-square.png',
+                                  height: 30,
                                 ),
                               ),
                             ],
@@ -147,15 +129,16 @@ class _AddSchedulePageState extends State<AddSchedulePage> {
                                           Theme.of(context).textTheme.bodyLarge,
                                     ),
                                     TextFormField(
-                                      // controller: _emailController,
+                                      controller: _eventNameController,
                                       decoration: InputDecoration(
-                                          hintText: 'Masukkan nama event',
-                                          border: OutlineInputBorder(
-                                            borderRadius:
-                                                BorderRadius.circular(10),
-                                          ),
-                                          filled: true,
-                                          fillColor: kSecondaryColor),
+                                        hintText: 'Masukkan nama event',
+                                        border: OutlineInputBorder(
+                                          borderRadius:
+                                              BorderRadius.circular(10),
+                                        ),
+                                        filled: true,
+                                        fillColor: kTextFormFieldColor,
+                                      ),
                                       keyboardType: TextInputType.text,
                                     ),
                                     const SizedBox(height: 16.0),
@@ -165,7 +148,7 @@ class _AddSchedulePageState extends State<AddSchedulePage> {
                                           Theme.of(context).textTheme.bodyLarge,
                                     ),
                                     TextFormField(
-                                      // controller: _passwordController,
+                                      controller: _customerNameController,
                                       decoration: InputDecoration(
                                           hintText: 'Nama Customer',
                                           border: OutlineInputBorder(
@@ -173,7 +156,7 @@ class _AddSchedulePageState extends State<AddSchedulePage> {
                                                 BorderRadius.circular(10),
                                           ),
                                           filled: true,
-                                          fillColor: kSecondaryColor),
+                                          fillColor: kTextFormFieldColor),
                                       keyboardType: TextInputType.name,
                                     ),
                                     const SizedBox(height: 16.0),
@@ -183,7 +166,7 @@ class _AddSchedulePageState extends State<AddSchedulePage> {
                                           Theme.of(context).textTheme.bodyLarge,
                                     ),
                                     TextFormField(
-                                      // controller: _emailController,
+                                      controller: _placeController,
                                       decoration: InputDecoration(
                                           hintText: 'Alamat/Nama temoat',
                                           border: OutlineInputBorder(
@@ -191,7 +174,7 @@ class _AddSchedulePageState extends State<AddSchedulePage> {
                                                 BorderRadius.circular(10),
                                           ),
                                           filled: true,
-                                          fillColor: kSecondaryColor),
+                                          fillColor: kTextFormFieldColor),
                                       keyboardType: TextInputType.streetAddress,
                                     ),
                                     const SizedBox(height: 16.0),
@@ -201,18 +184,19 @@ class _AddSchedulePageState extends State<AddSchedulePage> {
                                           Theme.of(context).textTheme.bodyLarge,
                                     ),
                                     TextFormField(
-                                        // controller: _passwordController,
-                                        decoration: InputDecoration(
-                                            hintText: 'Masukkan catatan',
-                                            border: OutlineInputBorder(
-                                              borderRadius:
-                                                  BorderRadius.circular(10),
-                                            ),
-                                            filled: true,
-                                            fillColor: kSecondaryColor),
-                                        keyboardType: TextInputType.text,
-                                        minLines: 10,
-                                        maxLines: null),
+                                      controller: _notesController,
+                                      decoration: InputDecoration(
+                                          hintText: 'Masukkan catatan',
+                                          border: OutlineInputBorder(
+                                            borderRadius:
+                                                BorderRadius.circular(10),
+                                          ),
+                                          filled: true,
+                                          fillColor: kTextFormFieldColor),
+                                      keyboardType: TextInputType.text,
+                                      minLines: 5,
+                                      maxLines: null,
+                                    ),
                                     const SizedBox(height: 16.0),
                                     Text(
                                       'Tanggal',
@@ -227,13 +211,14 @@ class _AddSchedulePageState extends State<AddSchedulePage> {
                                             borderRadius:
                                                 BorderRadius.circular(10)),
                                         filled: true,
-                                        fillColor: kSecondaryColor,
+                                        fillColor: kTextFormFieldColor,
                                         suffixIcon:
                                             const Icon(Icons.calendar_today),
                                       ),
                                       keyboardType: TextInputType.datetime,
                                       readOnly: true,
-                                      onTap: () => _selectDateTime(context),
+                                      onTap: () => _selectDateTime(
+                                          context, _dateTimeController),
                                     ),
                                     const SizedBox(height: 16.0),
                                     Row(
@@ -259,7 +244,8 @@ class _AddSchedulePageState extends State<AddSchedulePage> {
                                                           BorderRadius.circular(
                                                               10)),
                                                   filled: true,
-                                                  fillColor: kSecondaryColor,
+                                                  fillColor:
+                                                      kTextFormFieldColor,
                                                   suffixIcon: const Icon(
                                                       Icons.access_time),
                                                 ),
@@ -292,7 +278,8 @@ class _AddSchedulePageState extends State<AddSchedulePage> {
                                                           BorderRadius.circular(
                                                               10)),
                                                   filled: true,
-                                                  fillColor: kSecondaryColor,
+                                                  fillColor:
+                                                      kTextFormFieldColor,
                                                   suffixIcon: const Icon(
                                                       Icons.access_time),
                                                 ),
@@ -315,22 +302,14 @@ class _AddSchedulePageState extends State<AddSchedulePage> {
                                               .validate()) {
                                             // Perform login action
                                             debugPrint(
-                                                'Email: ${_emailController.text}');
+                                                'Email: ${_eventNameController.text}');
                                             debugPrint(
-                                                'Password: ${_passwordController.text}');
+                                                'Password: ${_customerNameController.text}');
                                             Navigator.pushReplacementNamed(
                                                 context, '/home');
                                           }
                                         },
-                                        style: ElevatedButton.styleFrom(
-                                          backgroundColor: kPrimaryColor,
-                                          padding: const EdgeInsets.symmetric(
-                                              vertical: kDefaultPadding),
-                                          shape: RoundedRectangleBorder(
-                                            borderRadius:
-                                                BorderRadius.circular(10),
-                                          ),
-                                        ),
+                                        style: primaryButtonStyle,
                                         child: Text(
                                           'Simpan',
                                           style: Theme.of(context)

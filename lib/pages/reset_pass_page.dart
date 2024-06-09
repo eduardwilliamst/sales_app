@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:sales_app/constants.dart';
-import 'package:sales_app/new_pss_info_page.dart';
+import 'package:sales_app/pages/new_pass_page.dart';
+import 'package:sales_app/pages/profile_page.dart';
 
-class NewPasswordPage extends StatefulWidget {
-  const NewPasswordPage({super.key});
+class ResetPasswordPage extends StatefulWidget {
+  const ResetPasswordPage({super.key});
 
   @override
-  State<NewPasswordPage> createState() => _NewPasswordPageState();
+  State<ResetPasswordPage> createState() => _ResetPasswordPageState();
 }
 
-class _NewPasswordPageState extends State<NewPasswordPage> {
+class _ResetPasswordPageState extends State<ResetPasswordPage> {
   final _formKey = GlobalKey<FormState>();
   final TextEditingController _passwordController = TextEditingController();
   final TextEditingController _repasswordController = TextEditingController();
@@ -40,18 +41,45 @@ class _NewPasswordPageState extends State<NewPasswordPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Stack(
-        children: [
-          Container(
-            decoration: const BoxDecoration(
-              image: DecorationImage(
-                image: AssetImage('assets/images/Background.png'),
-                alignment: Alignment.topCenter,
+      body: SafeArea(
+        child: Stack(
+          children: [
+            Container(
+              padding: const EdgeInsets.fromLTRB(
+                  kDefaultPadding, kDefaultPadding, kDefaultPadding, 30),
+              decoration: const BoxDecoration(
+                image: DecorationImage(
+                  image: AssetImage('assets/images/Background.png'),
+                  alignment: Alignment.topCenter,
+                ),
+              ),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Row(
+                    children: [
+                      IconButton(
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => const ProfilePage()),
+                          );
+                        },
+                        icon: Image.asset('assets/images/arrow-left.png',
+                            height: 25),
+                      ),
+                      const SizedBox(width: 10),
+                      Text(
+                        'Profilku',
+                        style: Theme.of(context).textTheme.headlineLarge,
+                      ),
+                    ],
+                  ),
+                ],
               ),
             ),
-          ),
-          SafeArea(
-            child: Center(
+            Center(
               child: SingleChildScrollView(
                 child: Padding(
                   padding: const EdgeInsets.all(kDefaultPadding),
@@ -63,7 +91,7 @@ class _NewPasswordPageState extends State<NewPasswordPage> {
                       children: [
                         const SizedBox(height: 100),
                         Text(
-                          'Kata Sandi Baru',
+                          'Ubah Kata Sandi',
                           style: Theme.of(context).textTheme.headlineLarge,
                         ),
                         const SizedBox(height: 16),
@@ -76,6 +104,7 @@ class _NewPasswordPageState extends State<NewPasswordPage> {
                           obscureText: _obscureText1,
                           decoration: InputDecoration(
                             hintText: 'Password',
+                            fillColor: kTextFormFieldColor,
                             border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(10),
                             ),
@@ -109,6 +138,7 @@ class _NewPasswordPageState extends State<NewPasswordPage> {
                           obscureText: _obscureText2,
                           decoration: InputDecoration(
                             hintText: 'Password',
+                            fillColor: kTextFormFieldColor,
                             border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(10),
                             ),
@@ -137,27 +167,7 @@ class _NewPasswordPageState extends State<NewPasswordPage> {
                           width: double.infinity,
                           child: ElevatedButton(
                             onPressed: _submit,
-                            // {
-                            //   if (_formKey.currentState!.validate()) {
-                            //     // Perform login action
-                            //     print('Password: ${_passwordController.text}');
-                            //     print(
-                            //         'RePassword: ${_repasswordController.text}');
-                            //     Navigator.pushReplacement(
-                            //       context,
-                            //       MaterialPageRoute(
-                            //           builder: (context) => NewPassInfoPage()),
-                            //     );
-                            //   }
-                            // },
-                            style: ElevatedButton.styleFrom(
-                              backgroundColor: kPrimaryColor,
-                              padding: const EdgeInsets.symmetric(
-                                  vertical: kDefaultPadding),
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(10),
-                              ),
-                            ),
+                            style: primaryButtonStyle,
                             child: Text(
                               'Kirim',
                               style: Theme.of(context).textTheme.labelLarge,
@@ -172,7 +182,7 @@ class _NewPasswordPageState extends State<NewPasswordPage> {
                             style: Theme.of(context)
                                 .textTheme
                                 .bodySmall
-                                ?.copyWith(color: kErrorColor),
+                                ?.copyWith(color: Colors.red),
                             textAlign: TextAlign.center,
                           ))
                       ],
@@ -180,9 +190,9 @@ class _NewPasswordPageState extends State<NewPasswordPage> {
                   ),
                 ),
               ),
-            ),
-          ),
-        ],
+            )
+          ],
+        ),
       ),
     );
   }

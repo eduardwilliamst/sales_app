@@ -4,8 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:intl/date_symbol_data_local.dart';
 import 'package:sales_app/constants.dart';
-import 'package:sales_app/add_schedule.dart';
-import 'package:sales_app/home_page.dart';
+import 'package:sales_app/pages/add_schedule_page.dart';
+import 'package:sales_app/pages/home_page.dart';
 import 'package:table_calendar/table_calendar.dart';
 
 class SchedulePage extends StatefulWidget {
@@ -60,10 +60,12 @@ class _SchedulePageState extends State<SchedulePage> {
                           children: [
                             IconButton(
                               onPressed: () {
-                                Navigator.push(
+                                Navigator.pushReplacement(
                                   context,
                                   MaterialPageRoute(
-                                      builder: (context) => const HomePage()),
+                                      builder: (context) => const HomePage(
+                                            initialIndex: 0,
+                                          )),
                                 );
                               },
                               icon: Image.asset('assets/images/arrow-left.png',

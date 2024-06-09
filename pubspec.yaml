@@ -19,7 +19,8 @@ publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 version: 1.0.0+1
 
 environment:
-  sdk: '>=2.19.6 <3.0.0'
+  # sdk: '>=2.19.6 <3.0.0'
+  sdk: '>=3.0.0 <4.0.0'
 
 # Dependencies specify other packages that your package needs in order to work.
 # To automatically upgrade your package dependencies to the latest versions
@@ -59,9 +60,10 @@ flutter:
 
   assets:
     - assets/images/arrow-left.png
-    - assets/images/Background.png
+    - assets/images/LoginMobileBackGround.png
     - assets/images/crown.png
     - assets/images/catalog.png
+    - assets/images/close-square.png
     - assets/images/edit-outlined.png
     - assets/images/Home.png
     - assets/images/Logos.png
@@ -70,6 +72,12 @@ flutter:
     - assets/images/SchedulePageBackground.png
     - assets/images/OrderPageBackground.png
     - assets/images/notification.png
+    - assets/images/arrow-left.png
+    - assets/images/OrderHistoryBackground.png
+    - assets/images/Sitemap.png
+    - assets/images/CustomerBackground.png
+    - assets/images/EditCustomerBackground.png
+    - assets/images/FormSPHBackground.png
 
   fonts:
     - family: DMSerifText

@@ -1,16 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:sales_app/constants.dart';
-import 'package:sales_app/new_pss_info_page.dart';
-import 'package:sales_app/profile_page.dart';
+import 'package:sales_app/pages/login_page.dart';
 
-class ResetPasswordPage extends StatefulWidget {
-  const ResetPasswordPage({super.key});
+class NewPasswordPage extends StatefulWidget {
+  const NewPasswordPage({super.key});
 
   @override
-  State<ResetPasswordPage> createState() => _ResetPasswordPageState();
+  State<NewPasswordPage> createState() => _NewPasswordPageState();
 }
 
-class _ResetPasswordPageState extends State<ResetPasswordPage> {
+class _NewPasswordPageState extends State<NewPasswordPage> {
   final _formKey = GlobalKey<FormState>();
   final TextEditingController _passwordController = TextEditingController();
   final TextEditingController _repasswordController = TextEditingController();
@@ -41,45 +40,18 @@ class _ResetPasswordPageState extends State<ResetPasswordPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SafeArea(
-        child: Stack(
-          children: [
-            Container(
-              padding: const EdgeInsets.fromLTRB(
-                  kDefaultPadding, kDefaultPadding, kDefaultPadding, 30),
-              decoration: const BoxDecoration(
-                image: DecorationImage(
-                  image: AssetImage('assets/images/Background.png'),
-                  alignment: Alignment.topCenter,
-                ),
-              ),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Row(
-                    children: [
-                      IconButton(
-                        onPressed: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => const ProfilePage()),
-                          );
-                        },
-                        icon: Image.asset('assets/images/arrow-left.png',
-                            height: 25),
-                      ),
-                      const SizedBox(width: 10),
-                      Text(
-                        'Profilku',
-                        style: Theme.of(context).textTheme.headlineLarge,
-                      ),
-                    ],
-                  ),
-                ],
+      body: Stack(
+        children: [
+          Container(
+            decoration: const BoxDecoration(
+              image: DecorationImage(
+                image: AssetImage('assets/images/Background.png'),
+                alignment: Alignment.topCenter,
               ),
             ),
-            Center(
+          ),
+          SafeArea(
+            child: Center(
               child: SingleChildScrollView(
                 child: Padding(
                   padding: const EdgeInsets.all(kDefaultPadding),
@@ -91,7 +63,7 @@ class _ResetPasswordPageState extends State<ResetPasswordPage> {
                       children: [
                         const SizedBox(height: 100),
                         Text(
-                          'Ubah Kata Sandi',
+                          'Kata Sandi Baru',
                           style: Theme.of(context).textTheme.headlineLarge,
                         ),
                         const SizedBox(height: 16),
@@ -104,6 +76,7 @@ class _ResetPasswordPageState extends State<ResetPasswordPage> {
                           obscureText: _obscureText1,
                           decoration: InputDecoration(
                             hintText: 'Password',
+                            fillColor: kTextFormFieldColor,
                             border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(10),
                             ),
@@ -137,6 +110,7 @@ class _ResetPasswordPageState extends State<ResetPasswordPage> {
                           obscureText: _obscureText2,
                           decoration: InputDecoration(
                             hintText: 'Password',
+                            fillColor: kTextFormFieldColor,
                             border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(10),
                             ),
@@ -165,14 +139,7 @@ class _ResetPasswordPageState extends State<ResetPasswordPage> {
                           width: double.infinity,
                           child: ElevatedButton(
                             onPressed: _submit,
-                            style: ElevatedButton.styleFrom(
-                              backgroundColor: kPrimaryColor,
-                              padding: const EdgeInsets.symmetric(
-                                  vertical: kDefaultPadding),
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(10),
-                              ),
-                            ),
+                            style: primaryButtonStyle,
                             child: Text(
                               'Kirim',
                               style: Theme.of(context).textTheme.labelLarge,
@@ -187,7 +154,7 @@ class _ResetPasswordPageState extends State<ResetPasswordPage> {
                             style: Theme.of(context)
                                 .textTheme
                                 .bodySmall
-                                ?.copyWith(color: Colors.red),
+                                ?.copyWith(color: kErrorColor),
                             textAlign: TextAlign.center,
                           ))
                       ],
@@ -195,8 +162,53 @@ class _ResetPasswordPageState extends State<ResetPasswordPage> {
                   ),
                 ),
               ),
-            )
-          ],
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class NewPassInfoPage extends StatelessWidget {
+  const NewPassInfoPage({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: Center(
+        child: Padding(
+          padding: const EdgeInsets.all(kDefaultPadding),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Image.asset('assets/images/Success.png', width: 200, height: 200),
+              const SizedBox(height: 20),
+              const Text('Kata sandi baru anda telah berhasil dibuat.',
+                  textAlign: TextAlign.center,
+                  style: TextStyle(fontWeight: FontWeight.bold)
+                  //Theme.of(context).textTheme.bodyMedium,
+                  ),
+              const SizedBox(height: 40),
+              SizedBox(
+                width: double.infinity,
+                child: ElevatedButton(
+                  onPressed: () {
+                    Navigator.pushReplacement(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const LoginPage()),
+                    );
+                  },
+                  style: primaryButtonStyle,
+                  child: Text(
+                    'Kembali',
+                    style: Theme.of(context).textTheme.labelLarge,
+                  ),
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );
