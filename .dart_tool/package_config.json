@@ -239,13 +239,13 @@
       "name": "sales_app",
       "rootUri": "../",
       "packageUri": "lib/",
-      "languageVersion": "2.19"
+      "languageVersion": "3.0"
     }
   ],
-  "generated": "2024-06-07T06:17:57.093976Z",
+  "generated": "2024-06-09T21:34:29.665091Z",
   "generator": "pub",
-  "generatorVersion": "3.4.1",
+  "generatorVersion": "3.4.3",
   "flutterRoot": "file:///C:/.dev/flutter",
-  "flutterVersion": "3.22.1",
+  "flutterVersion": "3.22.2",
   "pubCache": "file:///C:/Users/fathu/AppData/Local/Pub/Cache"
 }

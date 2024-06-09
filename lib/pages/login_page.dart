@@ -1,24 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:sales_app/constants.dart';
-import 'package:sales_app/forget_pass_page.dart';
-
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: const LoginPage(),
-      routes: {
-        '/forgetpassword': (context) => const ForgetPasswordPage(),
-      },
-    );
-  }
-}
+import 'package:sales_app/pages/forget_pass_page.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -40,9 +22,11 @@ class _LoginPageState extends State<LoginPage> {
         children: [
           Container(
             decoration: const BoxDecoration(
+              // color: Color.fromRGBO(247, 229, 205, 1.0),
               image: DecorationImage(
-                image: AssetImage('assets/images/Background.png'),
+                image: AssetImage('assets/images/LoginMobileBackGround.png'),
                 alignment: Alignment.topCenter,
+                // fit: BoxFit.fitWidth
               ),
             ),
           ),
@@ -57,7 +41,6 @@ class _LoginPageState extends State<LoginPage> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        const SizedBox(height: 100),
                         Text(
                           'Masuk',
                           style: Theme.of(context).textTheme.headlineLarge,
@@ -71,6 +54,7 @@ class _LoginPageState extends State<LoginPage> {
                           controller: _emailController,
                           decoration: InputDecoration(
                             hintText: 'youremail@email.com',
+                            fillColor: kTextFormFieldColor,
                             border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(10),
                             ),
@@ -93,6 +77,7 @@ class _LoginPageState extends State<LoginPage> {
                           obscureText: _obscureText,
                           decoration: InputDecoration(
                             hintText: 'Password',
+                            fillColor: kTextFormFieldColor,
                             border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(10),
                             ),
@@ -121,7 +106,11 @@ class _LoginPageState extends State<LoginPage> {
                           alignment: Alignment.centerLeft,
                           child: InkWell(
                             onTap: () {
-                              Navigator.pushNamed(context, '/forgetpassword');
+                              Navigator.pushReplacement(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) =>
+                                          const ForgetPasswordPage()));
                             },
                             child: const Text(
                               'Lupa Kata Sandi?',
@@ -145,14 +134,7 @@ class _LoginPageState extends State<LoginPage> {
                                     context, '/home');
                               }
                             },
-                            style: ElevatedButton.styleFrom(
-                              backgroundColor: kPrimaryColor,
-                              padding: const EdgeInsets.symmetric(
-                                  vertical: kDefaultPadding),
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(10),
-                              ),
-                            ),
+                            style: primaryButtonStyle,
                             child: Text(
                               'Masuk',
                               style: Theme.of(context).textTheme.labelLarge,
