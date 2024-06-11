@@ -1,0 +1,551 @@
+import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
+import 'package:intl/date_symbol_data_local.dart';
+import 'package:sales_app/constants.dart';
+import 'package:sales_app/pages/customer/customer_page.dart';
+import 'package:sales_app/pages/home/notifications_modal.dart';
+import 'package:sales_app/pages/new_order/new_order_page.dart';
+import 'package:sales_app/pages/order_history/order_history_page.dart';
+import 'package:sales_app/pages/sitemap/sitemap_page.dart';
+import '../profile_sales/profile_page.dart';
+import '../schedule/schedule_page.dart';
+
+class HomePage extends StatefulWidget {
+  // const HomePage({super.key});
+  final int initialIndex;
+  const HomePage({super.key, this.initialIndex = 0});
+
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  late int _currentPageIndex = 0;
+
+  @override
+  void initState() {
+    super.initState();
+    _currentPageIndex = widget.initialIndex;
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      bottomNavigationBar: NavigationBar(
+        onDestinationSelected: (int index) {
+          setState(() {
+            _currentPageIndex = index;
+          });
+        },
+        selectedIndex: _currentPageIndex,
+        destinations: const <Widget>[
+          NavigationDestination(
+            icon: Icon(Icons.home),
+            label: 'Beranda',
+          ),
+          NavigationDestination(
+            icon: Icon(Icons.shopping_cart_outlined),
+            label: 'Pesanan',
+          ),
+          NavigationDestination(
+              icon: Icon(Icons.add_circle_outline), label: 'New'),
+          NavigationDestination(
+            icon: Icon(Icons.map),
+            label: 'Sitemap',
+          ),
+          NavigationDestination(
+            icon: Icon(Icons.person_add_alt_1),
+            label: 'Customer',
+          ),
+        ],
+      ),
+      body: <Widget>[
+        const HomeContent(),
+        const OrderHistoryPage(),
+        const NewOrderPage(),
+        const SitemapPage(),
+        const CustomerPage(),
+      ][_currentPageIndex],
+    );
+  }
+}
+
+class HomeContent extends StatefulWidget {
+  const HomeContent({super.key});
+
+  @override
+  State<HomeContent> createState() => _HomeContentState();
+}
+
+class _HomeContentState extends State<HomeContent> {
+  DateTime today = DateTime.now();
+  @override
+  void initState() {
+    super.initState();
+    initializeDateFormatting('id_ID', null);
+  }
+
+  String getFormattedDate(DateTime date) {
+    return DateFormat('EEEE, d MMMM yyyy', 'id_ID').format(date);
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final double screenHeight = MediaQuery.of(context).size.height;
+    final double screenWidth = MediaQuery.of(context).size.width;
+
+    return Container(
+      decoration: const BoxDecoration(
+        image: DecorationImage(
+          image: AssetImage('assets/images/Home.png'),
+          fit: BoxFit.fill,
+        ),
+      ),
+      child: Scaffold(
+        backgroundColor: Colors.transparent,
+        body: SafeArea(
+          child: SingleChildScrollView(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Stack(
+                  children: [
+                    ClipPath(
+                      clipper: CustomClipperHomeCard(),
+                      child: Card(
+                        margin: EdgeInsets.zero,
+                        color: Colors.transparent,
+                        elevation: 0,
+                        child: Container(
+                          width: double.infinity,
+                          height: screenHeight * 0.29,
+                          padding: const EdgeInsets.all(kDefaultPadding),
+                          decoration: const BoxDecoration(
+                            gradient: LinearGradient(
+                              begin: Alignment.topCenter,
+                              end: Alignment.bottomCenter,
+                              colors: [Colors.white10, Colors.black12],
+                              stops: [
+                                0.7,
+                                1.0,
+                              ],
+                            ),
+                          ),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  GestureDetector(
+                                    onTap: () {
+                                      Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (context) =>
+                                                const ProfilePage()),
+                                      );
+                                    },
+                                    child: Row(
+                                      children: [
+                                        const Icon(Icons.person, size: 50),
+                                        const SizedBox(width: 10),
+                                        Column(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: [
+                                            Text(
+                                              'Hi, Salesman 1',
+                                              style: Theme.of(context)
+                                                  .textTheme
+                                                  .headlineLarge!
+                                                  .copyWith(
+                                                    fontSize: 20,
+                                                  ),
+                                            ),
+                                            Container(
+                                              margin:
+                                                  const EdgeInsets.only(top: 4),
+                                              height: 4,
+                                              width: 100,
+                                              color: Colors.grey,
+                                            ),
+                                          ],
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                  Row(
+                                    children: [
+                                      GestureDetector(
+                                        onTap: () {
+                                          showNotificationModal(context);
+                                        },
+                                        child: const Icon(Icons.notifications),
+                                      ),
+                                      const SizedBox(width: 20),
+                                      const Icon(Icons.mail),
+                                    ],
+                                  ),
+                                ],
+                              ),
+                              const SizedBox(height: 16),
+                              Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceAround,
+                                children: [
+                                  Container(
+                                    width: screenWidth * 0.25,
+                                    height: screenHeight * 0.12,
+                                    padding:
+                                        const EdgeInsets.fromLTRB(8, 24, 8, 0),
+                                    decoration: BoxDecoration(
+                                      shape: BoxShape.circle,
+                                      border: Border.all(
+                                        color: kSecondaryColor,
+                                        width: 2.0,
+                                      ),
+                                    ),
+                                    child: Column(
+                                      children: [
+                                        Text(
+                                          '234',
+                                          style: Theme.of(context)
+                                              .textTheme
+                                              .headlineLarge!
+                                              .copyWith(
+                                                fontSize: 20,
+                                              ),
+                                        ),
+                                        Text(
+                                          'Total pesanan',
+                                          style: Theme.of(context)
+                                              .textTheme
+                                              .bodyMedium!
+                                              .copyWith(
+                                                fontSize: 12,
+                                              ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                  Container(
+                                    width: screenWidth * 0.25,
+                                    height: screenHeight * 0.12,
+                                    padding:
+                                        const EdgeInsets.fromLTRB(8, 24, 8, 0),
+                                    decoration: BoxDecoration(
+                                      shape: BoxShape.circle,
+                                      border: Border.all(
+                                        color: kSecondaryColor,
+                                        width: 2.0,
+                                      ),
+                                    ),
+                                    child: Column(
+                                      children: [
+                                        Text(
+                                          '234',
+                                          style: Theme.of(context)
+                                              .textTheme
+                                              .headlineLarge!
+                                              .copyWith(
+                                                fontSize: 20,
+                                              ),
+                                        ),
+                                        Text(
+                                          'Total SPH',
+                                          style: Theme.of(context)
+                                              .textTheme
+                                              .bodyMedium!
+                                              .copyWith(
+                                                fontSize: 12,
+                                              ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                  Container(
+                                    width: screenWidth * 0.25,
+                                    height: screenHeight * 0.12,
+                                    padding:
+                                        const EdgeInsets.fromLTRB(8, 24, 8, 0),
+                                    decoration: BoxDecoration(
+                                      shape: BoxShape.circle,
+                                      border: Border.all(
+                                        color: kSecondaryColor,
+                                        width: 2.0,
+                                      ),
+                                    ),
+                                    child: Column(
+                                      children: [
+                                        Text(
+                                          '234',
+                                          style: Theme.of(context)
+                                              .textTheme
+                                              .headlineLarge!
+                                              .copyWith(
+                                                fontSize: 20,
+                                              ),
+                                        ),
+                                        Text(
+                                          'Total SPR',
+                                          style: Theme.of(context)
+                                              .textTheme
+                                              .bodyMedium!
+                                              .copyWith(
+                                                fontSize: 12,
+                                              ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
+                    CustomPaint(
+                      painter: HomeCardBorderPainter(),
+                      child: Container(
+                        height: screenHeight * 0.29,
+                      ),
+                    ),
+                  ],
+                ),
+                Column(
+                  children: [
+                    Container(
+                      padding: const EdgeInsets.all(kDefaultPadding),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            'E-Catalog',
+                            style: Theme.of(context)
+                                .textTheme
+                                .headlineLarge!
+                                .copyWith(
+                                  fontSize: 20,
+                                ),
+                          ),
+                          const SizedBox(height: 10),
+                          Container(
+                            height: screenHeight * 0.24,
+                            decoration: BoxDecoration(
+                              image: const DecorationImage(
+                                image: AssetImage('assets/images/catalog.png'),
+                                fit: BoxFit.cover,
+                              ),
+                              borderRadius: BorderRadius.circular(10),
+                            ),
+                          ),
+                          const SizedBox(height: 10),
+                          Container(
+                            height: screenHeight * 0.24,
+                            decoration: BoxDecoration(
+                              color: Colors.grey[300],
+                              borderRadius: BorderRadius.circular(10),
+                            ),
+                          ),
+                          const SizedBox(height: 10),
+                          GestureDetector(
+                            onTap: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) =>
+                                      const HomePage(initialIndex: 3),
+                                ),
+                              );
+                            },
+                            child: Container(
+                              height: screenHeight * 0.24,
+                              decoration: BoxDecoration(
+                                color: Colors.grey[300],
+                                borderRadius: BorderRadius.circular(10),
+                                image: const DecorationImage(
+                                  image:
+                                      AssetImage('assets/images/Sitemap.png'),
+                                ),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    Container(
+                      padding: const EdgeInsets.all(kDefaultPadding),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    'Jadwal Hari Ini',
+                                    style: Theme.of(context)
+                                        .textTheme
+                                        .headlineLarge!
+                                        .copyWith(fontSize: 20),
+                                  ),
+                                  Text(
+                                    getFormattedDate(DateTime.now()),
+                                    style: Theme.of(context)
+                                        .textTheme
+                                        .bodyMedium!
+                                        .copyWith(fontSize: 14),
+                                  ),
+                                ],
+                              ),
+                              IconButton(
+                                onPressed: () {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) =>
+                                            const SchedulePage()),
+                                  );
+                                },
+                                icon: const Icon(Icons.date_range,
+                                    size: 30, color: Colors.black),
+                              ),
+                            ],
+                          ),
+                          const SizedBox(height: 10),
+                          Container(
+                            width: double.infinity,
+                            height: screenHeight * 0.08,
+                            decoration: const BoxDecoration(
+                              color: Colors.transparent,
+                            ),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                Expanded(
+                                  flex: 1,
+                                  child: Container(
+                                    height: screenHeight * 0.08,
+                                    padding: const EdgeInsets.fromLTRB(
+                                        kDefaultPadding, 0, kDefaultPadding, 0),
+                                    decoration: const BoxDecoration(
+                                      color: Color.fromRGBO(180, 198, 193, 1.0),
+                                      borderRadius: BorderRadius.only(
+                                        topLeft: Radius.circular(20),
+                                        bottomLeft: Radius.circular(20),
+                                      ),
+                                    ),
+                                    child: Center(
+                                      child: Text(
+                                        '13.00 - 14.00',
+                                        style: Theme.of(context)
+                                            .textTheme
+                                            .headlineLarge!
+                                            .copyWith(fontSize: 16),
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                                Expanded(
+                                  flex: 2,
+                                  child: Container(
+                                    height: screenHeight * 0.08,
+                                    padding: const EdgeInsets.fromLTRB(
+                                        kDefaultPadding, 0, kDefaultPadding, 0),
+                                    decoration: const BoxDecoration(
+                                      color: Color.fromRGBO(209, 220, 214, 1.0),
+                                      borderRadius: BorderRadius.only(
+                                        topRight: Radius.circular(20),
+                                        bottomRight: Radius.circular(20),
+                                      ),
+                                    ),
+                                    child: const Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      children: [
+                                        Text(
+                                          'Follow Up SPJ',
+                                          style: TextStyle(fontSize: 14),
+                                        ),
+                                        Text(
+                                          'Nama Customer - Tempat',
+                                          style: TextStyle(fontSize: 14),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
+                )
+              ],
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class CustomClipperHomeCard extends CustomClipper<Path> {
+  @override
+  Path getClip(Size size) {
+    Path path = Path();
+    double w = size.width;
+    double h = size.height;
+
+    path.lineTo(0, h / 1.2 - 50);
+    path.quadraticBezierTo(20, h / 1.2, 80, h / 1.2);
+    // path.lineTo(w, h / 1.2);
+    path.lineTo(w - 80, h / 1.2);
+    path.quadraticBezierTo(w - 20, h - 40, w, h);
+    path.lineTo(w, 0);
+
+    return path;
+  }
+
+  @override
+  bool shouldReclip(covariant CustomClipper<Path> oldClipper) {
+    return true;
+  }
+}
+
+class HomeCardBorderPainter extends CustomPainter {
+  @override
+  void paint(Canvas canvas, Size size) {
+    Paint paint = Paint()
+      ..color = const Color.fromRGBO(196, 160, 120, 1.0)
+      ..strokeWidth = 3.0
+      ..style = PaintingStyle.stroke;
+
+    Path path = Path();
+    double w = size.width;
+    double h = size.height;
+
+    path.lineTo(0, h / 1.2 - 50);
+    path.quadraticBezierTo(20, h / 1.2, 80, h / 1.2);
+    path.lineTo(w - 80, h / 1.2);
+    path.quadraticBezierTo(w - 20, h - 40, w, h);
+    path.lineTo(w, 0);
+
+    canvas.drawPath(path, paint);
+  }
+
+  @override
+  bool shouldRepaint(covariant CustomPainter oldDelegate) {
+    return false;
+  }
+}

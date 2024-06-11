@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.sales_app"
+    package="com.example.memek"
     android:versionCode="1"
     android:versionName="1.0.0" >
 
@@ -13,11 +13,19 @@
          to allow setting breakpoints, to provide hot reload, etc.
     -->
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission
-        android:name="android.permission.READ_EXTERNAL_STORAGE"
-        android:maxSdkVersion="32" />
+    <!--
+     Required to query activities that can process text, see:
+         https://developer.android.com/training/package-visibility and
+         https://developer.android.com/reference/android/content/Intent#ACTION_PROCESS_TEXT.
 
+         In particular, this is used by the Flutter engine in io.flutter.plugin.text.ProcessTextPlugin.
+    -->
     <queries>
+        <intent>
+            <action android:name="android.intent.action.PROCESS_TEXT" />
+
+            <data android:mimeType="text/plain" />
+        </intent>
         <intent>
             <action android:name="android.intent.action.GET_CONTENT" />
 
@@ -25,18 +33,23 @@
         </intent>
     </queries>
 
+    <uses-permission
+        android:name="android.permission.READ_EXTERNAL_STORAGE"
+        android:maxSdkVersion="32" />
+
     <application
         android:name="android.app.Application"
         android:appComponentFactory="androidx.core.app.CoreComponentFactory"
         android:debuggable="true"
         android:icon="@mipmap/ic_launcher"
-        android:label="sales_app" >
+        android:label="memek" >
         <activity
-            android:name="com.example.sales_app.MainActivity"
+            android:name="com.example.memek.MainActivity"
             android:configChanges="orientation|keyboardHidden|keyboard|screenSize|smallestScreenSize|locale|layoutDirection|fontScale|screenLayout|density|uiMode"
             android:exported="true"
             android:hardwareAccelerated="true"
             android:launchMode="singleTop"
+            android:taskAffinity=""
             android:theme="@style/LaunchTheme"
             android:windowSoftInputMode="adjustResize" >
 

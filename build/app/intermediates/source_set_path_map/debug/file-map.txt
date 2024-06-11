@@ -1,14 +1,14 @@
-com.example.sales_app-jetified-window-java-1.0.0-beta04-0 C:\Users\fathu\.gradle\caches\transforms-3\006d93cd422dbc43e89591147c2de572\transformed\jetified-window-java-1.0.0-beta04\res
-com.example.sales_app-core-1.6.0-1 C:\Users\fathu\.gradle\caches\transforms-3\4ca28c4a71705f8a687c69dda140a277\transformed\core-1.6.0\res
-com.example.sales_app-jetified-annotation-experimental-1.1.0-2 C:\Users\fathu\.gradle\caches\transforms-3\8965c941cf4bee4d72541b965c7c9d39\transformed\jetified-annotation-experimental-1.1.0\res
-com.example.sales_app-jetified-window-1.0.0-beta04-3 C:\Users\fathu\.gradle\caches\transforms-3\dee59bb480020f42d53c2ea15e4501f7\transformed\jetified-window-1.0.0-beta04\res
-com.example.sales_app-debug-4 C:\Users\fathu\Documents\VSCode Projects\sales_app\android\app\src\debug\res
-com.example.sales_app-main-5 C:\Users\fathu\Documents\VSCode Projects\sales_app\android\app\src\main\res
-com.example.sales_app-pngs-6 C:\Users\fathu\Documents\VSCode Projects\sales_app\build\app\generated\res\pngs\debug
-com.example.sales_app-resValues-7 C:\Users\fathu\Documents\VSCode Projects\sales_app\build\app\generated\res\resValues\debug
-com.example.sales_app-rs-8 C:\Users\fathu\Documents\VSCode Projects\sales_app\build\app\generated\res\rs\debug
-com.example.sales_app-mergeDebugResources-9 C:\Users\fathu\Documents\VSCode Projects\sales_app\build\app\intermediates\incremental\debug\mergeDebugResources\merged.dir
-com.example.sales_app-mergeDebugResources-10 C:\Users\fathu\Documents\VSCode Projects\sales_app\build\app\intermediates\incremental\debug\mergeDebugResources\stripped.dir
-com.example.sales_app-merged_res-11 C:\Users\fathu\Documents\VSCode Projects\sales_app\build\app\intermediates\merged_res\debug
-com.example.sales_app-packaged_res-12 C:\Users\fathu\Documents\VSCode Projects\sales_app\build\file_picker\intermediates\packaged_res\debug
-com.example.sales_app-packaged_res-13 C:\Users\fathu\Documents\VSCode Projects\sales_app\build\flutter_plugin_android_lifecycle\intermediates\packaged_res\debug
+com.example.memek.app-core-1.6.0-0 C:\Users\fathu\.gradle\caches\transforms-3\284a410c767ad6c7a2b0ffc8d8d85981\transformed\core-1.6.0\res
+com.example.memek.app-jetified-window-java-1.0.0-beta04-1 C:\Users\fathu\.gradle\caches\transforms-3\2a215381204751055df81b6269e717b7\transformed\jetified-window-java-1.0.0-beta04\res
+com.example.memek.app-jetified-annotation-experimental-1.1.0-2 C:\Users\fathu\.gradle\caches\transforms-3\3d2f03fc996c2e0aa3dee5cfa3002cd1\transformed\jetified-annotation-experimental-1.1.0\res
+com.example.memek.app-jetified-window-1.0.0-beta04-3 C:\Users\fathu\.gradle\caches\transforms-3\f302e75fb7efd781bcf1a29281c188da\transformed\jetified-window-1.0.0-beta04\res
+com.example.memek.app-debug-4 C:\Users\fathu\Documents\VSCode Projects\sales_app\android\app\src\debug\res
+com.example.memek.app-main-5 C:\Users\fathu\Documents\VSCode Projects\sales_app\android\app\src\main\res
+com.example.memek.app-pngs-6 C:\Users\fathu\Documents\VSCode Projects\sales_app\build\app\generated\res\pngs\debug
+com.example.memek.app-resValues-7 C:\Users\fathu\Documents\VSCode Projects\sales_app\build\app\generated\res\resValues\debug
+com.example.memek.app-rs-8 C:\Users\fathu\Documents\VSCode Projects\sales_app\build\app\generated\res\rs\debug
+com.example.memek.app-mergeDebugResources-9 C:\Users\fathu\Documents\VSCode Projects\sales_app\build\app\intermediates\incremental\debug\mergeDebugResources\merged.dir
+com.example.memek.app-mergeDebugResources-10 C:\Users\fathu\Documents\VSCode Projects\sales_app\build\app\intermediates\incremental\debug\mergeDebugResources\stripped.dir
+com.example.memek.app-merged_res-11 C:\Users\fathu\Documents\VSCode Projects\sales_app\build\app\intermediates\merged_res\debug
+com.example.memek.app-packaged_res-12 C:\Users\fathu\Documents\VSCode Projects\sales_app\build\file_picker\intermediates\packaged_res\debug
+com.example.memek.app-packaged_res-13 C:\Users\fathu\Documents\VSCode Projects\sales_app\build\flutter_plugin_android_lifecycle\intermediates\packaged_res\debug

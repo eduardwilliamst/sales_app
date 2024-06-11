@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'dart:async';
 import 'package:sales_app/constants.dart';
-import 'package:sales_app/pages/home_page.dart';
-import 'package:sales_app/pages/new_order_page.dart';
-import 'package:sales_app/pages/order_page.dart';
-import 'package:sales_app/pages/profile_page.dart';
-import 'package:sales_app/pages/new_pass_page.dart';
-import 'package:sales_app/pages/login_page.dart';
-import 'package:sales_app/pages/forget_pass_page.dart';
+import 'package:sales_app/pages/home/home_page.dart';
+import 'package:sales_app/pages/new_order/new_order_page.dart';
+import 'package:sales_app/pages/order_history/order_history_page.dart';
+import 'package:sales_app/pages/profile_sales/profile_page.dart';
+import 'package:sales_app/pages/forget_password/new_pass_page.dart';
+import 'package:sales_app/pages/login/login_page.dart';
+import 'package:sales_app/pages/forget_password/forget_pass_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -72,7 +72,7 @@ class MyApp extends StatelessWidget {
         '/home': (context) => const HomePage(),
         '/newpassword': (context) => const NewPasswordPage(),
         '/profile': (context) => const ProfilePage(),
-        '/orderhistory': (context) => const OrderPage(),
+        '/orderhistory': (context) => const OrderHistoryPage(),
         '/neworder': (context) => const NewOrderPage(),
       },
     );
