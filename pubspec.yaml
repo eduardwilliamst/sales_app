@@ -60,7 +60,7 @@ flutter:
 
   assets:
     - assets/images/arrow-left.png
-    - assets/images/LoginMobileBackGround.png
+    - assets/images/LoginMobileBackground.png
     - assets/images/crown.png
     - assets/images/catalog.png
     - assets/images/close-square.png
@@ -78,6 +78,8 @@ flutter:
     - assets/images/CustomerBackground.png
     - assets/images/EditCustomerBackground.png
     - assets/images/FormSPHBackground.png
+    - assets/images/document-upload.png
+    - assets/images/SitemapBackground.png
 
   fonts:
     - family: DMSerifText

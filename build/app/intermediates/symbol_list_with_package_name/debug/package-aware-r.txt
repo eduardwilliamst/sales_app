@@ -1,4 +1,4 @@
-com.example.sales_app
+com.example.memek
 attr activityAction
 attr activityName
 attr alpha
