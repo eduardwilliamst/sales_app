@@ -1,6 +1,6 @@
 1<?xml version="1.0" encoding="utf-8"?>
 2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-3    package="com.example.memek"
+3    package="com.example.sales_app"
 4    android:versionCode="1"
 5    android:versionName="1.0.0" >
 6
@@ -56,12 +56,12 @@
 40    <application
 41        android:name="android.app.Application"
 42        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
-42-->[androidx.core:core:1.6.0] C:\Users\fathu\.gradle\caches\transforms-3\284a410c767ad6c7a2b0ffc8d8d85981\transformed\core-1.6.0\AndroidManifest.xml:24:18-86
+42-->[androidx.core:core:1.6.0] C:\Users\fathu\.gradle\caches\8.8\transforms\022b5910392905092b23e00f83b97093\transformed\core-1.6.0\AndroidManifest.xml:24:18-86
 43        android:debuggable="true"
 44        android:icon="@mipmap/ic_launcher"
-45        android:label="memek" >
+45        android:label="sales_app" >
 46        <activity
-47            android:name="com.example.memek.MainActivity"
+47            android:name="com.example.sales_app.MainActivity"
 48            android:configChanges="orientation|keyboardHidden|keyboard|screenSize|smallestScreenSize|locale|layoutDirection|fontScale|screenLayout|density|uiMode"
 49            android:exported="true"
 50            android:hardwareAccelerated="true"
@@ -95,17 +95,17 @@
 78            android:value="2" />
 79
 80        <uses-library
-80-->[androidx.window:window:1.0.0-beta04] C:\Users\fathu\.gradle\caches\transforms-3\f302e75fb7efd781bcf1a29281c188da\transformed\jetified-window-1.0.0-beta04\AndroidManifest.xml:25:9-27:40
+80-->[androidx.window:window:1.0.0-beta04] C:\Users\fathu\.gradle\caches\8.8\transforms\0d892c283a2830cac3d2ec541ba10082\transformed\jetified-window-1.0.0-beta04\AndroidManifest.xml:25:9-27:40
 81            android:name="androidx.window.extensions"
-81-->[androidx.window:window:1.0.0-beta04] C:\Users\fathu\.gradle\caches\transforms-3\f302e75fb7efd781bcf1a29281c188da\transformed\jetified-window-1.0.0-beta04\AndroidManifest.xml:26:13-54
+81-->[androidx.window:window:1.0.0-beta04] C:\Users\fathu\.gradle\caches\8.8\transforms\0d892c283a2830cac3d2ec541ba10082\transformed\jetified-window-1.0.0-beta04\AndroidManifest.xml:26:13-54
 82            android:required="false" />
-82-->[androidx.window:window:1.0.0-beta04] C:\Users\fathu\.gradle\caches\transforms-3\f302e75fb7efd781bcf1a29281c188da\transformed\jetified-window-1.0.0-beta04\AndroidManifest.xml:27:13-37
+82-->[androidx.window:window:1.0.0-beta04] C:\Users\fathu\.gradle\caches\8.8\transforms\0d892c283a2830cac3d2ec541ba10082\transformed\jetified-window-1.0.0-beta04\AndroidManifest.xml:27:13-37
 83        <uses-library
-83-->[androidx.window:window:1.0.0-beta04] C:\Users\fathu\.gradle\caches\transforms-3\f302e75fb7efd781bcf1a29281c188da\transformed\jetified-window-1.0.0-beta04\AndroidManifest.xml:28:9-30:40
+83-->[androidx.window:window:1.0.0-beta04] C:\Users\fathu\.gradle\caches\8.8\transforms\0d892c283a2830cac3d2ec541ba10082\transformed\jetified-window-1.0.0-beta04\AndroidManifest.xml:28:9-30:40
 84            android:name="androidx.window.sidecar"
-84-->[androidx.window:window:1.0.0-beta04] C:\Users\fathu\.gradle\caches\transforms-3\f302e75fb7efd781bcf1a29281c188da\transformed\jetified-window-1.0.0-beta04\AndroidManifest.xml:29:13-51
+84-->[androidx.window:window:1.0.0-beta04] C:\Users\fathu\.gradle\caches\8.8\transforms\0d892c283a2830cac3d2ec541ba10082\transformed\jetified-window-1.0.0-beta04\AndroidManifest.xml:29:13-51
 85            android:required="false" />
-85-->[androidx.window:window:1.0.0-beta04] C:\Users\fathu\.gradle\caches\transforms-3\f302e75fb7efd781bcf1a29281c188da\transformed\jetified-window-1.0.0-beta04\AndroidManifest.xml:30:13-37
+85-->[androidx.window:window:1.0.0-beta04] C:\Users\fathu\.gradle\caches\8.8\transforms\0d892c283a2830cac3d2ec541ba10082\transformed\jetified-window-1.0.0-beta04\AndroidManifest.xml:30:13-37
 86    </application>
 87
 88</manifest>

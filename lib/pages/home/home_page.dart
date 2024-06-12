@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
+import 'package:intl/intl.dart' as intl;
 import 'package:intl/date_symbol_data_local.dart';
 import 'package:sales_app/constants.dart';
 import 'package:sales_app/pages/customer/customer_page.dart';
@@ -79,6 +79,7 @@ class HomeContent extends StatefulWidget {
 
 class _HomeContentState extends State<HomeContent> {
   DateTime today = DateTime.now();
+  String username = "Hi, Salesman 1";
   @override
   void initState() {
     super.initState();
@@ -86,7 +87,7 @@ class _HomeContentState extends State<HomeContent> {
   }
 
   String getFormattedDate(DateTime date) {
-    return DateFormat('EEEE, d MMMM yyyy', 'id_ID').format(date);
+    return intl.DateFormat('EEEE, d MMMM yyyy', 'id_ID').format(date);
   }
 
   @override
@@ -124,9 +125,14 @@ class _HomeContentState extends State<HomeContent> {
                             gradient: LinearGradient(
                               begin: Alignment.topCenter,
                               end: Alignment.bottomCenter,
-                              colors: [Colors.white10, Colors.black12],
+                              colors: [
+                                Color.fromRGBO(255, 255, 255, 0.5),
+                                Color.fromRGBO(255, 255, 255, 0.5),
+                                Color.fromRGBO(0, 0, 0, 0.5)
+                              ],
                               stops: [
-                                0.7,
+                                0.0,
+                                0.75,
                                 1.0,
                               ],
                             ),
@@ -155,21 +161,104 @@ class _HomeContentState extends State<HomeContent> {
                                           crossAxisAlignment:
                                               CrossAxisAlignment.start,
                                           children: [
-                                            Text(
-                                              'Hi, Salesman 1',
-                                              style: Theme.of(context)
-                                                  .textTheme
-                                                  .headlineLarge!
-                                                  .copyWith(
-                                                    fontSize: 20,
+                                            LayoutBuilder(
+                                              builder: (context, constraints) {
+                                                TextStyle textStyle =
+                                                    Theme.of(context)
+                                                        .textTheme
+                                                        .headlineLarge!
+                                                        .copyWith(fontSize: 20);
+
+                                                TextPainter textPainter =
+                                                    TextPainter(
+                                                  text: TextSpan(
+                                                    text: username,
+                                                    style: textStyle,
                                                   ),
-                                            ),
-                                            Container(
-                                              margin:
-                                                  const EdgeInsets.only(top: 4),
-                                              height: 4,
-                                              width: 100,
-                                              color: Colors.grey,
+                                                  textDirection:
+                                                      TextDirection.ltr,
+                                                );
+                                                textPainter.layout();
+
+                                                double textWidth =
+                                                    textPainter.width;
+
+                                                return Column(
+                                                  crossAxisAlignment:
+                                                      CrossAxisAlignment.start,
+                                                  children: [
+                                                    Row(
+                                                      children: [
+                                                        Text(
+                                                          username,
+                                                          style: textStyle,
+                                                        ),
+                                                      ],
+                                                    ),
+                                                    Row(
+                                                      children: [
+                                                        Container(
+                                                          margin:
+                                                              const EdgeInsets
+                                                                  .only(
+                                                                  top: 2.0),
+                                                          height: 4,
+                                                          width:
+                                                              textWidth * 0.5,
+                                                          decoration:
+                                                              const BoxDecoration(
+                                                            color:
+                                                                Color.fromRGBO(
+                                                                    180,
+                                                                    198,
+                                                                    193,
+                                                                    1.0),
+                                                            borderRadius:
+                                                                BorderRadius
+                                                                    .only(
+                                                              topLeft: Radius
+                                                                  .circular(
+                                                                      30.0),
+                                                              bottomLeft: Radius
+                                                                  .circular(
+                                                                      30.0),
+                                                            ),
+                                                          ),
+                                                        ),
+                                                        Container(
+                                                          margin:
+                                                              const EdgeInsets
+                                                                  .only(
+                                                                  top: 2.0),
+                                                          height: 4,
+                                                          width:
+                                                              textWidth * 0.5,
+                                                          decoration:
+                                                              const BoxDecoration(
+                                                            color:
+                                                                Color.fromRGBO(
+                                                                    209,
+                                                                    220,
+                                                                    214,
+                                                                    1.0),
+                                                            borderRadius:
+                                                                BorderRadius
+                                                                    .only(
+                                                              topRight: Radius
+                                                                  .circular(
+                                                                      30.0),
+                                                              bottomRight:
+                                                                  Radius
+                                                                      .circular(
+                                                                          30.0),
+                                                            ),
+                                                          ),
+                                                        ),
+                                                      ],
+                                                    ),
+                                                  ],
+                                                );
+                                              },
                                             ),
                                           ],
                                         ),
@@ -367,9 +456,9 @@ class _HomeContentState extends State<HomeContent> {
                                 color: Colors.grey[300],
                                 borderRadius: BorderRadius.circular(10),
                                 image: const DecorationImage(
-                                  image:
-                                      AssetImage('assets/images/Sitemap.png'),
-                                ),
+                                    image:
+                                        AssetImage('assets/images/Sitemap.png'),
+                                    fit: BoxFit.fill),
                               ),
                             ),
                           ),
@@ -418,6 +507,146 @@ class _HomeContentState extends State<HomeContent> {
                             ],
                           ),
                           const SizedBox(height: 10),
+                          Container(
+                            width: double.infinity,
+                            height: screenHeight * 0.08,
+                            decoration: const BoxDecoration(
+                              color: Colors.transparent,
+                            ),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                Expanded(
+                                  flex: 1,
+                                  child: Container(
+                                    height: screenHeight * 0.08,
+                                    padding: const EdgeInsets.fromLTRB(
+                                        kDefaultPadding, 0, kDefaultPadding, 0),
+                                    decoration: const BoxDecoration(
+                                      color: Color.fromRGBO(180, 198, 193, 1.0),
+                                      borderRadius: BorderRadius.only(
+                                        topLeft: Radius.circular(10),
+                                        bottomLeft: Radius.circular(10),
+                                      ),
+                                    ),
+                                    child: Center(
+                                      child: Text(
+                                        '13.00 - 14.00',
+                                        style: Theme.of(context)
+                                            .textTheme
+                                            .headlineLarge!
+                                            .copyWith(fontSize: 16),
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                                Expanded(
+                                  flex: 2,
+                                  child: Container(
+                                    height: screenHeight * 0.08,
+                                    padding: const EdgeInsets.fromLTRB(
+                                        kDefaultPadding, 0, kDefaultPadding, 0),
+                                    decoration: const BoxDecoration(
+                                      color: Color.fromRGBO(209, 220, 214, 1.0),
+                                      borderRadius: BorderRadius.only(
+                                        topRight: Radius.circular(20),
+                                        bottomRight: Radius.circular(20),
+                                      ),
+                                    ),
+                                    child: const Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      children: [
+                                        Text(
+                                          'Follow Up SPJ',
+                                          style: TextStyle(fontSize: 14),
+                                        ),
+                                        Text(
+                                          'Nama Customer - Tempat',
+                                          style: TextStyle(fontSize: 14),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                          const SizedBox(
+                            height: 16.0,
+                          ),
+                          Container(
+                            width: double.infinity,
+                            height: screenHeight * 0.08,
+                            decoration: const BoxDecoration(
+                              color: Colors.transparent,
+                            ),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                Expanded(
+                                  flex: 1,
+                                  child: Container(
+                                    height: screenHeight * 0.08,
+                                    padding: const EdgeInsets.fromLTRB(
+                                        kDefaultPadding, 0, kDefaultPadding, 0),
+                                    decoration: const BoxDecoration(
+                                      color: Color.fromRGBO(180, 198, 193, 1.0),
+                                      borderRadius: BorderRadius.only(
+                                        topLeft: Radius.circular(20),
+                                        bottomLeft: Radius.circular(20),
+                                      ),
+                                    ),
+                                    child: Center(
+                                      child: Text(
+                                        '13.00 - 14.00',
+                                        style: Theme.of(context)
+                                            .textTheme
+                                            .headlineLarge!
+                                            .copyWith(fontSize: 16),
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                                Expanded(
+                                  flex: 2,
+                                  child: Container(
+                                    height: screenHeight * 0.08,
+                                    padding: const EdgeInsets.fromLTRB(
+                                        kDefaultPadding, 0, kDefaultPadding, 0),
+                                    decoration: const BoxDecoration(
+                                      color: Color.fromRGBO(209, 220, 214, 1.0),
+                                      borderRadius: BorderRadius.only(
+                                        topRight: Radius.circular(20),
+                                        bottomRight: Radius.circular(20),
+                                      ),
+                                    ),
+                                    child: const Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      children: [
+                                        Text(
+                                          'Follow Up SPJ',
+                                          style: TextStyle(fontSize: 14),
+                                        ),
+                                        Text(
+                                          'Nama Customer - Tempat',
+                                          style: TextStyle(fontSize: 14),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                          const SizedBox(height: 16.0),
                           Container(
                             width: double.infinity,
                             height: screenHeight * 0.08,
@@ -507,7 +736,7 @@ class CustomClipperHomeCard extends CustomClipper<Path> {
     double w = size.width;
     double h = size.height;
 
-    path.lineTo(0, h / 1.2 - 50);
+    path.lineTo(0, h / 1.2 - 20);
     path.quadraticBezierTo(20, h / 1.2, 80, h / 1.2);
     // path.lineTo(w, h / 1.2);
     path.lineTo(w - 80, h / 1.2);
@@ -535,11 +764,12 @@ class HomeCardBorderPainter extends CustomPainter {
     double w = size.width;
     double h = size.height;
 
-    path.lineTo(0, h / 1.2 - 50);
-    path.quadraticBezierTo(20, h / 1.2, 80, h / 1.2);
-    path.lineTo(w - 80, h / 1.2);
-    path.quadraticBezierTo(w - 20, h - 40, w, h);
-    path.lineTo(w, 0);
+    path.moveTo(0, h / 1.2 - 20); // Start the path slightly lower
+    path.quadraticBezierTo(20, h / 1.2, 70, h / 1.2); // Smooth first curve
+    path.lineTo(
+        w - 70, h / 1.2); // Adjust straight line to make curve less pronounced
+    path.quadraticBezierTo(w - 20, h - 40, w, h); // Smooth second curve
+    path.lineTo(w, 0); // Close the path to the top right corner
 
     canvas.drawPath(path, paint);
   }

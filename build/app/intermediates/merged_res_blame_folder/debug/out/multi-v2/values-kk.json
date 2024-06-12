@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "com.example.memek.app-mergeDebugResources-9:/values-kk/values-kk.xml",
+            "outputFile": "com.example.sales_app-mergeDebugResources-9:/values-kk/values-kk.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\fathu\\.gradle\\caches\\transforms-3\\284a410c767ad6c7a2b0ffc8d8d85981\\transformed\\core-1.6.0\\res\\values-kk\\values-kk.xml",
+                    "source": "C:\\Users\\fathu\\.gradle\\caches\\8.8\\transforms\\022b5910392905092b23e00f83b97093\\transformed\\core-1.6.0\\res\\values-kk\\values-kk.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",
