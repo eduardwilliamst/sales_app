@@ -22,9 +22,9 @@ class _OrderDataPageState extends State<OrderDataPage> {
   String? _selectedStatusSPR;
   bool _editKavling = true;
   bool _editBookingFee = true;
-  bool _editBookingFeeProof = true;
-  bool _editHistorySPH = true;
-  bool _proofOfBookingFee = false;
+  final bool _editBookingFeeProof = true;
+  final bool _editHistorySPH = true;
+  final bool _proofOfBookingFee = false;
   // String? _uploadedFileName;
   // String? _uploadedFilePath;
   // String? _uploadedFileBytes;
