@@ -111,8 +111,15 @@ class _HomeContentState extends State<HomeContent> {
               children: [
                 Stack(
                   children: [
+                    CustomPaint(
+                      painter: HomeCardBorderPainter(),
+                      child: Container(
+                        height: screenHeight * 0.29,
+                      ),
+                    ),
                     ClipPath(
                       clipper: CustomClipperHomeCard(),
+                      clipBehavior: Clip.antiAlias,
                       child: Card(
                         margin: EdgeInsets.zero,
                         color: Colors.transparent,
@@ -126,12 +133,10 @@ class _HomeContentState extends State<HomeContent> {
                               begin: Alignment.topCenter,
                               end: Alignment.bottomCenter,
                               colors: [
-                                Color.fromRGBO(255, 255, 255, 0.5),
-                                Color.fromRGBO(255, 255, 255, 0.5),
+                                Color.fromRGBO(255, 255, 255, 0.1),
                                 Color.fromRGBO(0, 0, 0, 0.5)
                               ],
                               stops: [
-                                0.0,
                                 0.75,
                                 1.0,
                               ],
@@ -394,12 +399,6 @@ class _HomeContentState extends State<HomeContent> {
                             ],
                           ),
                         ),
-                      ),
-                    ),
-                    CustomPaint(
-                      painter: HomeCardBorderPainter(),
-                      child: Container(
-                        height: screenHeight * 0.29,
                       ),
                     ),
                   ],
