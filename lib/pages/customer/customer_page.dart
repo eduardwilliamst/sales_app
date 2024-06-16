@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:sales_app/constants.dart';
 import 'package:sales_app/pages/customer/add_customer_page.dart';
 import 'package:sales_app/pages/customer/edit_customer_page.dart';
+import 'package:sales_app/pages/customer/follow_up_page.dart';
 
 class CustomerPage extends StatefulWidget {
   const CustomerPage({super.key});
@@ -53,7 +54,15 @@ class _CustomerPageState extends State<CustomerPage> {
                         margin: const EdgeInsets.all(kDefaultPadding),
                         padding: const EdgeInsets.all(kDefaultPadding),
                         decoration: BoxDecoration(
-                          color: const Color.fromRGBO(242, 242, 242, 0.4),
+                          gradient: const LinearGradient(
+                            begin: Alignment.topCenter,
+                            end: Alignment.bottomCenter,
+                            colors: [
+                              Color.fromRGBO(242, 242, 242, 1.0),
+                              Color.fromRGBO(212, 232, 231, 1.0)
+                            ],
+                            stops: [0.5, 1.0],
+                          ),
                           borderRadius: BorderRadius.circular(10),
                           border:
                               Border.all(color: kSecondaryColor, width: 3.0),
@@ -131,7 +140,15 @@ class _CustomerPageState extends State<CustomerPage> {
                                             width: constraints.maxWidth * 0.3,
                                             height: 40,
                                             child: ElevatedButton(
-                                              onPressed: () {},
+                                              onPressed: () {
+                                                Navigator.push(
+                                                  context,
+                                                  MaterialPageRoute(
+                                                    builder: (context) =>
+                                                        const FollowUpPage(),
+                                                  ),
+                                                );
+                                              },
                                               style: primaryButtonStyle,
                                               child: Text(
                                                 'Follow Up',

@@ -29,6 +29,14 @@ class ProfilePage extends StatelessWidget {
                   padding: const EdgeInsets.fromLTRB(
                       kDefaultPadding, kDefaultPadding, kDefaultPadding, 30),
                   decoration: const BoxDecoration(
+                    gradient: LinearGradient(
+                      begin: Alignment.topCenter,
+                      end: Alignment.bottomCenter,
+                      colors: [
+                        Color.fromRGBO(235, 226, 211, 1.0),
+                        Color.fromRGBO(247, 229, 205, 1.0)
+                      ],
+                    ),
                     borderRadius: BorderRadius.only(
                       bottomLeft: Radius.circular(20),
                       bottomRight: Radius.circular(20),

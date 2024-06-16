@@ -1,3 +1,4 @@
+import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart' as intl;
 import 'package:intl/date_symbol_data_local.dart';
@@ -79,6 +80,7 @@ class HomeContent extends StatefulWidget {
 
 class _HomeContentState extends State<HomeContent> {
   DateTime today = DateTime.now();
+  final bool manager = true;
   String username = "Hi, Salesman 1";
   @override
   void initState() {
@@ -133,7 +135,7 @@ class _HomeContentState extends State<HomeContent> {
                               begin: Alignment.topCenter,
                               end: Alignment.bottomCenter,
                               colors: [
-                                Color.fromRGBO(255, 255, 255, 0.1),
+                                Color.fromRGBO(0, 0, 0, 0.01),
                                 Color.fromRGBO(0, 0, 0, 0.5)
                               ],
                               stops: [
@@ -410,6 +412,95 @@ class _HomeContentState extends State<HomeContent> {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
+                          if (manager == true) ...[
+                            Container(
+                              // width: double.infinity,
+                              // height: screenHeight * 0.24,
+                              padding:
+                                  const EdgeInsets.fromLTRB(16, 16, 16, 16),
+                              decoration: BoxDecoration(
+                                color: const Color.fromRGBO(242, 242, 242, 0.4),
+                                borderRadius: BorderRadius.circular(20),
+                              ),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    'Jumlah Customer',
+                                    style: Theme.of(context)
+                                        .textTheme
+                                        .headlineLarge!
+                                        .copyWith(
+                                          fontSize: 20,
+                                        ),
+                                  ),
+                                  AspectRatio(
+                                    aspectRatio: 1.7,
+                                    child: LineChart(
+                                      LineChartData(
+                                        titlesData: const FlTitlesData(
+                                          leftTitles: AxisTitles(
+                                            sideTitles:
+                                                SideTitles(showTitles: false),
+                                          ),
+                                          rightTitles: AxisTitles(
+                                            sideTitles:
+                                                SideTitles(showTitles: false),
+                                          ),
+                                          topTitles: AxisTitles(
+                                            sideTitles:
+                                                SideTitles(showTitles: false),
+                                          ),
+                                          bottomTitles: AxisTitles(
+                                            sideTitles:
+                                                SideTitles(showTitles: true),
+                                          ),
+                                        ),
+                                        borderData: FlBorderData(
+                                          show: true,
+                                          border: Border.all(
+                                              color: const Color(0xff37434d),
+                                              width: 1),
+                                        ),
+                                        gridData: const FlGridData(show: false),
+                                        lineBarsData: [
+                                          LineChartBarData(
+                                            spots: const [
+                                              FlSpot(0, 3),
+                                              FlSpot(2, 2),
+                                              FlSpot(4, 4),
+                                              FlSpot(6, 10),
+                                            ],
+                                            isCurved: true,
+                                            isStrokeCapRound: true,
+                                            dotData:
+                                                const FlDotData(show: true),
+                                            belowBarData: BarAreaData(
+                                              show: true,
+                                              gradient: const LinearGradient(
+                                                begin: Alignment.topCenter,
+                                                end: Alignment.bottomCenter,
+                                                colors: [
+                                                  Color.fromRGBO(
+                                                      197, 229, 228, 1.0),
+                                                  Color.fromRGBO(
+                                                      244, 244, 244, 0.0),
+                                                ],
+                                                stops: [0.0, 1.0],
+                                              ),
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                            const SizedBox(
+                              height: 16.0,
+                            ),
+                          ],
                           Text(
                             'E-Catalog',
                             style: Theme.of(context)
@@ -427,7 +518,7 @@ class _HomeContentState extends State<HomeContent> {
                                 image: AssetImage('assets/images/catalog.png'),
                                 fit: BoxFit.cover,
                               ),
-                              borderRadius: BorderRadius.circular(10),
+                              borderRadius: BorderRadius.circular(20),
                             ),
                           ),
                           const SizedBox(height: 10),
@@ -435,7 +526,7 @@ class _HomeContentState extends State<HomeContent> {
                             height: screenHeight * 0.24,
                             decoration: BoxDecoration(
                               color: Colors.grey[300],
-                              borderRadius: BorderRadius.circular(10),
+                              borderRadius: BorderRadius.circular(20),
                             ),
                           ),
                           const SizedBox(height: 10),
@@ -453,7 +544,7 @@ class _HomeContentState extends State<HomeContent> {
                               height: screenHeight * 0.24,
                               decoration: BoxDecoration(
                                 color: Colors.grey[300],
-                                borderRadius: BorderRadius.circular(10),
+                                borderRadius: BorderRadius.circular(20),
                                 image: const DecorationImage(
                                     image:
                                         AssetImage('assets/images/Sitemap.png'),
@@ -525,8 +616,8 @@ class _HomeContentState extends State<HomeContent> {
                                     decoration: const BoxDecoration(
                                       color: Color.fromRGBO(180, 198, 193, 1.0),
                                       borderRadius: BorderRadius.only(
-                                        topLeft: Radius.circular(10),
-                                        bottomLeft: Radius.circular(10),
+                                        topLeft: Radius.circular(20),
+                                        bottomLeft: Radius.circular(20),
                                       ),
                                     ),
                                     child: Center(
@@ -575,7 +666,7 @@ class _HomeContentState extends State<HomeContent> {
                             ),
                           ),
                           const SizedBox(
-                            height: 16.0,
+                            height: 10.0,
                           ),
                           Container(
                             width: double.infinity,
@@ -645,7 +736,7 @@ class _HomeContentState extends State<HomeContent> {
                               ],
                             ),
                           ),
-                          const SizedBox(height: 16.0),
+                          const SizedBox(height: 10.0),
                           Container(
                             width: double.infinity,
                             height: screenHeight * 0.08,
@@ -725,56 +816,5 @@ class _HomeContentState extends State<HomeContent> {
         ),
       ),
     );
-  }
-}
-
-class CustomClipperHomeCard extends CustomClipper<Path> {
-  @override
-  Path getClip(Size size) {
-    Path path = Path();
-    double w = size.width;
-    double h = size.height;
-
-    path.lineTo(0, h / 1.2 - 20);
-    path.quadraticBezierTo(20, h / 1.2, 80, h / 1.2);
-    // path.lineTo(w, h / 1.2);
-    path.lineTo(w - 80, h / 1.2);
-    path.quadraticBezierTo(w - 20, h - 40, w, h);
-    path.lineTo(w, 0);
-
-    return path;
-  }
-
-  @override
-  bool shouldReclip(covariant CustomClipper<Path> oldClipper) {
-    return true;
-  }
-}
-
-class HomeCardBorderPainter extends CustomPainter {
-  @override
-  void paint(Canvas canvas, Size size) {
-    Paint paint = Paint()
-      ..color = const Color.fromRGBO(196, 160, 120, 1.0)
-      ..strokeWidth = 3.0
-      ..style = PaintingStyle.stroke;
-
-    Path path = Path();
-    double w = size.width;
-    double h = size.height;
-
-    path.moveTo(0, h / 1.2 - 20); // Start the path slightly lower
-    path.quadraticBezierTo(20, h / 1.2, 70, h / 1.2); // Smooth first curve
-    path.lineTo(
-        w - 70, h / 1.2); // Adjust straight line to make curve less pronounced
-    path.quadraticBezierTo(w - 20, h - 40, w, h); // Smooth second curve
-    path.lineTo(w, 0); // Close the path to the top right corner
-
-    canvas.drawPath(path, paint);
-  }
-
-  @override
-  bool shouldRepaint(covariant CustomPainter oldDelegate) {
-    return false;
   }
 }

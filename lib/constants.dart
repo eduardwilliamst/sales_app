@@ -30,3 +30,72 @@ final ButtonStyle secondaryButtonStyle = ElevatedButton.styleFrom(
     ),
   ),
 );
+
+class CustomClipperHomeCard extends CustomClipper<Path> {
+  @override
+  Path getClip(Size size) {
+    Path path = Path();
+    double w = size.width;
+    double h = size.height;
+
+    path.lineTo(0, h / 1.2 - 20);
+    path.quadraticBezierTo(20, h / 1.2, 80, h / 1.2);
+    // path.lineTo(w, h / 1.2);
+    path.lineTo(w - 80, h / 1.2);
+    path.quadraticBezierTo(w - 20, h - 40, w, h);
+    path.lineTo(w, 0);
+
+    return path;
+  }
+
+  @override
+  bool shouldReclip(covariant CustomClipper<Path> oldClipper) {
+    return true;
+  }
+}
+
+class HomeCardBorderPainter extends CustomPainter {
+  @override
+  void paint(Canvas canvas, Size size) {
+    Paint paint = Paint()
+      ..color = const Color.fromRGBO(196, 160, 120, 1.0)
+      ..strokeWidth = 3.0
+      ..style = PaintingStyle.stroke;
+
+    Path path = Path();
+    double w = size.width;
+    double h = size.height;
+
+    path.moveTo(0, h / 1.2 - 20); // Start the path slightly lower
+    path.quadraticBezierTo(20, h / 1.2, 70, h / 1.2); // Smooth first curve
+    path.lineTo(
+        w - 70, h / 1.2); // Adjust straight line to make curve less pronounced
+    path.quadraticBezierTo(w - 20, h - 40, w, h); // Smooth second curve
+    path.lineTo(w, 0); // Close the path to the top right corner
+
+    canvas.drawPath(path, paint);
+  }
+
+  @override
+  bool shouldRepaint(covariant CustomPainter oldDelegate) {
+    return false;
+  }
+}
+
+class CustomBannerClipper extends CustomClipper<Path> {
+  @override
+  Path getClip(Size size) {
+    Path path = Path();
+    path.lineTo(0, size.height - 100);
+    path.quadraticBezierTo(
+        size.width / 4, size.height, size.width / 2, size.height - 80);
+    path.quadraticBezierTo(
+        3 / 4 * size.width, size.height - 160, size.width, size.height - 80);
+    path.lineTo(size.width, 0);
+    path.close();
+    return path;
+  }
+
+  @override
+  bool shouldReclip(CustomClipper<Path> oldClipper) => false;
+}
