@@ -40,131 +40,146 @@ class _NewPasswordPageState extends State<NewPasswordPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Stack(
-        children: [
-          Container(
-            decoration: const BoxDecoration(
-              image: DecorationImage(
-                image: AssetImage('assets/images/LoginMobileBackground.png'),
-                alignment: Alignment.topCenter,
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            ClipPath(
+              clipBehavior: Clip.antiAlias,
+              clipper: CustomBannerClipper(),
+              child: Container(
+                decoration: const BoxDecoration(
+                  gradient: LinearGradient(
+                    begin: Alignment.topCenter,
+                    end: Alignment.bottomCenter,
+                    colors: [
+                      Color.fromRGBO(235, 226, 211, 1.0),
+                      Color.fromRGBO(247, 229, 205, 1.0)
+                    ],
+                    // stops: [
+                    //   0.0,
+                    //   1.0,
+                    // ],
+                  ),
+                  image: DecorationImage(
+                    image:
+                        AssetImage('assets/images/LoginMobileBackground.png'),
+                    alignment: Alignment.topCenter,
+                    fit: BoxFit.cover,
+                  ),
+                ),
+                height: MediaQuery.of(context).size.height * 0.3,
+                width: double.infinity,
               ),
             ),
-          ),
-          SafeArea(
-            child: Center(
-              child: SingleChildScrollView(
-                child: Padding(
-                  padding: const EdgeInsets.all(kDefaultPadding),
-                  child: Form(
-                    key: _formKey,
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        const SizedBox(height: 100),
-                        Text(
-                          'Kata Sandi Baru',
-                          style: Theme.of(context).textTheme.headlineLarge,
-                        ),
-                        const SizedBox(height: 16),
-                        Text(
-                          'Kata Sandi',
-                          style: Theme.of(context).textTheme.bodyLarge,
-                        ),
-                        TextFormField(
-                          controller: _passwordController,
-                          obscureText: _obscureText1,
-                          decoration: InputDecoration(
-                            hintText: 'Password',
-                            fillColor: kTextFormFieldColor,
-                            border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(10),
-                            ),
-                            suffixIcon: IconButton(
-                              icon: Icon(
-                                _obscureText1
-                                    ? Icons.visibility
-                                    : Icons.visibility_off,
-                              ),
-                              onPressed: () {
-                                setState(() {
-                                  _obscureText1 = !_obscureText1;
-                                });
-                              },
-                            ),
-                          ),
-                          validator: (value) {
-                            if (value == null || value.isEmpty) {
-                              return 'Please enter your password';
-                            }
-                            return null;
-                          },
-                        ),
-                        const SizedBox(height: 16),
-                        Text(
-                          'Ulangi Kata Sandi',
-                          style: Theme.of(context).textTheme.bodyLarge,
-                        ),
-                        TextFormField(
-                          controller: _repasswordController,
-                          obscureText: _obscureText2,
-                          decoration: InputDecoration(
-                            hintText: 'Password',
-                            fillColor: kTextFormFieldColor,
-                            border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(10),
-                            ),
-                            suffixIcon: IconButton(
-                              icon: Icon(
-                                _obscureText2
-                                    ? Icons.visibility
-                                    : Icons.visibility_off,
-                              ),
-                              onPressed: () {
-                                setState(() {
-                                  _obscureText2 = !_obscureText2;
-                                });
-                              },
-                            ),
-                          ),
-                          validator: (value) {
-                            if (value == null || value.isEmpty) {
-                              return 'Please enter your password';
-                            }
-                            return null;
-                          },
-                        ),
-                        const SizedBox(height: 20),
-                        SizedBox(
-                          width: double.infinity,
-                          child: ElevatedButton(
-                            onPressed: _submit,
-                            style: primaryButtonStyle,
-                            child: Text(
-                              'Kirim',
-                              style: Theme.of(context).textTheme.labelLarge,
-                            ),
-                          ),
-                        ),
-                        const SizedBox(height: 15),
-                        if (checkpass == false)
-                          Center(
-                              child: Text(
-                            'Password tidak sama.',
-                            style: Theme.of(context)
-                                .textTheme
-                                .bodySmall
-                                ?.copyWith(color: kErrorColor),
-                            textAlign: TextAlign.center,
-                          ))
-                      ],
+            Padding(
+              padding: const EdgeInsets.all(kDefaultPadding),
+              child: Form(
+                key: _formKey,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      'Kata Sandi Baru',
+                      style: Theme.of(context).textTheme.headlineLarge,
                     ),
-                  ),
+                    const SizedBox(height: 16),
+                    Text(
+                      'Kata Sandi',
+                      style: Theme.of(context).textTheme.bodyLarge,
+                    ),
+                    TextFormField(
+                      controller: _passwordController,
+                      obscureText: _obscureText1,
+                      decoration: InputDecoration(
+                        hintText: 'Password',
+                        fillColor: kTextFormFieldColor,
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                        suffixIcon: IconButton(
+                          icon: Icon(
+                            _obscureText1
+                                ? Icons.visibility
+                                : Icons.visibility_off,
+                          ),
+                          onPressed: () {
+                            setState(() {
+                              _obscureText1 = !_obscureText1;
+                            });
+                          },
+                        ),
+                      ),
+                      validator: (value) {
+                        if (value == null || value.isEmpty) {
+                          return 'Please enter your password';
+                        }
+                        return null;
+                      },
+                    ),
+                    const SizedBox(height: 16),
+                    Text(
+                      'Ulangi Kata Sandi',
+                      style: Theme.of(context).textTheme.bodyLarge,
+                    ),
+                    TextFormField(
+                      controller: _repasswordController,
+                      obscureText: _obscureText2,
+                      decoration: InputDecoration(
+                        hintText: 'Password',
+                        fillColor: kTextFormFieldColor,
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                        suffixIcon: IconButton(
+                          icon: Icon(
+                            _obscureText2
+                                ? Icons.visibility
+                                : Icons.visibility_off,
+                          ),
+                          onPressed: () {
+                            setState(() {
+                              _obscureText2 = !_obscureText2;
+                            });
+                          },
+                        ),
+                      ),
+                      validator: (value) {
+                        if (value == null || value.isEmpty) {
+                          return 'Please enter your password';
+                        }
+                        return null;
+                      },
+                    ),
+                    const SizedBox(height: 20),
+                    SizedBox(
+                      width: double.infinity,
+                      child: ElevatedButton(
+                        onPressed: _submit,
+                        style: primaryButtonStyle,
+                        child: Text(
+                          'Kirim',
+                          style: Theme.of(context).textTheme.labelLarge,
+                        ),
+                      ),
+                    ),
+                    const SizedBox(height: 15),
+                    if (checkpass == false)
+                      Center(
+                          child: Text(
+                        'Password tidak sama.',
+                        style: Theme.of(context)
+                            .textTheme
+                            .bodySmall
+                            ?.copyWith(color: kErrorColor),
+                        textAlign: TextAlign.center,
+                      ))
+                  ],
                 ),
               ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

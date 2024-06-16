@@ -16,89 +16,105 @@ class _ForgetPasswordPageState extends State<ForgetPasswordPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Stack(
-        children: [
-          Container(
-            decoration: const BoxDecoration(
-              image: DecorationImage(
-                image: AssetImage('assets/images/LoginMobileBackground.png'),
-                alignment: Alignment.topCenter,
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            ClipPath(
+              clipBehavior: Clip.antiAlias,
+              clipper: CustomBannerClipper(),
+              child: Container(
+                decoration: const BoxDecoration(
+                  gradient: LinearGradient(
+                    begin: Alignment.topCenter,
+                    end: Alignment.bottomCenter,
+                    colors: [
+                      Color.fromRGBO(235, 226, 211, 1.0),
+                      Color.fromRGBO(247, 229, 205, 1.0)
+                    ],
+                    // stops: [
+                    //   0.0,
+                    //   1.0,
+                    // ],
+                  ),
+                  image: DecorationImage(
+                    image:
+                        AssetImage('assets/images/LoginMobileBackground.png'),
+                    alignment: Alignment.topCenter,
+                    fit: BoxFit.cover,
+                  ),
+                ),
+                height: MediaQuery.of(context).size.height * 0.3,
+                width: double.infinity,
               ),
             ),
-          ),
-          SafeArea(
-            child: Center(
-              child: SingleChildScrollView(
-                child: Padding(
-                  padding: const EdgeInsets.all(kDefaultPadding),
-                  child: Form(
-                    key: _formKey,
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          'Lupa Kata Sandi',
-                          style: Theme.of(context).textTheme.headlineLarge,
-                        ),
-                        const SizedBox(height: 16),
-                        Text(
-                          'Email',
-                          style: Theme.of(context).textTheme.bodyLarge,
-                        ),
-                        TextFormField(
-                          controller: _emailController,
-                          decoration: InputDecoration(
-                            hintText: 'Please enter your email',
-                            fillColor: kTextFormFieldColor,
-                            border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(10),
-                            ),
-                          ),
-                          keyboardType: TextInputType.emailAddress,
-                          validator: (value) {
-                            if (value == null || value.isEmpty) {
-                              return 'Please enter your email';
-                            }
-                            return null;
-                          },
-                        ),
-                        const SizedBox(height: 8),
-                        Text(
-                          'Kami akan mengirim email untuk pemulihan akun Anda.',
-                          style: Theme.of(context).textTheme.bodySmall,
-                        ),
-                        const SizedBox(height: 16),
-                        SizedBox(
-                          width: double.infinity,
-                          child: ElevatedButton(
-                            onPressed: () {
-                              if (_formKey.currentState!.validate()) {
-                                // Perform password recovery action
-                                debugPrint('Email: ${_emailController.text}');
-                              }
-                              Navigator.pushReplacement(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) =>
-                                        const ForgetPassInfoPage()),
-                              );
-                            },
-                            style: primaryButtonStyle,
-                            child: Text(
-                              'Kirim',
-                              style: Theme.of(context).textTheme.labelLarge,
-                            ),
-                          ),
-                        ),
-                      ],
+            Padding(
+              padding: const EdgeInsets.all(kDefaultPadding),
+              child: Form(
+                key: _formKey,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      'Lupa Kata Sandi',
+                      style: Theme.of(context).textTheme.headlineLarge,
                     ),
-                  ),
+                    const SizedBox(height: 16),
+                    Text(
+                      'Email',
+                      style: Theme.of(context).textTheme.bodyLarge,
+                    ),
+                    TextFormField(
+                      controller: _emailController,
+                      decoration: InputDecoration(
+                        hintText: 'Please enter your email',
+                        fillColor: kTextFormFieldColor,
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                      ),
+                      keyboardType: TextInputType.emailAddress,
+                      validator: (value) {
+                        if (value == null || value.isEmpty) {
+                          return 'Please enter your email';
+                        }
+                        return null;
+                      },
+                    ),
+                    const SizedBox(height: 8),
+                    Text(
+                      'Kami akan mengirim email untuk pemulihan akun Anda.',
+                      style: Theme.of(context).textTheme.bodySmall,
+                    ),
+                    const SizedBox(height: 16),
+                    SizedBox(
+                      width: double.infinity,
+                      child: ElevatedButton(
+                        onPressed: () {
+                          if (_formKey.currentState!.validate()) {
+                            // Perform password recovery action
+                            debugPrint('Email: ${_emailController.text}');
+                          }
+                          Navigator.pushReplacement(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) =>
+                                    const ForgetPassInfoPage()),
+                          );
+                        },
+                        style: primaryButtonStyle,
+                        child: Text(
+                          'Kirim',
+                          style: Theme.of(context).textTheme.labelLarge,
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
               ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
