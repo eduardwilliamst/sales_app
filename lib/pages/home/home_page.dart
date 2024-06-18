@@ -8,6 +8,7 @@ import 'package:sales_app/pages/home/notifications_modal.dart';
 import 'package:sales_app/pages/new_order/new_order_page.dart';
 import 'package:sales_app/pages/order_history/order_history_page.dart';
 import 'package:sales_app/pages/sitemap/sitemap_page.dart';
+import 'package:sales_app/sph/sph_page.dart';
 import '../profile_sales/profile_page.dart';
 import '../schedule/schedule_page.dart';
 
@@ -122,211 +123,204 @@ class _HomeContentState extends State<HomeContent> {
                     ClipPath(
                       clipper: CustomClipperHomeCard(),
                       clipBehavior: Clip.antiAlias,
-                      child: Card(
-                        margin: EdgeInsets.zero,
-                        color: Colors.transparent,
-                        elevation: 0,
-                        child: Container(
-                          width: double.infinity,
-                          height: screenHeight * 0.29,
-                          padding: const EdgeInsets.all(kDefaultPadding),
-                          decoration: const BoxDecoration(
-                            gradient: LinearGradient(
-                              begin: Alignment.topCenter,
-                              end: Alignment.bottomCenter,
-                              colors: [
-                                Color.fromRGBO(0, 0, 0, 0.01),
-                                Color.fromRGBO(0, 0, 0, 0.5)
-                              ],
-                              stops: [
-                                0.75,
-                                1.0,
-                              ],
-                            ),
+                      child: Container(
+                        width: double.infinity,
+                        height: screenHeight * 0.29,
+                        padding: const EdgeInsets.all(kDefaultPadding),
+                        decoration: const BoxDecoration(
+                          gradient: LinearGradient(
+                            begin: Alignment.topCenter,
+                            end: Alignment.bottomCenter,
+                            colors: [
+                              Color.fromRGBO(0, 0, 0, 0.01),
+                              Color.fromRGBO(0, 0, 0, 0.5)
+                            ],
+                            stops: [
+                              0.75,
+                              1.0,
+                            ],
                           ),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  GestureDetector(
-                                    onTap: () {
-                                      Navigator.push(
-                                        context,
-                                        MaterialPageRoute(
-                                            builder: (context) =>
-                                                const ProfilePage()),
-                                      );
-                                    },
-                                    child: Row(
-                                      children: [
-                                        const Icon(Icons.person, size: 50),
-                                        const SizedBox(width: 10),
-                                        Column(
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.start,
-                                          children: [
-                                            LayoutBuilder(
-                                              builder: (context, constraints) {
-                                                TextStyle textStyle =
-                                                    Theme.of(context)
-                                                        .textTheme
-                                                        .headlineLarge!
-                                                        .copyWith(fontSize: 20);
-
-                                                TextPainter textPainter =
-                                                    TextPainter(
-                                                  text: TextSpan(
-                                                    text: username,
-                                                    style: textStyle,
-                                                  ),
-                                                  textDirection:
-                                                      TextDirection.ltr,
-                                                );
-                                                textPainter.layout();
-
-                                                double textWidth =
-                                                    textPainter.width;
-
-                                                return Column(
-                                                  crossAxisAlignment:
-                                                      CrossAxisAlignment.start,
-                                                  children: [
-                                                    Row(
-                                                      children: [
-                                                        Text(
-                                                          username,
-                                                          style: textStyle,
-                                                        ),
-                                                      ],
-                                                    ),
-                                                    Row(
-                                                      children: [
-                                                        Container(
-                                                          margin:
-                                                              const EdgeInsets
-                                                                  .only(
-                                                                  top: 2.0),
-                                                          height: 4,
-                                                          width:
-                                                              textWidth * 0.5,
-                                                          decoration:
-                                                              const BoxDecoration(
-                                                            color:
-                                                                Color.fromRGBO(
-                                                                    180,
-                                                                    198,
-                                                                    193,
-                                                                    1.0),
-                                                            borderRadius:
-                                                                BorderRadius
-                                                                    .only(
-                                                              topLeft: Radius
-                                                                  .circular(
-                                                                      30.0),
-                                                              bottomLeft: Radius
-                                                                  .circular(
-                                                                      30.0),
-                                                            ),
-                                                          ),
-                                                        ),
-                                                        Container(
-                                                          margin:
-                                                              const EdgeInsets
-                                                                  .only(
-                                                                  top: 2.0),
-                                                          height: 4,
-                                                          width:
-                                                              textWidth * 0.5,
-                                                          decoration:
-                                                              const BoxDecoration(
-                                                            color:
-                                                                Color.fromRGBO(
-                                                                    209,
-                                                                    220,
-                                                                    214,
-                                                                    1.0),
-                                                            borderRadius:
-                                                                BorderRadius
-                                                                    .only(
-                                                              topRight: Radius
-                                                                  .circular(
-                                                                      30.0),
-                                                              bottomRight:
-                                                                  Radius
-                                                                      .circular(
-                                                                          30.0),
-                                                            ),
-                                                          ),
-                                                        ),
-                                                      ],
-                                                    ),
-                                                  ],
-                                                );
-                                              },
-                                            ),
-                                          ],
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                  Row(
+                        ),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                GestureDetector(
+                                  onTap: () {
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) =>
+                                              const ProfilePage()),
+                                    );
+                                  },
+                                  child: Row(
                                     children: [
-                                      GestureDetector(
-                                        onTap: () {
-                                          showNotificationModal(context);
-                                        },
-                                        child: const Icon(Icons.notifications),
+                                      const Icon(Icons.person, size: 50),
+                                      const SizedBox(width: 10),
+                                      Column(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        children: [
+                                          LayoutBuilder(
+                                            builder: (context, constraints) {
+                                              TextStyle textStyle =
+                                                  Theme.of(context)
+                                                      .textTheme
+                                                      .headlineLarge!
+                                                      .copyWith(fontSize: 20);
+
+                                              TextPainter textPainter =
+                                                  TextPainter(
+                                                text: TextSpan(
+                                                  text: username,
+                                                  style: textStyle,
+                                                ),
+                                                textDirection:
+                                                    TextDirection.ltr,
+                                              );
+                                              textPainter.layout();
+
+                                              double textWidth =
+                                                  textPainter.width;
+
+                                              return Column(
+                                                crossAxisAlignment:
+                                                    CrossAxisAlignment.start,
+                                                children: [
+                                                  Row(
+                                                    children: [
+                                                      Text(
+                                                        username,
+                                                        style: textStyle,
+                                                      ),
+                                                    ],
+                                                  ),
+                                                  Row(
+                                                    children: [
+                                                      Container(
+                                                        margin: const EdgeInsets
+                                                            .only(top: 2.0),
+                                                        height: 4,
+                                                        width: textWidth * 0.5,
+                                                        decoration:
+                                                            const BoxDecoration(
+                                                          color: Color.fromRGBO(
+                                                              180,
+                                                              198,
+                                                              193,
+                                                              1.0),
+                                                          borderRadius:
+                                                              BorderRadius.only(
+                                                            topLeft:
+                                                                Radius.circular(
+                                                                    30.0),
+                                                            bottomLeft:
+                                                                Radius.circular(
+                                                                    30.0),
+                                                          ),
+                                                        ),
+                                                      ),
+                                                      Container(
+                                                        margin: const EdgeInsets
+                                                            .only(top: 2.0),
+                                                        height: 4,
+                                                        width: textWidth * 0.5,
+                                                        decoration:
+                                                            const BoxDecoration(
+                                                          color: Color.fromRGBO(
+                                                              209,
+                                                              220,
+                                                              214,
+                                                              1.0),
+                                                          borderRadius:
+                                                              BorderRadius.only(
+                                                            topRight:
+                                                                Radius.circular(
+                                                                    30.0),
+                                                            bottomRight:
+                                                                Radius.circular(
+                                                                    30.0),
+                                                          ),
+                                                        ),
+                                                      ),
+                                                    ],
+                                                  ),
+                                                ],
+                                              );
+                                            },
+                                          ),
+                                        ],
                                       ),
-                                      const SizedBox(width: 20),
-                                      const Icon(Icons.mail),
                                     ],
                                   ),
-                                ],
-                              ),
-                              const SizedBox(height: 16),
-                              Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceAround,
-                                children: [
-                                  Container(
-                                    width: screenWidth * 0.25,
-                                    height: screenHeight * 0.12,
-                                    padding:
-                                        const EdgeInsets.fromLTRB(8, 24, 8, 0),
-                                    decoration: BoxDecoration(
-                                      shape: BoxShape.circle,
-                                      border: Border.all(
-                                        color: kSecondaryColor,
-                                        width: 2.0,
-                                      ),
+                                ),
+                                Row(
+                                  children: [
+                                    GestureDetector(
+                                      onTap: () {
+                                        showNotificationModal(context);
+                                      },
+                                      child: const Icon(Icons.notifications),
                                     ),
-                                    child: Column(
-                                      children: [
-                                        Text(
-                                          '234',
-                                          style: Theme.of(context)
-                                              .textTheme
-                                              .headlineLarge!
-                                              .copyWith(
-                                                fontSize: 20,
-                                              ),
-                                        ),
-                                        Text(
-                                          'Total pesanan',
-                                          style: Theme.of(context)
-                                              .textTheme
-                                              .bodyMedium!
-                                              .copyWith(
-                                                fontSize: 12,
-                                              ),
-                                        ),
-                                      ],
+                                    const SizedBox(width: 20),
+                                    const Icon(Icons.mail),
+                                  ],
+                                ),
+                              ],
+                            ),
+                            const SizedBox(height: 16),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceAround,
+                              children: [
+                                Container(
+                                  width: screenWidth * 0.25,
+                                  height: screenHeight * 0.12,
+                                  padding:
+                                      const EdgeInsets.fromLTRB(8, 24, 8, 0),
+                                  decoration: BoxDecoration(
+                                    shape: BoxShape.circle,
+                                    border: Border.all(
+                                      color: kSecondaryColor,
+                                      width: 2.0,
                                     ),
                                   ),
-                                  Container(
+                                  child: Column(
+                                    children: [
+                                      Text(
+                                        '123',
+                                        style: Theme.of(context)
+                                            .textTheme
+                                            .headlineLarge!
+                                            .copyWith(
+                                              fontSize: 20,
+                                            ),
+                                      ),
+                                      Text(
+                                        'Total pesanan',
+                                        style: Theme.of(context)
+                                            .textTheme
+                                            .bodyMedium!
+                                            .copyWith(
+                                              fontSize: 12,
+                                            ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                                GestureDetector(
+                                  onTap: () {
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                        builder: (context) =>
+                                            const SPHPage(),
+                                      ),
+                                    );
+                                  },
+                                  child: Container(
                                     width: screenWidth * 0.25,
                                     height: screenHeight * 0.12,
                                     padding:
@@ -341,7 +335,7 @@ class _HomeContentState extends State<HomeContent> {
                                     child: Column(
                                       children: [
                                         Text(
-                                          '234',
+                                          '123',
                                           style: Theme.of(context)
                                               .textTheme
                                               .headlineLarge!
@@ -361,45 +355,45 @@ class _HomeContentState extends State<HomeContent> {
                                       ],
                                     ),
                                   ),
-                                  Container(
-                                    width: screenWidth * 0.25,
-                                    height: screenHeight * 0.12,
-                                    padding:
-                                        const EdgeInsets.fromLTRB(8, 24, 8, 0),
-                                    decoration: BoxDecoration(
-                                      shape: BoxShape.circle,
-                                      border: Border.all(
-                                        color: kSecondaryColor,
-                                        width: 2.0,
-                                      ),
-                                    ),
-                                    child: Column(
-                                      children: [
-                                        Text(
-                                          '234',
-                                          style: Theme.of(context)
-                                              .textTheme
-                                              .headlineLarge!
-                                              .copyWith(
-                                                fontSize: 20,
-                                              ),
-                                        ),
-                                        Text(
-                                          'Total SPR',
-                                          style: Theme.of(context)
-                                              .textTheme
-                                              .bodyMedium!
-                                              .copyWith(
-                                                fontSize: 12,
-                                              ),
-                                        ),
-                                      ],
+                                ),
+                                Container(
+                                  width: screenWidth * 0.25,
+                                  height: screenHeight * 0.12,
+                                  padding:
+                                      const EdgeInsets.fromLTRB(8, 24, 8, 0),
+                                  decoration: BoxDecoration(
+                                    shape: BoxShape.circle,
+                                    border: Border.all(
+                                      color: kSecondaryColor,
+                                      width: 2.0,
                                     ),
                                   ),
-                                ],
-                              ),
-                            ],
-                          ),
+                                  child: Column(
+                                    children: [
+                                      Text(
+                                        '123',
+                                        style: Theme.of(context)
+                                            .textTheme
+                                            .headlineLarge!
+                                            .copyWith(
+                                              fontSize: 20,
+                                            ),
+                                      ),
+                                      Text(
+                                        'Total SPR',
+                                        style: Theme.of(context)
+                                            .textTheme
+                                            .bodyMedium!
+                                            .copyWith(
+                                              fontSize: 12,
+                                            ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ],
                         ),
                       ),
                     ),

@@ -66,287 +66,279 @@ class _FollowUpPageState extends State<FollowUpPage> {
       ),
       child: Scaffold(
         backgroundColor: Colors.transparent,
-        body: Stack(
-          children: [
-            SafeArea(
-              child: SingleChildScrollView(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.all(kDefaultPadding),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        body: SafeArea(
+          child: SingleChildScrollView(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.all(kDefaultPadding),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Row(
                         children: [
-                          Row(
+                          IconButton(
+                            onPressed: () {
+                              Navigator.pushReplacement(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => const HomePage(
+                                          initialIndex: 4,
+                                        )),
+                              );
+                            },
+                            icon: Image.asset('assets/images/arrow-left.png',
+                                height: 30),
+                          ),
+                          const SizedBox(width: 10),
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              IconButton(
-                                onPressed: () {
-                                  Navigator.pushReplacement(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) => const HomePage(
-                                              initialIndex: 4,
-                                            )),
-                                  );
-                                },
-                                icon: Image.asset(
-                                    'assets/images/arrow-left.png',
-                                    height: 30),
-                              ),
-                              const SizedBox(width: 10),
-                              Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Text('Follow Up',
-                                      style: Theme.of(context)
-                                          .textTheme
-                                          .headlineLarge),
-                                ],
-                              ),
+                              Text('Follow Up',
+                                  style: Theme.of(context)
+                                      .textTheme
+                                      .headlineLarge),
                             ],
                           ),
                         ],
                       ),
-                    ),
-                    Container(
-                      margin: const EdgeInsets.all(kDefaultPadding),
-                      padding: const EdgeInsets.all(kDefaultPadding),
-                      decoration: BoxDecoration(
-                        color: const Color.fromRGBO(242, 242, 242, 0.4),
-                        borderRadius: BorderRadius.circular(10),
-                        border: Border.all(color: kSecondaryColor, width: 3.0),
-                      ),
-                      child: Form(
-                        key: _formKey,
-                        child: Column(
+                    ],
+                  ),
+                ),
+                Container(
+                  margin: const EdgeInsets.all(kDefaultPadding),
+                  padding: const EdgeInsets.all(kDefaultPadding),
+                  decoration: BoxDecoration(
+                    color: const Color.fromRGBO(242, 242, 242, 0.4),
+                    borderRadius: BorderRadius.circular(10),
+                    border: Border.all(color: kSecondaryColor, width: 3.0),
+                  ),
+                  child: Form(
+                    key: _formKey,
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          'Judul',
+                          style: Theme.of(context).textTheme.bodyLarge,
+                        ),
+                        const SizedBox(
+                          height: 4.0,
+                        ),
+                        TextFormField(
+                          controller: _titleController,
+                          decoration: InputDecoration(
+                            hintText: 'Judul',
+                            border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(20),
+                            ),
+                            filled: true,
+                            fillColor: kTextFormFieldColor,
+                          ),
+                          keyboardType: TextInputType.text,
+                        ),
+                        const SizedBox(height: 16),
+                        Text(
+                          'Kategori',
+                          style: Theme.of(context).textTheme.bodyLarge,
+                        ),
+                        Row(
                           mainAxisAlignment: MainAxisAlignment.center,
-                          crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Text(
-                              'Judul',
-                              style: Theme.of(context).textTheme.bodyLarge,
-                            ),
-                            TextFormField(
-                              controller: _titleController,
-                              decoration: InputDecoration(
-                                hintText: 'Judul',
-                                border: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(10),
-                                ),
-                                filled: true,
-                                fillColor: kTextFormFieldColor,
+                            RatingBar.builder(
+                              direction: Axis.horizontal,
+                              minRating: 1,
+                              itemCount: 5,
+                              itemPadding: const EdgeInsets.symmetric(
+                                horizontal: 4.0,
                               ),
-                              keyboardType: TextInputType.text,
-                            ),
-                            const SizedBox(height: 16),
-                            Text(
-                              'Kategori',
-                              style: Theme.of(context).textTheme.bodyLarge,
-                            ),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                RatingBar.builder(
-                                  direction: Axis.horizontal,
-                                  minRating: 1,
-                                  itemCount: 5,
-                                  itemPadding: const EdgeInsets.symmetric(
-                                    horizontal: 4.0,
-                                  ),
-                                  itemBuilder: (context, _) => const Icon(
-                                    Icons.star,
-                                    color: Colors.amber,
-                                  ),
-                                  onRatingUpdate: (rating) {
-                                    // debugPrint('$rating');
-                                    setState(() {
-                                      _categoryController = rating.toString();
-                                    });
-                                  },
-                                ),
-                              ],
-                            ),
-                            const SizedBox(
-                              height: 16.0,
-                            ),
-                            Text(
-                              'Tanggal',
-                              style: Theme.of(context).textTheme.bodyLarge,
-                            ),
-                            TextField(
-                              controller: _dateTimeController,
-                              decoration: InputDecoration(
-                                hintText: 'Select Date and Time',
-                                border: OutlineInputBorder(
-                                    borderRadius: BorderRadius.circular(10)),
-                                filled: true,
-                                fillColor: kTextFormFieldColor,
-                                suffixIcon: const Icon(Icons.calendar_today),
+                              itemBuilder: (context, _) => const Icon(
+                                Icons.star,
+                                color: Colors.amber,
                               ),
-                              keyboardType: TextInputType.datetime,
-                              readOnly: true,
-                              onTap: () =>
-                                  _selectDateTime(context, _dateTimeController),
+                              onRatingUpdate: (rating) {
+                                // debugPrint('$rating');
+                                setState(() {
+                                  _categoryController = rating.toString();
+                                });
+                              },
                             ),
-                            const SizedBox(
-                              height: 16.0,
-                            ),
-                            Row(
-                              children: [
-                                Expanded(
-                                  child: Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      Text(
-                                        'Mulai',
-                                        style: Theme.of(context)
-                                            .textTheme
-                                            .bodyLarge,
-                                      ),
-                                      TextField(
-                                        controller: _startTimeController,
-                                        decoration: InputDecoration(
-                                          hintText: 'Jam Mulai',
-                                          border: OutlineInputBorder(
-                                              borderRadius:
-                                                  BorderRadius.circular(10)),
-                                          filled: true,
-                                          fillColor: kTextFormFieldColor,
-                                          suffixIcon:
-                                              const Icon(Icons.access_time),
-                                        ),
-                                        readOnly: true,
-                                        onTap: () => _selectTime(
-                                            context, _startTimeController),
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                                const SizedBox(width: 16.0),
-                                Expanded(
-                                  child: Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      Text(
-                                        'Selesai',
-                                        style: Theme.of(context)
-                                            .textTheme
-                                            .bodyLarge,
-                                      ),
-                                      TextField(
-                                        controller: _endTimeController,
-                                        decoration: InputDecoration(
-                                          hintText: 'Jam Selesai',
-                                          border: OutlineInputBorder(
-                                              borderRadius:
-                                                  BorderRadius.circular(10)),
-                                          filled: true,
-                                          fillColor: kTextFormFieldColor,
-                                          suffixIcon:
-                                              const Icon(Icons.access_time),
-                                        ),
-                                        readOnly: true,
-                                        onTap: () => _selectTime(
-                                            context, _endTimeController),
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                              ],
-                            ),
-                            const SizedBox(
-                              height: 16.0,
-                            ),
-                            if (editFollowUp == true) ...[
-                              Text(
-                                'Catatan',
-                                style: Theme.of(context).textTheme.bodyLarge,
-                              ),
-                              TextFormField(
-                                controller: _notesController,
-                                decoration: InputDecoration(
-                                    hintText: 'Masukkan catatan',
-                                    border: OutlineInputBorder(
-                                      borderRadius: BorderRadius.circular(10),
-                                    ),
-                                    filled: true,
-                                    fillColor: kTextFormFieldColor),
-                                keyboardType: TextInputType.text,
-                                minLines: 5,
-                                maxLines: null,
-                              ),
-                              const SizedBox(height: 16.0),
-                              SizedBox(
-                                width: double.infinity,
-                                child: ElevatedButton(
-                                  onPressed: () {
-                                    if (_formKey.currentState!.validate()) {
-                                      // Perform login action
-                                      debugPrint(
-                                          'Judul: ${_titleController.text}');
-                                      debugPrint(
-                                          'Kategori: $_categoryController');
-                                      debugPrint(
-                                          'Tanggal: ${_dateTimeController.text}');
-                                      debugPrint(
-                                          'Tanggal: ${_startTimeController.text}');
-                                      debugPrint(
-                                          'Tanggal: ${_endTimeController.text}');
-                                      debugPrint('Catatan: $_notesController');
-                                      Navigator.pushReplacementNamed(
-                                          context, '/home');
-                                    }
-                                  },
-                                  style: primaryButtonStyle,
-                                  child: Text(
-                                    'Simpan Perubahan',
-                                    style:
-                                        Theme.of(context).textTheme.labelLarge,
-                                  ),
-                                ),
-                              ),
-                            ] else ...[
-                              SizedBox(
-                                width: double.infinity,
-                                child: ElevatedButton(
-                                  onPressed: () {
-                                    if (_formKey.currentState!.validate()) {
-                                      // Perform login action
-                                      debugPrint(
-                                          'Judul: ${_titleController.text}');
-                                      debugPrint(
-                                          'Kategori: $_categoryController');
-                                      debugPrint(
-                                          'Tanggal: ${_dateTimeController.text}');
-                                      debugPrint(
-                                          'Tanggal: ${_startTimeController.text}');
-                                      debugPrint(
-                                          'Tanggal: ${_endTimeController.text}');
-                                      Navigator.pushReplacementNamed(
-                                          context, '/home');
-                                    }
-                                  },
-                                  style: primaryButtonStyle,
-                                  child: Text(
-                                    'Simpan',
-                                    style:
-                                        Theme.of(context).textTheme.labelLarge,
-                                  ),
-                                ),
-                              ),
-                            ],
                           ],
                         ),
-                      ),
+                        const SizedBox(
+                          height: 16.0,
+                        ),
+                        Text(
+                          'Tanggal',
+                          style: Theme.of(context).textTheme.bodyLarge,
+                        ),
+                        const SizedBox(
+                          height: 4.0,
+                        ),
+                        TextField(
+                          controller: _dateTimeController,
+                          decoration: InputDecoration(
+                            hintText: 'Select Date and Time',
+                            border: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(20)),
+                            filled: true,
+                            fillColor: kTextFormFieldColor,
+                            suffixIcon: const Icon(Icons.calendar_today),
+                          ),
+                          keyboardType: TextInputType.datetime,
+                          readOnly: true,
+                          onTap: () =>
+                              _selectDateTime(context, _dateTimeController),
+                        ),
+                        const SizedBox(
+                          height: 16.0,
+                        ),
+                        Row(
+                          children: [
+                            Expanded(
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    'Mulai',
+                                    style:
+                                        Theme.of(context).textTheme.bodyLarge,
+                                  ),
+                                  TextField(
+                                    controller: _startTimeController,
+                                    decoration: InputDecoration(
+                                      hintText: 'Jam Mulai',
+                                      border: OutlineInputBorder(
+                                          borderRadius:
+                                              BorderRadius.circular(20)),
+                                      filled: true,
+                                      fillColor: kTextFormFieldColor,
+                                      suffixIcon: const Icon(Icons.access_time),
+                                    ),
+                                    readOnly: true,
+                                    onTap: () => _selectTime(
+                                        context, _startTimeController),
+                                  ),
+                                ],
+                              ),
+                            ),
+                            const SizedBox(width: 16.0),
+                            Expanded(
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    'Selesai',
+                                    style:
+                                        Theme.of(context).textTheme.bodyLarge,
+                                  ),
+                                  TextField(
+                                    controller: _endTimeController,
+                                    decoration: InputDecoration(
+                                      hintText: 'Jam Selesai',
+                                      border: OutlineInputBorder(
+                                          borderRadius:
+                                              BorderRadius.circular(20)),
+                                      filled: true,
+                                      fillColor: kTextFormFieldColor,
+                                      suffixIcon: const Icon(Icons.access_time),
+                                    ),
+                                    readOnly: true,
+                                    onTap: () => _selectTime(
+                                        context, _endTimeController),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ],
+                        ),
+                        const SizedBox(
+                          height: 16.0,
+                        ),
+                        if (editFollowUp == true) ...[
+                          Text(
+                            'Catatan',
+                            style: Theme.of(context).textTheme.bodyLarge,
+                          ),
+                          const SizedBox(
+                            height: 4.0,
+                          ),
+                          TextFormField(
+                            controller: _notesController,
+                            decoration: InputDecoration(
+                                hintText: 'Masukkan catatan',
+                                border: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(20),
+                                ),
+                                filled: true,
+                                fillColor: kTextFormFieldColor),
+                            keyboardType: TextInputType.text,
+                            minLines: 5,
+                            maxLines: null,
+                          ),
+                          const SizedBox(height: 16.0),
+                          SizedBox(
+                            width: double.infinity,
+                            child: ElevatedButton(
+                              onPressed: () {
+                                if (_formKey.currentState!.validate()) {
+                                  // Perform login action
+                                  debugPrint('Judul: ${_titleController.text}');
+                                  debugPrint('Kategori: $_categoryController');
+                                  debugPrint(
+                                      'Tanggal: ${_dateTimeController.text}');
+                                  debugPrint(
+                                      'Tanggal: ${_startTimeController.text}');
+                                  debugPrint(
+                                      'Tanggal: ${_endTimeController.text}');
+                                  debugPrint('Catatan: $_notesController');
+                                  Navigator.pushReplacementNamed(
+                                      context, '/home');
+                                }
+                              },
+                              style: primaryButtonStyle,
+                              child: Text(
+                                'Simpan Perubahan',
+                                style: Theme.of(context).textTheme.labelLarge,
+                              ),
+                            ),
+                          ),
+                        ] else ...[
+                          SizedBox(
+                            width: double.infinity,
+                            child: ElevatedButton(
+                              onPressed: () {
+                                if (_formKey.currentState!.validate()) {
+                                  // Perform login action
+                                  debugPrint('Judul: ${_titleController.text}');
+                                  debugPrint('Kategori: $_categoryController');
+                                  debugPrint(
+                                      'Tanggal: ${_dateTimeController.text}');
+                                  debugPrint(
+                                      'Tanggal: ${_startTimeController.text}');
+                                  debugPrint(
+                                      'Tanggal: ${_endTimeController.text}');
+                                  Navigator.pushReplacementNamed(
+                                      context, '/home');
+                                }
+                              },
+                              style: primaryButtonStyle,
+                              child: Text(
+                                'Simpan',
+                                style: Theme.of(context).textTheme.labelLarge,
+                              ),
+                            ),
+                          ),
+                        ],
+                      ],
                     ),
-                  ],
+                  ),
                 ),
-              ),
+              ],
             ),
-          ],
+          ),
         ),
       ),
     );

@@ -61,10 +61,15 @@ class _LoginPageState extends State<LoginPage> {
                       'Masuk',
                       style: Theme.of(context).textTheme.headlineLarge,
                     ),
-                    const SizedBox(height: 16),
+                    const SizedBox(
+                      height: 16.0,
+                    ),
                     Text(
                       'Email',
                       style: Theme.of(context).textTheme.bodyLarge,
+                    ),
+                    const SizedBox(
+                      height: 4.0,
                     ),
                     TextFormField(
                       controller: _emailController,
@@ -72,7 +77,7 @@ class _LoginPageState extends State<LoginPage> {
                         hintText: 'youremail@email.com',
                         fillColor: kTextFormFieldColor,
                         border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(10),
+                          borderRadius: BorderRadius.circular(20),
                         ),
                       ),
                       keyboardType: TextInputType.emailAddress,
@@ -88,6 +93,9 @@ class _LoginPageState extends State<LoginPage> {
                       'Kata Sandi',
                       style: Theme.of(context).textTheme.bodyLarge,
                     ),
+                    const SizedBox(
+                      height: 4.0,
+                    ),
                     TextFormField(
                       controller: _passwordController,
                       obscureText: _obscureText,
@@ -95,7 +103,7 @@ class _LoginPageState extends State<LoginPage> {
                         hintText: 'Password',
                         fillColor: kTextFormFieldColor,
                         border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(10),
+                          borderRadius: BorderRadius.circular(20),
                         ),
                         suffixIcon: IconButton(
                           icon: Icon(

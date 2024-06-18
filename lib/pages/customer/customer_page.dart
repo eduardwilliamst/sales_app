@@ -27,178 +27,169 @@ class _CustomerPageState extends State<CustomerPage> {
       ),
       child: Scaffold(
         backgroundColor: Colors.transparent,
-        body: Stack(
-          children: [
-            SafeArea(
-              child: SingleChildScrollView(
-                child: Padding(
-                  padding: const EdgeInsets.all(kDefaultPadding),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.symmetric(
-                            horizontal: kDefaultPadding),
-                        child: CupertinoSearchTextField(
-                          controller: _searchController,
-                          keyboardType: TextInputType.text,
-                          backgroundColor: kTextFormFieldColor,
-                          placeholder: 'Pencarian',
-                          style: Theme.of(context)
-                              .textTheme
-                              .bodyMedium!
-                              .copyWith(fontSize: 12),
-                        ),
+        body: SafeArea(
+          child: SingleChildScrollView(
+            child: Padding(
+              padding: const EdgeInsets.all(kDefaultPadding),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Padding(
+                    padding:
+                        const EdgeInsets.symmetric(horizontal: kDefaultPadding),
+                    child: CupertinoSearchTextField(
+                      controller: _searchController,
+                      keyboardType: TextInputType.text,
+                      backgroundColor: kTextFormFieldColor,
+                      placeholder: 'Pencarian',
+                      style: Theme.of(context)
+                          .textTheme
+                          .bodyMedium!
+                          .copyWith(fontSize: 12),
+                    ),
+                  ),
+                  Container(
+                    margin: const EdgeInsets.all(kDefaultPadding),
+                    padding: const EdgeInsets.all(kDefaultPadding),
+                    decoration: BoxDecoration(
+                      gradient: const LinearGradient(
+                        begin: Alignment.topCenter,
+                        end: Alignment.bottomCenter,
+                        colors: [
+                          Color.fromRGBO(242, 242, 242, 0.5),
+                          Color.fromRGBO(212, 232, 231, 0.5)
+                        ],
+                        stops: [0.0, 1.0],
                       ),
-                      Container(
-                        margin: const EdgeInsets.all(kDefaultPadding),
-                        padding: const EdgeInsets.all(kDefaultPadding),
-                        decoration: BoxDecoration(
-                          gradient: const LinearGradient(
-                            begin: Alignment.topCenter,
-                            end: Alignment.bottomCenter,
-                            colors: [
-                              Color.fromRGBO(242, 242, 242, 1.0),
-                              Color.fromRGBO(212, 232, 231, 1.0)
-                            ],
-                            stops: [0.5, 1.0],
-                          ),
-                          borderRadius: BorderRadius.circular(10),
-                          border:
-                              Border.all(color: kSecondaryColor, width: 3.0),
-                        ),
-                        child: LayoutBuilder(
-                          builder: (context, constraints) {
-                            return Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
+                      borderRadius: BorderRadius.circular(20),
+                      border: Border.all(color: kSecondaryColor, width: 3.0),
+                    ),
+                    child: LayoutBuilder(
+                      builder: (context, constraints) {
+                        return Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
-                                Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
+                                Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
-                                    Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      children: [
-                                        Text(
-                                          'Nama',
-                                          style: Theme.of(context)
-                                              .textTheme
-                                              .headlineLarge!
-                                              .copyWith(fontSize: 17),
-                                        ),
-                                        const SizedBox(height: 10),
-                                        Text(
-                                          'No. HP',
-                                          style: Theme.of(context)
-                                              .textTheme
-                                              .headlineLarge!
-                                              .copyWith(fontSize: 17),
-                                        ),
-                                        const SizedBox(height: 10),
-                                        Text(
-                                          'No. HP',
-                                          style: Theme.of(context)
-                                              .textTheme
-                                              .headlineLarge!
-                                              .copyWith(fontSize: 17),
-                                        ),
-                                      ],
+                                    Text(
+                                      'Nama',
+                                      style: Theme.of(context)
+                                          .textTheme
+                                          .headlineLarge!
+                                          .copyWith(fontSize: 17),
                                     ),
-                                    Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      children: [
-                                        Text(
-                                          'Belum Disetujui',
-                                          style: Theme.of(context)
-                                              .textTheme
-                                              .bodyMedium,
-                                        ),
-                                        const SizedBox(height: 10),
-                                        Text(
-                                          'Belum Disetujui',
-                                          style: Theme.of(context)
-                                              .textTheme
-                                              .bodyMedium,
-                                        ),
-                                        const SizedBox(height: 10),
-                                        Text(
-                                          'Belum Disetujui',
-                                          style: Theme.of(context)
-                                              .textTheme
-                                              .bodyMedium,
-                                        ),
-                                      ],
+                                    const SizedBox(height: 10),
+                                    Text(
+                                      'No. HP',
+                                      style: Theme.of(context)
+                                          .textTheme
+                                          .headlineLarge!
+                                          .copyWith(fontSize: 17),
                                     ),
-                                    Flexible(
-                                      child: Column(
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.center,
-                                        children: [
-                                          SizedBox(
-                                            width: constraints.maxWidth * 0.3,
-                                            height: 40,
-                                            child: ElevatedButton(
-                                              onPressed: () {
-                                                Navigator.push(
-                                                  context,
-                                                  MaterialPageRoute(
-                                                    builder: (context) =>
-                                                        const FollowUpPage(),
-                                                  ),
-                                                );
-                                              },
-                                              style: primaryButtonStyle,
-                                              child: Text(
-                                                'Follow Up',
-                                                style: Theme.of(context)
-                                                    .textTheme
-                                                    .labelLarge,
-                                              ),
-                                            ),
-                                          ),
-                                          const SizedBox(height: 10),
-                                          SizedBox(
-                                            width: constraints.maxWidth * 0.3,
-                                            height: 40,
-                                            child: ElevatedButton(
-                                              onPressed: () {
-                                                Navigator.push(
-                                                  context,
-                                                  MaterialPageRoute(
-                                                    builder: (context) =>
-                                                        const EditCustomerPage(),
-                                                  ),
-                                                );
-                                              },
-                                              style: secondaryButtonStyle,
-                                              child: Text(
-                                                'Edit',
-                                                style: Theme.of(context)
-                                                    .textTheme
-                                                    .labelLarge!
-                                                    .copyWith(
-                                                        color: kPrimaryColor),
-                                              ),
-                                            ),
-                                          ),
-                                        ],
-                                      ),
+                                    const SizedBox(height: 10),
+                                    Text(
+                                      'No. HP',
+                                      style: Theme.of(context)
+                                          .textTheme
+                                          .headlineLarge!
+                                          .copyWith(fontSize: 17),
                                     ),
                                   ],
                                 ),
+                                Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text(
+                                      'Belum Disetujui',
+                                      style: Theme.of(context)
+                                          .textTheme
+                                          .bodyMedium,
+                                    ),
+                                    const SizedBox(height: 10),
+                                    Text(
+                                      'Belum Disetujui',
+                                      style: Theme.of(context)
+                                          .textTheme
+                                          .bodyMedium,
+                                    ),
+                                    const SizedBox(height: 10),
+                                    Text(
+                                      'Belum Disetujui',
+                                      style: Theme.of(context)
+                                          .textTheme
+                                          .bodyMedium,
+                                    ),
+                                  ],
+                                ),
+                                Flexible(
+                                  child: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.center,
+                                    children: [
+                                      SizedBox(
+                                        width: constraints.maxWidth * 0.3,
+                                        height: 40,
+                                        child: ElevatedButton(
+                                          onPressed: () {
+                                            Navigator.push(
+                                              context,
+                                              MaterialPageRoute(
+                                                builder: (context) =>
+                                                    const FollowUpPage(),
+                                              ),
+                                            );
+                                          },
+                                          style: primaryButtonStyle,
+                                          child: Text(
+                                            'Follow Up',
+                                            style: Theme.of(context)
+                                                .textTheme
+                                                .labelLarge,
+                                          ),
+                                        ),
+                                      ),
+                                      const SizedBox(height: 10),
+                                      SizedBox(
+                                        width: constraints.maxWidth * 0.3,
+                                        height: 40,
+                                        child: ElevatedButton(
+                                          onPressed: () {
+                                            Navigator.push(
+                                              context,
+                                              MaterialPageRoute(
+                                                builder: (context) =>
+                                                    const EditCustomerPage(),
+                                              ),
+                                            );
+                                          },
+                                          style: secondaryButtonStyle,
+                                          child: Text(
+                                            'Edit',
+                                            style: Theme.of(context)
+                                                .textTheme
+                                                .labelLarge!
+                                                .copyWith(color: kPrimaryColor),
+                                          ),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
                               ],
-                            );
-                          },
-                        ),
-                      ),
-                    ],
+                            ),
+                          ],
+                        );
+                      },
+                    ),
                   ),
-                ),
+                ],
               ),
             ),
-          ],
+          ),
         ),
         floatingActionButton: SizedBox(
           width: 100,

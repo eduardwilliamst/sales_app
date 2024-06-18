@@ -132,6 +132,9 @@ class ProfilePage extends StatelessWidget {
                         textAlign: TextAlign.left,
                       ),
                     ),
+                    const SizedBox(
+                      height: 4.0,
+                    ),
                     TextField(
                       style: Theme.of(context)
                           .textTheme
@@ -139,9 +142,9 @@ class ProfilePage extends StatelessWidget {
                           .copyWith(fontSize: 12),
                       decoration: InputDecoration(
                         filled: true,
-                        fillColor: const Color(0xFFF5F5F5),
+                        fillColor: kTextFormFieldColor,
                         border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(10),
+                          borderRadius: BorderRadius.circular(20),
                         ),
                       ),
                       readOnly: true,
@@ -155,6 +158,9 @@ class ProfilePage extends StatelessWidget {
                         textAlign: TextAlign.left,
                       ),
                     ),
+                    const SizedBox(
+                      height: 4.0,
+                    ),
                     TextField(
                       obscureText: true,
                       style: Theme.of(context)
@@ -163,9 +169,9 @@ class ProfilePage extends StatelessWidget {
                           .copyWith(fontSize: 12),
                       decoration: InputDecoration(
                         filled: true,
-                        fillColor: const Color(0xFFF5F5F5),
+                        fillColor: kTextFormFieldColor,
                         border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(10),
+                          borderRadius: BorderRadius.circular(20),
                         ),
                         suffixIcon: IconButton(
                           icon: Image.asset(

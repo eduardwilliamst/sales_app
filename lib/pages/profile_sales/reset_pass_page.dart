@@ -62,8 +62,7 @@ class _ResetPasswordPageState extends State<ResetPasswordPage> {
                   // ],
                 ),
                 image: DecorationImage(
-                  image:
-                      AssetImage('assets/images/LoginMobileBackground.png'),
+                  image: AssetImage('assets/images/LoginMobileBackground.png'),
                   alignment: Alignment.topCenter,
                   fit: BoxFit.cover,
                 ),
@@ -117,6 +116,9 @@ class _ResetPasswordPageState extends State<ResetPasswordPage> {
                       'Kata Sandi',
                       style: Theme.of(context).textTheme.bodyLarge,
                     ),
+                    const SizedBox(
+                      height: 4.0,
+                    ),
                     TextFormField(
                       controller: _passwordController,
                       obscureText: _obscureText1,
@@ -124,7 +126,7 @@ class _ResetPasswordPageState extends State<ResetPasswordPage> {
                         hintText: 'Password',
                         fillColor: kTextFormFieldColor,
                         border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(10),
+                          borderRadius: BorderRadius.circular(20),
                         ),
                         suffixIcon: IconButton(
                           icon: Icon(
@@ -151,6 +153,9 @@ class _ResetPasswordPageState extends State<ResetPasswordPage> {
                       'Ulangi Kata Sandi',
                       style: Theme.of(context).textTheme.bodyLarge,
                     ),
+                    const SizedBox(
+                      height: 4.0,
+                    ),
                     TextFormField(
                       controller: _repasswordController,
                       obscureText: _obscureText2,
@@ -158,7 +163,7 @@ class _ResetPasswordPageState extends State<ResetPasswordPage> {
                         hintText: 'Password',
                         fillColor: kTextFormFieldColor,
                         border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(10),
+                          borderRadius: BorderRadius.circular(20),
                         ),
                         suffixIcon: IconButton(
                           icon: Icon(

@@ -64,13 +64,16 @@ class _ForgetPasswordPageState extends State<ForgetPasswordPage> {
                       'Email',
                       style: Theme.of(context).textTheme.bodyLarge,
                     ),
+                    const SizedBox(
+                      height: 4.0,
+                    ),
                     TextFormField(
                       controller: _emailController,
                       decoration: InputDecoration(
                         hintText: 'Please enter your email',
                         fillColor: kTextFormFieldColor,
                         border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(10),
+                          borderRadius: BorderRadius.circular(20),
                         ),
                       ),
                       keyboardType: TextInputType.emailAddress,
