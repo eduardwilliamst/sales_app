@@ -271,13 +271,15 @@ class _HomeContentState extends State<HomeContent> {
                                 ),
                               ],
                             ),
-                            const SizedBox(height: 16),
+                            const SizedBox(
+                              height: 8.0,
+                            ),
                             Row(
                               mainAxisAlignment: MainAxisAlignment.spaceAround,
                               children: [
                                 Container(
-                                  width: screenWidth * 0.25,
-                                  height: screenHeight * 0.12,
+                                  width: screenWidth / 4,
+                                  height: screenWidth / 4,
                                   padding:
                                       const EdgeInsets.fromLTRB(8, 24, 8, 0),
                                   decoration: BoxDecoration(
@@ -315,14 +317,13 @@ class _HomeContentState extends State<HomeContent> {
                                     Navigator.push(
                                       context,
                                       MaterialPageRoute(
-                                        builder: (context) =>
-                                            const SPHPage(),
+                                        builder: (context) => const SPHPage(),
                                       ),
                                     );
                                   },
                                   child: Container(
-                                    width: screenWidth * 0.25,
-                                    height: screenHeight * 0.12,
+                                    width: screenWidth / 4,
+                                    height: screenWidth / 4,
                                     padding:
                                         const EdgeInsets.fromLTRB(8, 24, 8, 0),
                                     decoration: BoxDecoration(
@@ -357,8 +358,8 @@ class _HomeContentState extends State<HomeContent> {
                                   ),
                                 ),
                                 Container(
-                                  width: screenWidth * 0.25,
-                                  height: screenHeight * 0.12,
+                                  width: screenWidth / 4,
+                                  height: screenWidth / 4,
                                   padding:
                                       const EdgeInsets.fromLTRB(8, 24, 8, 0),
                                   decoration: BoxDecoration(
