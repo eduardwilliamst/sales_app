@@ -1,18 +1,12 @@
-2024/06/18-17:50:52.365 41c0 Reusing MANIFEST C:\Users\fathu\AppData\Local\Temp\flutter_tools.ec31b862\flutter_tools_chrome_device.53faaf06\Default\Site Characteristics Database/MANIFEST-000001
-2024/06/18-17:50:52.367 60a8 Compacting 4@0 + 0@1 files
-2024/06/18-17:50:52.431 60a8 Generated table #20@0: 1 keys, 165 bytes
-2024/06/18-17:50:52.431 60a8 Compacted 4@0 + 0@1 files => 165 bytes
-2024/06/18-17:50:52.433 60a8 compacted to: files[ 5 1 0 0 0 0 0 ]
-2024/06/18-17:50:52.434 60a8 Delete type=2 #8
-2024/06/18-17:50:52.434 60a8 Delete type=2 #13
-2024/06/18-17:50:52.435 60a8 Delete type=2 #16
-2024/06/18-17:50:52.435 60a8 Delete type=2 #17
-2024/06/18-17:50:52.437 60a8 Compacting 5@0 + 0@1 files
-2024/06/18-17:50:52.444 60a8 Generated table #21@0: 1 keys, 130 bytes
-2024/06/18-17:50:52.445 60a8 Compacted 5@0 + 0@1 files => 130 bytes
-2024/06/18-17:50:52.447 60a8 compacted to: files[ 0 2 0 0 0 0 0 ]
-2024/06/18-17:50:52.449 60a8 Delete type=2 #4
-2024/06/18-17:50:52.449 60a8 Delete type=2 #6
-2024/06/18-17:50:52.449 60a8 Delete type=2 #7
-2024/06/18-17:50:52.449 60a8 Delete type=2 #14
-2024/06/18-17:50:52.450 60a8 Delete type=2 #15
+2024/06/19-23:42:06.799 58c4 Reusing MANIFEST C:\Users\fathu\AppData\Local\Temp\flutter_tools.72779348\flutter_tools_chrome_device.94f5b017\Default\Site Characteristics Database/MANIFEST-000001
+2024/06/19-23:42:06.801 58c4 Recovering log #19
+2024/06/19-23:42:06.801 58c4 Reusing old log C:\Users\fathu\AppData\Local\Temp\flutter_tools.72779348\flutter_tools_chrome_device.94f5b017\Default\Site Characteristics Database/000019.log 
+2024/06/19-23:42:06.802 58c4 Delete type=0 #3
+2024/06/19-23:42:06.802 58c4 Delete type=2 #4
+2024/06/19-23:42:06.803 58c4 Delete type=2 #6
+2024/06/19-23:42:06.803 58c4 Delete type=0 #6
+2024/06/19-23:42:06.803 58c4 Delete type=2 #7
+2024/06/19-23:42:06.804 58c4 Delete type=2 #8
+2024/06/19-23:42:06.804 58c4 Delete type=0 #10
+2024/06/19-23:42:06.804 58c4 Delete type=2 #13
+2024/06/19-23:42:06.804 58c4 Delete type=2 #14

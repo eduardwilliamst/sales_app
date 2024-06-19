@@ -81,36 +81,28 @@ class _OrderDataPageState extends State<OrderDataPage> {
       ),
       child: Scaffold(
         backgroundColor: Colors.transparent,
+        extendBodyBehindAppBar: true,
+        appBar: AppBar(
+          backgroundColor: Colors.transparent,
+          elevation: 0,
+          leading: IconButton(
+            onPressed: () {
+              Navigator.pushReplacement(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => const HomePage(
+                          initialIndex: 1,
+                        )),
+              );
+            },
+            icon: Image.asset('assets/images/arrow-left.png', height: 30),
+          ),
+        ),
         body: SafeArea(
           child: SingleChildScrollView(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Padding(
-                  padding: const EdgeInsets.all(kDefaultPadding),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Row(
-                        children: [
-                          IconButton(
-                            onPressed: () {
-                              Navigator.pushReplacement(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => const HomePage(
-                                          initialIndex: 1,
-                                        )),
-                              );
-                            },
-                            icon: Image.asset('assets/images/arrow-left.png',
-                                height: 30),
-                          ),
-                        ],
-                      ),
-                    ],
-                  ),
-                ),
                 Container(
                   decoration: BoxDecoration(
                     color: const Color.fromRGBO(242, 242, 242, 0.4),

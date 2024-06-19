@@ -8,6 +8,7 @@ import 'package:sales_app/pages/profile_sales/profile_page.dart';
 import 'package:sales_app/pages/forget_password/new_pass_page.dart';
 import 'package:sales_app/pages/login/login_page.dart';
 import 'package:sales_app/pages/forget_password/forget_pass_page.dart';
+import 'package:sales_app/sph/sph_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -65,7 +66,7 @@ class MyApp extends StatelessWidget {
               color: kSecondaryColor),
         ),
       ),
-      home: const SplashScreen(),
+      home: const SPHHistoryPage(),
       routes: {
         '/login': (context) => const LoginPage(),
         '/forgetpassword': (context) => const ForgetPasswordPage(),

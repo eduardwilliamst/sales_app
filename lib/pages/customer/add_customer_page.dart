@@ -33,47 +33,32 @@ class _AddCustomerPageState extends State<AddCustomerPage> {
       ),
       child: Scaffold(
         backgroundColor: Colors.transparent,
+        extendBodyBehindAppBar: true,
+        appBar: AppBar(
+          backgroundColor: Colors.transparent,
+          elevation: 0,
+          leading: IconButton(
+            onPressed: () {
+              Navigator.pushReplacement(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => const HomePage(
+                          initialIndex: 4,
+                        )),
+              );
+            },
+            icon: Image.asset('assets/images/arrow-left.png', height: 30),
+          ),
+          title: Text(
+            'Tambah Customer',
+            style: Theme.of(context).textTheme.headlineLarge,
+          ),
+        ),
         body: SafeArea(
           child: SingleChildScrollView(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Padding(
-                  padding: const EdgeInsets.all(kDefaultPadding),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Row(
-                        children: [
-                          IconButton(
-                            onPressed: () {
-                              Navigator.pushReplacement(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => const HomePage(
-                                          initialIndex: 4,
-                                        )),
-                              );
-                            },
-                            icon: Image.asset('assets/images/arrow-left.png',
-                                height: 30),
-                          ),
-                          const SizedBox(width: 10),
-                          Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text('Tambah Customer',
-                                  style: Theme.of(context)
-                                      .textTheme
-                                      .headlineLarge),
-                            ],
-                          ),
-                        ],
-                      ),
-                    ],
-                  ),
-                ),
-                const SizedBox(height: 8.0),
                 Container(
                   decoration: BoxDecoration(
                     color: const Color.fromRGBO(242, 242, 242, 0.4),

@@ -37,63 +37,37 @@ class _SPHPageState extends State<SPHPage> {
       ),
       child: Scaffold(
         backgroundColor: Colors.transparent,
+        extendBodyBehindAppBar: true,
+        appBar: AppBar(
+          backgroundColor: Colors.transparent,
+          elevation: 0,
+          leading: IconButton(
+            onPressed: () {
+              Navigator.pushReplacement(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => const HomePage(
+                          initialIndex: 0,
+                        )),
+              );
+            },
+            icon: Image.asset('assets/images/arrow-left.png', height: 30),
+          ),
+          title: Text(
+            manager ? 'SPH' : 'SPH Ditolak',
+            style: Theme.of(context).textTheme.headlineLarge,
+          ),
+        ),
         body: SafeArea(
           child: SingleChildScrollView(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Padding(
-                  padding: const EdgeInsets.all(kDefaultPadding),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Row(
-                        children: [
-                          IconButton(
-                            onPressed: () {
-                              Navigator.pushReplacement(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) => const HomePage(
-                                    initialIndex: 0,
-                                  ),
-                                ),
-                              );
-                            },
-                            icon: Image.asset('assets/images/arrow-left.png',
-                                height: 30),
-                          ),
-                          const SizedBox(width: 10),
-                          Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              if (manager == true) ...[
-                                Text(
-                                  'SPH',
-                                  style:
-                                      Theme.of(context).textTheme.headlineLarge,
-                                ),
-                              ] else ...[
-                                Text(
-                                  'SPH Ditolak',
-                                  style:
-                                      Theme.of(context).textTheme.headlineLarge,
-                                ),
-                              ],
-                            ],
-                          ),
-                        ],
-                      ),
-                    ],
-                  ),
-                ),
                 if (manager == true) ...[
                   Padding(
-                    padding: const EdgeInsets.fromLTRB(
-                      kDefaultPadding,
-                      0,
-                      kDefaultPadding,
-                      kDefaultPadding,
+                    padding: const EdgeInsets.symmetric(
+                      vertical: 0,
+                      horizontal: kDefaultPadding,
                     ),
                     child: LayoutBuilder(
                       builder: (context, constraints) {
@@ -143,7 +117,6 @@ class _SPHPageState extends State<SPHPage> {
                         margin: const EdgeInsets.all(kDefaultPadding),
                         padding: const EdgeInsets.all(kDefaultPadding),
                         decoration: BoxDecoration(
-                          // color: const Color.fromRGBO(242, 242, 242, 0.4),
                           gradient: const LinearGradient(
                             begin: Alignment.topCenter,
                             end: Alignment.bottomCenter,
@@ -455,18 +428,18 @@ class SPHHistoryPage extends StatefulWidget {
 class _SPHHistoryPageState extends State<SPHHistoryPage>
     with SingleTickerProviderStateMixin {
   late TabController _tabController;
-  Color _indicatorColor = Colors.red;
+  Color _indicatorColor = kErrorColor;
 
   @override
   void initState() {
     super.initState();
-    _tabController = TabController(length: 2, vsync: this);
+    _tabController = TabController(initialIndex: 0, length: 2, vsync: this);
     _tabController.addListener(_handleTabSelection);
   }
 
   void _handleTabSelection() {
     setState(() {
-      _indicatorColor = _tabController.index == 0 ? kErrorColor : Colors.green;
+      _indicatorColor = _tabController.index == 0 ? kErrorColor : kSuccessColor;
     });
   }
 
@@ -498,305 +471,299 @@ class _SPHHistoryPageState extends State<SPHHistoryPage>
       ),
       child: Scaffold(
         backgroundColor: Colors.transparent,
-        body: SafeArea(
-          child: SingleChildScrollView(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Padding(
-                  padding: const EdgeInsets.all(
-                      16.0), // replace kDefaultPadding with your padding value
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Row(
-                        children: [
-                          IconButton(
-                            onPressed: () {
-                              Navigator.pushReplacement(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) => const SPHPage(),
-                                ),
-                              );
-                            },
-                            icon: Image.asset('assets/images/arrow-left.png',
-                                height: 30),
-                          ),
-                          const SizedBox(width: 10),
-                          Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                'SPH',
-                                style:
-                                    Theme.of(context).textTheme.headlineLarge,
-                              ),
-                            ],
-                          ),
-                        ],
-                      ),
-                    ],
-                  ),
+        extendBodyBehindAppBar: true,
+        appBar: AppBar(
+          backgroundColor: Colors.transparent,
+          elevation: 0,
+          title: Text(
+            'SPH',
+            style: Theme.of(context).textTheme.headlineLarge,
+          ),
+          leading: IconButton(
+            onPressed: () {
+              Navigator.pushReplacement(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const SPHPage(),
                 ),
-                DefaultTabController(
-                  length: 2,
-                  initialIndex: 0,
-                  child: Expanded(
-                    child: Column(
-                      children: [
-                        TabBar(
-                          controller: _tabController,
-                          labelStyle: Theme.of(context).textTheme.bodyLarge,
-                          indicatorColor: _indicatorColor,
-                          tabs: const [
-                            Tab(text: 'Ditolak'),
-                            Tab(text: 'Disetujui'),
-                          ],
-                        ),
-                        SizedBox(
-                          height: 1000,
-                          child: TabBarView(
-                            controller: _tabController,
-                            children: [
-                              Container(
-                                margin: const EdgeInsets.all(kDefaultPadding),
-                                padding: const EdgeInsets.all(kDefaultPadding),
-                                decoration: BoxDecoration(
-                                  // color: const Color.fromRGBO(242, 242, 242, 0.4),
-                                  gradient: const LinearGradient(
-                                    begin: Alignment.topCenter,
-                                    end: Alignment.bottomCenter,
-                                    colors: [
-                                      Color.fromRGBO(242, 242, 242, 0.5),
-                                      Color.fromRGBO(212, 232, 231, 0.5)
-                                    ],
-                                    stops: [0.0, 1.0],
-                                  ),
-                                  borderRadius: BorderRadius.circular(20),
-                                  border: Border.all(
-                                      color: kSecondaryColor, width: 3.0),
-                                ),
-                                child: LayoutBuilder(
-                                  builder: (context, constraints) {
-                                    return Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      children: [
-                                        Row(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.spaceBetween,
-                                          children: [
-                                            Column(
-                                              crossAxisAlignment:
-                                                  CrossAxisAlignment.start,
-                                              children: [
-                                                Text(
-                                                  'Sales',
-                                                  style: Theme.of(context)
-                                                      .textTheme
-                                                      .headlineLarge!
-                                                      .copyWith(fontSize: 17),
-                                                ),
-                                                const SizedBox(height: 10),
-                                                Text(
-                                                  'Customer',
-                                                  style: Theme.of(context)
-                                                      .textTheme
-                                                      .headlineLarge!
-                                                      .copyWith(fontSize: 17),
-                                                ),
-                                                const SizedBox(height: 10),
-                                                Text(
-                                                  'Kavling',
-                                                  style: Theme.of(context)
-                                                      .textTheme
-                                                      .headlineLarge!
-                                                      .copyWith(fontSize: 17),
-                                                ),
-                                              ],
-                                            ),
-                                            Column(
-                                              crossAxisAlignment:
-                                                  CrossAxisAlignment.start,
-                                              children: [
-                                                Text(
-                                                  'Nama Sales',
-                                                  style: Theme.of(context)
-                                                      .textTheme
-                                                      .bodyMedium,
-                                                ),
-                                                const SizedBox(height: 10),
-                                                Text(
-                                                  'Nama Customer',
-                                                  style: Theme.of(context)
-                                                      .textTheme
-                                                      .bodyMedium,
-                                                ),
-                                                const SizedBox(height: 10),
-                                                Text(
-                                                  'Nomor Kavling',
-                                                  style: Theme.of(context)
-                                                      .textTheme
-                                                      .bodyMedium,
-                                                ),
-                                              ],
-                                            ),
-                                            Flexible(
-                                              child: Column(
-                                                crossAxisAlignment:
-                                                    CrossAxisAlignment.center,
-                                                children: [
-                                                  SizedBox(
-                                                    width:
-                                                        constraints.maxWidth *
-                                                            0.3,
-                                                    height: 40,
-                                                    child: ElevatedButton(
-                                                      onPressed: () {},
-                                                      style: errorButtonStyle,
-                                                      child: Text(
-                                                        'Ditolak',
-                                                        style: Theme.of(context)
-                                                            .textTheme
-                                                            .labelLarge,
-                                                      ),
-                                                    ),
-                                                  ),
-                                                ],
-                                              ),
-                                            ),
-                                          ],
-                                        ),
-                                      ],
-                                    );
-                                  },
-                                ),
-                              ),
-                              Container(
-                                margin: const EdgeInsets.all(kDefaultPadding),
-                                padding: const EdgeInsets.all(kDefaultPadding),
-                                decoration: BoxDecoration(
-                                  // color: const Color.fromRGBO(242, 242, 242, 0.4),
-                                  gradient: const LinearGradient(
-                                    begin: Alignment.topCenter,
-                                    end: Alignment.bottomCenter,
-                                    colors: [
-                                      Color.fromRGBO(242, 242, 242, 0.5),
-                                      Color.fromRGBO(212, 232, 231, 0.5)
-                                    ],
-                                    stops: [0.0, 1.0],
-                                  ),
-                                  borderRadius: BorderRadius.circular(20),
-                                  border: Border.all(
-                                      color: kSecondaryColor, width: 3.0),
-                                ),
-                                child: LayoutBuilder(
-                                  builder: (context, constraints) {
-                                    return Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      children: [
-                                        Row(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.spaceBetween,
-                                          children: [
-                                            Column(
-                                              crossAxisAlignment:
-                                                  CrossAxisAlignment.start,
-                                              children: [
-                                                Text(
-                                                  'Sales',
-                                                  style: Theme.of(context)
-                                                      .textTheme
-                                                      .headlineLarge!
-                                                      .copyWith(fontSize: 17),
-                                                ),
-                                                const SizedBox(height: 10),
-                                                Text(
-                                                  'Customer',
-                                                  style: Theme.of(context)
-                                                      .textTheme
-                                                      .headlineLarge!
-                                                      .copyWith(fontSize: 17),
-                                                ),
-                                                const SizedBox(height: 10),
-                                                Text(
-                                                  'Kavling',
-                                                  style: Theme.of(context)
-                                                      .textTheme
-                                                      .headlineLarge!
-                                                      .copyWith(fontSize: 17),
-                                                ),
-                                              ],
-                                            ),
-                                            Column(
-                                              crossAxisAlignment:
-                                                  CrossAxisAlignment.start,
-                                              children: [
-                                                Text(
-                                                  'Nama Sales',
-                                                  style: Theme.of(context)
-                                                      .textTheme
-                                                      .bodyMedium,
-                                                ),
-                                                const SizedBox(height: 10),
-                                                Text(
-                                                  'Nama Customer',
-                                                  style: Theme.of(context)
-                                                      .textTheme
-                                                      .bodyMedium,
-                                                ),
-                                                const SizedBox(height: 10),
-                                                Text(
-                                                  'Nomor Kavling',
-                                                  style: Theme.of(context)
-                                                      .textTheme
-                                                      .bodyMedium,
-                                                ),
-                                              ],
-                                            ),
-                                            Flexible(
-                                              child: Column(
-                                                crossAxisAlignment:
-                                                    CrossAxisAlignment.center,
-                                                children: [
-                                                  SizedBox(
-                                                    width:
-                                                        constraints.maxWidth *
-                                                            0.3,
-                                                    height: 40,
-                                                    child: ElevatedButton(
-                                                      onPressed: () {},
-                                                      style: successButtonStyle,
-                                                      child: Text(
-                                                        'Disetujui',
-                                                        style: Theme.of(context)
-                                                            .textTheme
-                                                            .labelLarge,
-                                                      ),
-                                                    ),
-                                                  ),
-                                                ],
-                                              ),
-                                            ),
-                                          ],
-                                        ),
-                                      ],
-                                    );
-                                  },
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-              ],
+              );
+            },
+            icon: Image.asset(
+              'assets/images/arrow-left.png',
+              height: 30,
             ),
           ),
+          bottom: TabBar(
+            controller: _tabController,
+            labelStyle: Theme.of(context)
+                .textTheme
+                .bodyLarge!
+                .copyWith(fontWeight: FontWeight.w900),
+            unselectedLabelColor: Colors.black54,
+            indicatorColor: _indicatorColor,
+            indicatorSize: TabBarIndicatorSize.tab,
+            tabs: const [
+              Tab(text: 'Ditolak'),
+              Tab(text: 'Disetujui'),
+            ],
+          ),
+        ),
+        body: TabBarView(
+          controller: _tabController,
+          children: [
+            SafeArea(
+              child: Column(
+                children: [
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const SPHDataPage(),
+                        ),
+                      );
+                    },
+                    child: Container(
+                      margin: const EdgeInsets.all(kDefaultPadding),
+                      padding: const EdgeInsets.all(kDefaultPadding),
+                      decoration: BoxDecoration(
+                        // color: const Color.fromRGBO(242, 242, 242, 0.4),
+                        gradient: const LinearGradient(
+                          begin: Alignment.topCenter,
+                          end: Alignment.bottomCenter,
+                          colors: [
+                            Color.fromRGBO(242, 242, 242, 0.5),
+                            Color.fromRGBO(212, 232, 231, 0.5)
+                          ],
+                          stops: [0.0, 1.0],
+                        ),
+                        borderRadius: BorderRadius.circular(20),
+                        border: Border.all(color: kSecondaryColor, width: 3.0),
+                      ),
+                      child: LayoutBuilder(
+                        builder: (_, constraints) {
+                          return Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Text(
+                                        'Sales',
+                                        style: Theme.of(context)
+                                            .textTheme
+                                            .headlineLarge!
+                                            .copyWith(fontSize: 17),
+                                      ),
+                                      const SizedBox(height: 10),
+                                      Text(
+                                        'Customer',
+                                        style: Theme.of(context)
+                                            .textTheme
+                                            .headlineLarge!
+                                            .copyWith(fontSize: 17),
+                                      ),
+                                      const SizedBox(height: 10),
+                                      Text(
+                                        'Kavling',
+                                        style: Theme.of(context)
+                                            .textTheme
+                                            .headlineLarge!
+                                            .copyWith(fontSize: 17),
+                                      ),
+                                    ],
+                                  ),
+                                  Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Text(
+                                        'Nama Sales',
+                                        style: Theme.of(context)
+                                            .textTheme
+                                            .bodyMedium,
+                                      ),
+                                      const SizedBox(height: 10),
+                                      Text(
+                                        'Nama Customer',
+                                        style: Theme.of(context)
+                                            .textTheme
+                                            .bodyMedium,
+                                      ),
+                                      const SizedBox(height: 10),
+                                      Text(
+                                        'Nomor Kavling',
+                                        style: Theme.of(context)
+                                            .textTheme
+                                            .bodyMedium,
+                                      ),
+                                    ],
+                                  ),
+                                  Flexible(
+                                    child: Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.center,
+                                      children: [
+                                        SizedBox(
+                                          width: constraints.maxWidth * 0.3,
+                                          height: 40,
+                                          child: ElevatedButton(
+                                            onPressed: () {},
+                                            style: errorButtonStyle,
+                                            child: Text(
+                                              'Ditolak',
+                                              style: Theme.of(context)
+                                                  .textTheme
+                                                  .labelLarge,
+                                            ),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ],
+                          );
+                        },
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            SafeArea(
+              child: Column(
+                children: [
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const SPHDataPage(),
+                        ),
+                      );
+                    },
+                    child: Container(
+                      margin: const EdgeInsets.all(kDefaultPadding),
+                      padding: const EdgeInsets.all(kDefaultPadding),
+                      decoration: BoxDecoration(
+                        // color: const Color.fromRGBO(242, 242, 242, 0.4),
+                        gradient: const LinearGradient(
+                          begin: Alignment.topCenter,
+                          end: Alignment.bottomCenter,
+                          colors: [
+                            Color.fromRGBO(242, 242, 242, 0.5),
+                            Color.fromRGBO(212, 232, 231, 0.5)
+                          ],
+                          stops: [0.0, 1.0],
+                        ),
+                        borderRadius: BorderRadius.circular(20),
+                        border: Border.all(color: kSecondaryColor, width: 3.0),
+                      ),
+                      child: LayoutBuilder(
+                        builder: (_, constraints) {
+                          return Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Text(
+                                        'Sales',
+                                        style: Theme.of(context)
+                                            .textTheme
+                                            .headlineLarge!
+                                            .copyWith(fontSize: 17),
+                                      ),
+                                      const SizedBox(height: 10),
+                                      Text(
+                                        'Customer',
+                                        style: Theme.of(context)
+                                            .textTheme
+                                            .headlineLarge!
+                                            .copyWith(fontSize: 17),
+                                      ),
+                                      const SizedBox(height: 10),
+                                      Text(
+                                        'Kavling',
+                                        style: Theme.of(context)
+                                            .textTheme
+                                            .headlineLarge!
+                                            .copyWith(fontSize: 17),
+                                      ),
+                                    ],
+                                  ),
+                                  Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Text(
+                                        'Nama Sales',
+                                        style: Theme.of(context)
+                                            .textTheme
+                                            .bodyMedium,
+                                      ),
+                                      const SizedBox(height: 10),
+                                      Text(
+                                        'Nama Customer',
+                                        style: Theme.of(context)
+                                            .textTheme
+                                            .bodyMedium,
+                                      ),
+                                      const SizedBox(height: 10),
+                                      Text(
+                                        'Nomor Kavling',
+                                        style: Theme.of(context)
+                                            .textTheme
+                                            .bodyMedium,
+                                      ),
+                                    ],
+                                  ),
+                                  Flexible(
+                                    child: Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.center,
+                                      children: [
+                                        SizedBox(
+                                          width: constraints.maxWidth * 0.3,
+                                          height: 40,
+                                          child: ElevatedButton(
+                                            onPressed: () {},
+                                            style: successButtonStyle,
+                                            child: Text(
+                                              'Disetujui',
+                                              style: Theme.of(context)
+                                                  .textTheme
+                                                  .labelLarge,
+                                            ),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ],
+                          );
+                        },
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ],
         ),
       ),
     );

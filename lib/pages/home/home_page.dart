@@ -95,8 +95,8 @@ class _HomeContentState extends State<HomeContent> {
 
   @override
   Widget build(BuildContext context) {
-    final double screenHeight = MediaQuery.of(context).size.height;
-    final double screenWidth = MediaQuery.of(context).size.width;
+    // final double screenHeight = MediaQuery.of(context).size.height;
+    // final double screenWidth = MediaQuery.of(context).size.width;
 
     return Container(
       decoration: const BoxDecoration(
@@ -117,7 +117,7 @@ class _HomeContentState extends State<HomeContent> {
                     CustomPaint(
                       painter: HomeCardBorderPainter(),
                       child: Container(
-                        height: screenHeight * 0.29,
+                        height: 255,
                       ),
                     ),
                     ClipPath(
@@ -125,7 +125,7 @@ class _HomeContentState extends State<HomeContent> {
                       clipBehavior: Clip.antiAlias,
                       child: Container(
                         width: double.infinity,
-                        height: screenHeight * 0.29,
+                        height: 255,
                         padding: const EdgeInsets.all(kDefaultPadding),
                         decoration: const BoxDecoration(
                           gradient: LinearGradient(
@@ -272,14 +272,14 @@ class _HomeContentState extends State<HomeContent> {
                               ],
                             ),
                             const SizedBox(
-                              height: 8.0,
+                              height: 16.0,
                             ),
                             Row(
                               mainAxisAlignment: MainAxisAlignment.spaceAround,
                               children: [
                                 Container(
-                                  width: screenWidth / 4,
-                                  height: screenWidth / 4,
+                                  width: 100,
+                                  height: 100,
                                   padding:
                                       const EdgeInsets.fromLTRB(8, 24, 8, 0),
                                   decoration: BoxDecoration(
@@ -322,8 +322,8 @@ class _HomeContentState extends State<HomeContent> {
                                     );
                                   },
                                   child: Container(
-                                    width: screenWidth / 4,
-                                    height: screenWidth / 4,
+                                    width: 100,
+                                    height: 100,
                                     padding:
                                         const EdgeInsets.fromLTRB(8, 24, 8, 0),
                                     decoration: BoxDecoration(
@@ -358,8 +358,8 @@ class _HomeContentState extends State<HomeContent> {
                                   ),
                                 ),
                                 Container(
-                                  width: screenWidth / 4,
-                                  height: screenWidth / 4,
+                                  width: 100,
+                                  height: 100,
                                   padding:
                                       const EdgeInsets.fromLTRB(8, 24, 8, 0),
                                   decoration: BoxDecoration(
@@ -401,101 +401,102 @@ class _HomeContentState extends State<HomeContent> {
                   ],
                 ),
                 Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
+                    if (manager == true) ...[
+                      Container(
+                        margin: const EdgeInsets.fromLTRB(
+                          kDefaultPadding,
+                          0,
+                          kDefaultPadding,
+                          kDefaultPadding,
+                        ),
+                        padding: const EdgeInsets.fromLTRB(
+                          kDefaultPadding,
+                          kDefaultPadding,
+                          kDefaultPadding,
+                          kDefaultPadding,
+                        ),
+                        decoration: BoxDecoration(
+                          color: const Color.fromRGBO(242, 242, 242, 0.4),
+                          borderRadius: BorderRadius.circular(20),
+                        ),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              'Jumlah Customer',
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .headlineLarge!
+                                  .copyWith(
+                                    fontSize: 20,
+                                  ),
+                            ),
+                            AspectRatio(
+                              aspectRatio: 2.78,
+                              child: LineChart(
+                                LineChartData(
+                                  titlesData: const FlTitlesData(
+                                    leftTitles: AxisTitles(
+                                      sideTitles: SideTitles(showTitles: false),
+                                    ),
+                                    rightTitles: AxisTitles(
+                                      sideTitles: SideTitles(showTitles: false),
+                                    ),
+                                    topTitles: AxisTitles(
+                                      sideTitles: SideTitles(showTitles: false),
+                                    ),
+                                    bottomTitles: AxisTitles(
+                                      sideTitles: SideTitles(showTitles: true),
+                                    ),
+                                  ),
+                                  borderData: FlBorderData(
+                                    show: false,
+                                  ),
+                                  gridData: const FlGridData(show: false),
+                                  lineBarsData: [
+                                    LineChartBarData(
+                                      spots: const [
+                                        FlSpot(0, 3),
+                                        FlSpot(2, 2),
+                                        FlSpot(4, 4),
+                                        FlSpot(6, 10),
+                                      ],
+                                      isCurved: true,
+                                      isStrokeCapRound: true,
+                                      dotData: const FlDotData(show: true),
+                                      belowBarData: BarAreaData(
+                                        show: true,
+                                        gradient: const LinearGradient(
+                                          begin: Alignment.topCenter,
+                                          end: Alignment.bottomCenter,
+                                          colors: [
+                                            Color.fromRGBO(197, 229, 228, 1.0),
+                                            Color.fromRGBO(244, 244, 244, 0.0),
+                                          ],
+                                          stops: [0.0, 1.0],
+                                        ),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
                     Container(
-                      padding: const EdgeInsets.all(kDefaultPadding),
+                      margin: const EdgeInsets.fromLTRB(
+                        kDefaultPadding,
+                        0,
+                        kDefaultPadding,
+                        kDefaultPadding,
+                      ),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          if (manager == true) ...[
-                            Container(
-                              // width: double.infinity,
-                              // height: screenHeight * 0.24,
-                              padding:
-                                  const EdgeInsets.fromLTRB(16, 16, 16, 16),
-                              decoration: BoxDecoration(
-                                color: const Color.fromRGBO(242, 242, 242, 0.4),
-                                borderRadius: BorderRadius.circular(20),
-                              ),
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Text(
-                                    'Jumlah Customer',
-                                    style: Theme.of(context)
-                                        .textTheme
-                                        .headlineLarge!
-                                        .copyWith(
-                                          fontSize: 20,
-                                        ),
-                                  ),
-                                  AspectRatio(
-                                    aspectRatio: 1.7,
-                                    child: LineChart(
-                                      LineChartData(
-                                        titlesData: const FlTitlesData(
-                                          leftTitles: AxisTitles(
-                                            sideTitles:
-                                                SideTitles(showTitles: false),
-                                          ),
-                                          rightTitles: AxisTitles(
-                                            sideTitles:
-                                                SideTitles(showTitles: false),
-                                          ),
-                                          topTitles: AxisTitles(
-                                            sideTitles:
-                                                SideTitles(showTitles: false),
-                                          ),
-                                          bottomTitles: AxisTitles(
-                                            sideTitles:
-                                                SideTitles(showTitles: true),
-                                          ),
-                                        ),
-                                        borderData: FlBorderData(
-                                          show: true,
-                                          border: Border.all(
-                                              color: const Color(0xff37434d),
-                                              width: 1),
-                                        ),
-                                        gridData: const FlGridData(show: false),
-                                        lineBarsData: [
-                                          LineChartBarData(
-                                            spots: const [
-                                              FlSpot(0, 3),
-                                              FlSpot(2, 2),
-                                              FlSpot(4, 4),
-                                              FlSpot(6, 10),
-                                            ],
-                                            isCurved: true,
-                                            isStrokeCapRound: true,
-                                            dotData:
-                                                const FlDotData(show: true),
-                                            belowBarData: BarAreaData(
-                                              show: true,
-                                              gradient: const LinearGradient(
-                                                begin: Alignment.topCenter,
-                                                end: Alignment.bottomCenter,
-                                                colors: [
-                                                  Color.fromRGBO(
-                                                      197, 229, 228, 1.0),
-                                                  Color.fromRGBO(
-                                                      244, 244, 244, 0.0),
-                                                ],
-                                                stops: [0.0, 1.0],
-                                              ),
-                                            ),
-                                          ),
-                                        ],
-                                      ),
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                            const SizedBox(
-                              height: 16.0,
-                            ),
-                          ],
                           Text(
                             'E-Catalog',
                             style: Theme.of(context)
@@ -507,7 +508,7 @@ class _HomeContentState extends State<HomeContent> {
                           ),
                           const SizedBox(height: 10),
                           Container(
-                            height: screenHeight * 0.24,
+                            height: 200,
                             decoration: BoxDecoration(
                               image: const DecorationImage(
                                 image: AssetImage('assets/images/catalog.png'),
@@ -516,294 +517,301 @@ class _HomeContentState extends State<HomeContent> {
                               borderRadius: BorderRadius.circular(20),
                             ),
                           ),
-                          const SizedBox(height: 10),
-                          Container(
-                            height: screenHeight * 0.24,
-                            decoration: BoxDecoration(
-                              color: Colors.grey[300],
-                              borderRadius: BorderRadius.circular(20),
-                            ),
-                          ),
-                          const SizedBox(height: 10),
-                          GestureDetector(
-                            onTap: () {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) =>
-                                      const HomePage(initialIndex: 3),
-                                ),
-                              );
-                            },
-                            child: Container(
-                              height: screenHeight * 0.24,
-                              decoration: BoxDecoration(
-                                color: Colors.grey[300],
-                                borderRadius: BorderRadius.circular(20),
-                                image: const DecorationImage(
-                                    image:
-                                        AssetImage('assets/images/Sitemap.png'),
-                                    fit: BoxFit.fill),
-                              ),
-                            ),
-                          ),
                         ],
                       ),
                     ),
                     Container(
-                      padding: const EdgeInsets.all(kDefaultPadding),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Text(
-                                    'Jadwal Hari Ini',
-                                    style: Theme.of(context)
-                                        .textTheme
-                                        .headlineLarge!
-                                        .copyWith(fontSize: 20),
-                                  ),
-                                  Text(
-                                    getFormattedDate(DateTime.now()),
-                                    style: Theme.of(context)
-                                        .textTheme
-                                        .bodyMedium!
-                                        .copyWith(fontSize: 14),
-                                  ),
-                                ],
-                              ),
-                              IconButton(
-                                onPressed: () {
-                                  Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) =>
-                                            const SchedulePage()),
-                                  );
-                                },
-                                icon: const Icon(Icons.date_range,
-                                    size: 30, color: Colors.black),
-                              ),
-                            ],
+                      margin: const EdgeInsets.fromLTRB(
+                        kDefaultPadding,
+                        0,
+                        kDefaultPadding,
+                        kDefaultPadding,
+                      ),
+                      height: 200,
+                      decoration: BoxDecoration(
+                        color: Colors.grey[300],
+                        borderRadius: BorderRadius.circular(20),
+                      ),
+                    ),
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) =>
+                                const HomePage(initialIndex: 3),
                           ),
-                          const SizedBox(height: 10),
-                          Container(
-                            width: double.infinity,
-                            height: screenHeight * 0.08,
-                            decoration: const BoxDecoration(
-                              color: Colors.transparent,
-                            ),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              crossAxisAlignment: CrossAxisAlignment.center,
-                              children: [
-                                Expanded(
-                                  flex: 1,
-                                  child: Container(
-                                    height: screenHeight * 0.08,
-                                    padding: const EdgeInsets.fromLTRB(
-                                        kDefaultPadding, 0, kDefaultPadding, 0),
-                                    decoration: const BoxDecoration(
-                                      color: Color.fromRGBO(180, 198, 193, 1.0),
-                                      borderRadius: BorderRadius.only(
-                                        topLeft: Radius.circular(20),
-                                        bottomLeft: Radius.circular(20),
-                                      ),
-                                    ),
-                                    child: Center(
-                                      child: Text(
-                                        '13.00 - 14.00',
-                                        style: Theme.of(context)
-                                            .textTheme
-                                            .headlineLarge!
-                                            .copyWith(fontSize: 16),
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                                Expanded(
-                                  flex: 2,
-                                  child: Container(
-                                    height: screenHeight * 0.08,
-                                    padding: const EdgeInsets.fromLTRB(
-                                        kDefaultPadding, 0, kDefaultPadding, 0),
-                                    decoration: const BoxDecoration(
-                                      color: Color.fromRGBO(209, 220, 214, 1.0),
-                                      borderRadius: BorderRadius.only(
-                                        topRight: Radius.circular(20),
-                                        bottomRight: Radius.circular(20),
-                                      ),
-                                    ),
-                                    child: const Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.center,
-                                      children: [
-                                        Text(
-                                          'Follow Up SPJ',
-                                          style: TextStyle(fontSize: 14),
-                                        ),
-                                        Text(
-                                          'Nama Customer - Tempat',
-                                          style: TextStyle(fontSize: 14),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                          const SizedBox(
-                            height: 10.0,
-                          ),
-                          Container(
-                            width: double.infinity,
-                            height: screenHeight * 0.08,
-                            decoration: const BoxDecoration(
-                              color: Colors.transparent,
-                            ),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              crossAxisAlignment: CrossAxisAlignment.center,
-                              children: [
-                                Expanded(
-                                  flex: 1,
-                                  child: Container(
-                                    height: screenHeight * 0.08,
-                                    padding: const EdgeInsets.fromLTRB(
-                                        kDefaultPadding, 0, kDefaultPadding, 0),
-                                    decoration: const BoxDecoration(
-                                      color: Color.fromRGBO(180, 198, 193, 1.0),
-                                      borderRadius: BorderRadius.only(
-                                        topLeft: Radius.circular(20),
-                                        bottomLeft: Radius.circular(20),
-                                      ),
-                                    ),
-                                    child: Center(
-                                      child: Text(
-                                        '13.00 - 14.00',
-                                        style: Theme.of(context)
-                                            .textTheme
-                                            .headlineLarge!
-                                            .copyWith(fontSize: 16),
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                                Expanded(
-                                  flex: 2,
-                                  child: Container(
-                                    height: screenHeight * 0.08,
-                                    padding: const EdgeInsets.fromLTRB(
-                                        kDefaultPadding, 0, kDefaultPadding, 0),
-                                    decoration: const BoxDecoration(
-                                      color: Color.fromRGBO(209, 220, 214, 1.0),
-                                      borderRadius: BorderRadius.only(
-                                        topRight: Radius.circular(20),
-                                        bottomRight: Radius.circular(20),
-                                      ),
-                                    ),
-                                    child: const Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.center,
-                                      children: [
-                                        Text(
-                                          'Follow Up SPJ',
-                                          style: TextStyle(fontSize: 14),
-                                        ),
-                                        Text(
-                                          'Nama Customer - Tempat',
-                                          style: TextStyle(fontSize: 14),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                          const SizedBox(height: 10.0),
-                          Container(
-                            width: double.infinity,
-                            height: screenHeight * 0.08,
-                            decoration: const BoxDecoration(
-                              color: Colors.transparent,
-                            ),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              crossAxisAlignment: CrossAxisAlignment.center,
-                              children: [
-                                Expanded(
-                                  flex: 1,
-                                  child: Container(
-                                    height: screenHeight * 0.08,
-                                    padding: const EdgeInsets.fromLTRB(
-                                        kDefaultPadding, 0, kDefaultPadding, 0),
-                                    decoration: const BoxDecoration(
-                                      color: Color.fromRGBO(180, 198, 193, 1.0),
-                                      borderRadius: BorderRadius.only(
-                                        topLeft: Radius.circular(20),
-                                        bottomLeft: Radius.circular(20),
-                                      ),
-                                    ),
-                                    child: Center(
-                                      child: Text(
-                                        '13.00 - 14.00',
-                                        style: Theme.of(context)
-                                            .textTheme
-                                            .headlineLarge!
-                                            .copyWith(fontSize: 16),
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                                Expanded(
-                                  flex: 2,
-                                  child: Container(
-                                    height: screenHeight * 0.08,
-                                    padding: const EdgeInsets.fromLTRB(
-                                        kDefaultPadding, 0, kDefaultPadding, 0),
-                                    decoration: const BoxDecoration(
-                                      color: Color.fromRGBO(209, 220, 214, 1.0),
-                                      borderRadius: BorderRadius.only(
-                                        topRight: Radius.circular(20),
-                                        bottomRight: Radius.circular(20),
-                                      ),
-                                    ),
-                                    child: const Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.center,
-                                      children: [
-                                        Text(
-                                          'Follow Up SPJ',
-                                          style: TextStyle(fontSize: 14),
-                                        ),
-                                        Text(
-                                          'Nama Customer - Tempat',
-                                          style: TextStyle(fontSize: 14),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                        ],
+                        );
+                      },
+                      child: Container(
+                        height: 200,
+                        margin: const EdgeInsets.fromLTRB(
+                          kDefaultPadding,
+                          0,
+                          kDefaultPadding,
+                          kDefaultPadding,
+                        ),
+                        decoration: BoxDecoration(
+                          color: Colors.grey[300],
+                          borderRadius: BorderRadius.circular(20),
+                          image: const DecorationImage(
+                              image: AssetImage('assets/images/Sitemap.png'),
+                              fit: BoxFit.fill),
+                        ),
                       ),
                     ),
                   ],
+                ),
+                Container(
+                  margin: const EdgeInsets.fromLTRB(
+                    kDefaultPadding,
+                    0,
+                    kDefaultPadding,
+                    kDefaultPadding,
+                  ),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                'Jadwal Hari Ini',
+                                style: Theme.of(context)
+                                    .textTheme
+                                    .headlineLarge!
+                                    .copyWith(fontSize: 20),
+                              ),
+                              Text(
+                                getFormattedDate(DateTime.now()),
+                                style: Theme.of(context)
+                                    .textTheme
+                                    .bodyMedium!
+                                    .copyWith(fontSize: 14),
+                              ),
+                            ],
+                          ),
+                          IconButton(
+                            onPressed: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => const SchedulePage()),
+                              );
+                            },
+                            icon: const Icon(Icons.date_range,
+                                size: 30, color: Colors.black),
+                          ),
+                        ],
+                      ),
+                      const SizedBox(height: 10),
+                      Container(
+                        width: double.infinity,
+                        height: 60,
+                        decoration: const BoxDecoration(
+                          color: Colors.transparent,
+                        ),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            Expanded(
+                              flex: 1,
+                              child: Container(
+                                height: 60,
+                                padding: const EdgeInsets.fromLTRB(
+                                    kDefaultPadding, 0, kDefaultPadding, 0),
+                                decoration: const BoxDecoration(
+                                  color: Color.fromRGBO(180, 198, 193, 1.0),
+                                  borderRadius: BorderRadius.only(
+                                    topLeft: Radius.circular(20),
+                                    bottomLeft: Radius.circular(20),
+                                  ),
+                                ),
+                                child: Center(
+                                  child: Text(
+                                    '13.00 - 14.00',
+                                    style: Theme.of(context)
+                                        .textTheme
+                                        .headlineLarge!
+                                        .copyWith(fontSize: 16),
+                                  ),
+                                ),
+                              ),
+                            ),
+                            Expanded(
+                              flex: 2,
+                              child: Container(
+                                height: 60,
+                                padding: const EdgeInsets.fromLTRB(
+                                    kDefaultPadding, 0, kDefaultPadding, 0),
+                                decoration: const BoxDecoration(
+                                  color: Color.fromRGBO(209, 220, 214, 1.0),
+                                  borderRadius: BorderRadius.only(
+                                    topRight: Radius.circular(20),
+                                    bottomRight: Radius.circular(20),
+                                  ),
+                                ),
+                                child: const Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Text(
+                                      'Follow Up SPJ',
+                                      style: TextStyle(fontSize: 14),
+                                    ),
+                                    Text(
+                                      'Nama Customer - Tempat',
+                                      style: TextStyle(fontSize: 14),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                      const SizedBox(
+                        height: 10.0,
+                      ),
+                      Container(
+                        width: double.infinity,
+                        height: 60,
+                        decoration: const BoxDecoration(
+                          color: Colors.transparent,
+                        ),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            Expanded(
+                              flex: 1,
+                              child: Container(
+                                height: 60,
+                                padding: const EdgeInsets.fromLTRB(
+                                    kDefaultPadding, 0, kDefaultPadding, 0),
+                                decoration: const BoxDecoration(
+                                  color: Color.fromRGBO(180, 198, 193, 1.0),
+                                  borderRadius: BorderRadius.only(
+                                    topLeft: Radius.circular(20),
+                                    bottomLeft: Radius.circular(20),
+                                  ),
+                                ),
+                                child: Center(
+                                  child: Text(
+                                    '13.00 - 14.00',
+                                    style: Theme.of(context)
+                                        .textTheme
+                                        .headlineLarge!
+                                        .copyWith(fontSize: 16),
+                                  ),
+                                ),
+                              ),
+                            ),
+                            Expanded(
+                              flex: 2,
+                              child: Container(
+                                height: 60,
+                                padding: const EdgeInsets.fromLTRB(
+                                    kDefaultPadding, 0, kDefaultPadding, 0),
+                                decoration: const BoxDecoration(
+                                  color: Color.fromRGBO(209, 220, 214, 1.0),
+                                  borderRadius: BorderRadius.only(
+                                    topRight: Radius.circular(20),
+                                    bottomRight: Radius.circular(20),
+                                  ),
+                                ),
+                                child: const Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Text(
+                                      'Follow Up SPJ',
+                                      style: TextStyle(fontSize: 14),
+                                    ),
+                                    Text(
+                                      'Nama Customer - Tempat',
+                                      style: TextStyle(fontSize: 14),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                      const SizedBox(height: 10.0),
+                      Container(
+                        width: double.infinity,
+                        height: 60,
+                        decoration: const BoxDecoration(
+                          color: Colors.transparent,
+                        ),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            Expanded(
+                              flex: 1,
+                              child: Container(
+                                height: 60,
+                                padding: const EdgeInsets.fromLTRB(
+                                    kDefaultPadding, 0, kDefaultPadding, 0),
+                                decoration: const BoxDecoration(
+                                  color: Color.fromRGBO(180, 198, 193, 1.0),
+                                  borderRadius: BorderRadius.only(
+                                    topLeft: Radius.circular(20),
+                                    bottomLeft: Radius.circular(20),
+                                  ),
+                                ),
+                                child: Center(
+                                  child: Text(
+                                    '13.00 - 14.00',
+                                    style: Theme.of(context)
+                                        .textTheme
+                                        .headlineLarge!
+                                        .copyWith(fontSize: 16),
+                                  ),
+                                ),
+                              ),
+                            ),
+                            Expanded(
+                              flex: 2,
+                              child: Container(
+                                height: 60,
+                                padding: const EdgeInsets.fromLTRB(
+                                    kDefaultPadding, 0, kDefaultPadding, 0),
+                                decoration: const BoxDecoration(
+                                  color: Color.fromRGBO(209, 220, 214, 1.0),
+                                  borderRadius: BorderRadius.only(
+                                    topRight: Radius.circular(20),
+                                    bottomRight: Radius.circular(20),
+                                  ),
+                                ),
+                                child: const Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Text(
+                                      'Follow Up SPJ',
+                                      style: TextStyle(fontSize: 14),
+                                    ),
+                                    Text(
+                                      'Nama Customer - Tempat',
+                                      style: TextStyle(fontSize: 14),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
                 )
               ],
             ),

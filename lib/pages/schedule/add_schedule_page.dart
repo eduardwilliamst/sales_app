@@ -71,6 +71,31 @@ class _AddSchedulePageState extends State<AddSchedulePage> {
       ),
       child: Scaffold(
         backgroundColor: Colors.transparent,
+        extendBodyBehindAppBar: true,
+        appBar: AppBar(
+            automaticallyImplyLeading: false,
+            backgroundColor: Colors.transparent,
+            elevation: 0,
+            title: Text(
+              'Buat Jadwal Baru',
+              style: Theme.of(context).textTheme.headlineLarge,
+            ),
+            actions: [
+              IconButton(
+                onPressed: () {
+                  Navigator.pushReplacement(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const SchedulePage(),
+                    ),
+                  );
+                },
+                icon: Image.asset(
+                  'assets/images/close-square.png',
+                  height: 30,
+                ),
+              ),
+            ]),
         body: SafeArea(
           child: SingleChildScrollView(
             child: Padding(
@@ -78,45 +103,6 @@ class _AddSchedulePageState extends State<AddSchedulePage> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Container(
-                    margin: const EdgeInsets.only(
-                        left: kDefaultPadding, right: 8.0),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text('Buat Jadwal Baru',
-                                style:
-                                    Theme.of(context).textTheme.headlineLarge),
-                          ],
-                        ),
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.end,
-                          children: [
-                            IconButton(
-                              onPressed: () {
-                                Navigator.pushReplacement(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) =>
-                                          const SchedulePage()),
-                                );
-                              },
-                              icon: Image.asset(
-                                'assets/images/close-square.png',
-                                height: 30,
-                              ),
-                            ),
-                          ],
-                        ),
-                      ],
-                    ),
-                  ),
-                  const SizedBox(
-                    height: 16.0,
-                  ),
                   Container(
                       decoration: BoxDecoration(
                           color: const Color.fromRGBO(242, 242, 242, 0.4),

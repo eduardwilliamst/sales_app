@@ -1,17 +1,12 @@
-2024/06/18-17:50:52.318 41c0 Log #3: 1 ops saved to Table #15 OK
-2024/06/18-17:50:52.322 41c0 Archiving C:\Users\fathu\AppData\Local\Temp\flutter_tools.ec31b862\flutter_tools_chrome_device.53faaf06\Default\Site Characteristics Database/000003.log: OK
-2024/06/18-17:50:52.327 41c0 Log #6: 6 ops saved to Table #16 OK
-2024/06/18-17:50:52.331 41c0 Archiving C:\Users\fathu\AppData\Local\Temp\flutter_tools.ec31b862\flutter_tools_chrome_device.53faaf06\Default\Site Characteristics Database/000006.log: OK
-2024/06/18-17:50:52.335 41c0 Log #10: 5 ops saved to Table #17 OK
-2024/06/18-17:50:52.337 41c0 Archiving C:\Users\fathu\AppData\Local\Temp\flutter_tools.ec31b862\flutter_tools_chrome_device.53faaf06\Default\Site Characteristics Database/000010.log: OK
-2024/06/18-17:50:52.338 41c0 Table #4: 1 entries OK
-2024/06/18-17:50:52.339 41c0 Table #6: 1 entries OK
-2024/06/18-17:50:52.339 41c0 Table #7: 1 entries OK
-2024/06/18-17:50:52.340 41c0 Table #8: 6 entries OK
-2024/06/18-17:50:52.340 41c0 Table #13: 6 entries OK
-2024/06/18-17:50:52.340 41c0 Table #14: 1 entries OK
-2024/06/18-17:50:52.341 41c0 Table #15: 1 entries OK
-2024/06/18-17:50:52.341 41c0 Table #16: 6 entries OK
-2024/06/18-17:50:52.342 41c0 Table #17: 5 entries OK
-2024/06/18-17:50:52.349 41c0 Archiving C:\Users\fathu\AppData\Local\Temp\flutter_tools.ec31b862\flutter_tools_chrome_device.53faaf06\Default\Site Characteristics Database/MANIFEST-000001: OK
-2024/06/18-17:50:52.357 41c0 **** Repaired leveldb C:\Users\fathu\AppData\Local\Temp\flutter_tools.ec31b862\flutter_tools_chrome_device.53faaf06\Default\Site Characteristics Database; recovered 9 files; 1894 bytes. Some data may have been lost. ****
+2024/06/19-22:00:15.947 2c20 Reusing MANIFEST C:\Users\fathu\AppData\Local\Temp\flutter_tools.ff253581\flutter_tools_chrome_device.840011c\Default\Site Characteristics Database/MANIFEST-000001
+2024/06/19-22:00:15.948 2c20 Recovering log #19
+2024/06/19-22:00:15.949 2c20 Reusing old log C:\Users\fathu\AppData\Local\Temp\flutter_tools.ff253581\flutter_tools_chrome_device.840011c\Default\Site Characteristics Database/000019.log 
+2024/06/19-22:00:15.950 2c20 Delete type=0 #3
+2024/06/19-22:00:15.950 2c20 Delete type=2 #4
+2024/06/19-22:00:15.950 2c20 Delete type=2 #6
+2024/06/19-22:00:15.950 2c20 Delete type=0 #6
+2024/06/19-22:00:15.951 2c20 Delete type=2 #7
+2024/06/19-22:00:15.951 2c20 Delete type=2 #8
+2024/06/19-22:00:15.951 2c20 Delete type=0 #10
+2024/06/19-22:00:15.951 2c20 Delete type=2 #13
+2024/06/19-22:00:15.952 2c20 Delete type=2 #14

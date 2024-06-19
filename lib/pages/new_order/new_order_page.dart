@@ -78,33 +78,21 @@ class _NewOrderPageState extends State<NewOrderPage> {
       ),
       child: Scaffold(
         backgroundColor: Colors.transparent,
+        extendBodyBehindAppBar: true,
+        appBar: AppBar(
+          automaticallyImplyLeading: false,
+          backgroundColor: Colors.transparent,
+          elevation: 0,
+          title: Text(
+            'Pesanan Baru',
+            style: Theme.of(context).textTheme.headlineLarge,
+          ),
+        ),
         body: SafeArea(
           child: SingleChildScrollView(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Padding(
-                  padding: const EdgeInsets.all(kDefaultPadding),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Row(
-                        children: [
-                          Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text('Pesanan Baru',
-                                  style: Theme.of(context)
-                                      .textTheme
-                                      .headlineLarge),
-                            ],
-                          ),
-                        ],
-                      ),
-                    ],
-                  ),
-                ),
-                const SizedBox(height: 16.0),
                 Container(
                   decoration: BoxDecoration(
                     color: const Color.fromRGBO(242, 242, 242, 0.4),

@@ -36,7 +36,7 @@ class _SchedulePageState extends State<SchedulePage> {
 
   @override
   Widget build(BuildContext context) {
-    final double screenHeight = MediaQuery.of(context).size.height;
+    // final double screenHeight = MediaQuery.of(context).size.height;
 
     return Container(
       decoration: const BoxDecoration(
@@ -57,6 +57,31 @@ class _SchedulePageState extends State<SchedulePage> {
       ),
       child: Scaffold(
         backgroundColor: Colors.transparent,
+        extendBodyBehindAppBar: true,
+        appBar: AppBar(
+          backgroundColor: Colors.transparent,
+          elevation: 0,
+          title: Text(
+            'Kalender',
+            style: Theme.of(context).textTheme.headlineLarge,
+          ),
+          leading: IconButton(
+            onPressed: () {
+              Navigator.pushReplacement(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const HomePage(
+                    initialIndex: 0,
+                  ),
+                ),
+              );
+            },
+            icon: Image.asset(
+              'assets/images/arrow-left.png',
+              height: 30,
+            ),
+          ),
+        ),
         body: SafeArea(
           child: SingleChildScrollView(
             child: Padding(
@@ -64,40 +89,9 @@ class _SchedulePageState extends State<SchedulePage> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Row(
-                        children: [
-                          IconButton(
-                            onPressed: () {
-                              Navigator.pushReplacement(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => const HomePage(
-                                          initialIndex: 0,
-                                        )),
-                              );
-                            },
-                            icon: Image.asset('assets/images/arrow-left.png',
-                                height: 30),
-                          ),
-                          const SizedBox(width: 10),
-                          Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text('Kalender',
-                                  style: Theme.of(context)
-                                      .textTheme
-                                      .headlineLarge),
-                            ],
-                          ),
-                        ],
-                      ),
-                    ],
-                  ),
                   Container(
-                    margin: const EdgeInsets.all(kDefaultPadding),
+                    margin: const EdgeInsets.fromLTRB(
+                        kDefaultPadding, 0, kDefaultPadding, kDefaultPadding),
                     padding: const EdgeInsets.only(
                         left: 8.0, right: 8.0, bottom: 8.0),
                     decoration: BoxDecoration(
@@ -157,7 +151,7 @@ class _SchedulePageState extends State<SchedulePage> {
                         const SizedBox(height: 10),
                         Container(
                           width: double.infinity,
-                          height: screenHeight * 0.08,
+                          height: 60,
                           decoration: const BoxDecoration(
                             color: Colors.transparent,
                           ),
@@ -168,7 +162,7 @@ class _SchedulePageState extends State<SchedulePage> {
                               Expanded(
                                 flex: 1,
                                 child: Container(
-                                  height: screenHeight * 0.08,
+                                  height: 60,
                                   padding: const EdgeInsets.fromLTRB(
                                       kDefaultPadding / 2,
                                       0,
@@ -195,7 +189,159 @@ class _SchedulePageState extends State<SchedulePage> {
                               Expanded(
                                 flex: 2,
                                 child: Container(
-                                  height: screenHeight * 0.08,
+                                  height: 60,
+                                  padding: const EdgeInsets.fromLTRB(
+                                      kDefaultPadding / 2,
+                                      0,
+                                      kDefaultPadding / 2,
+                                      0),
+                                  decoration: const BoxDecoration(
+                                    color: Color.fromRGBO(209, 220, 214, 1.0),
+                                    borderRadius: BorderRadius.only(
+                                      topRight: Radius.circular(20),
+                                      bottomRight: Radius.circular(20),
+                                    ),
+                                  ),
+                                  child: const Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      Text(
+                                        'Follow Up SPJ',
+                                        style: TextStyle(fontSize: 14),
+                                      ),
+                                      Text(
+                                        'Nama Customer - Tempat',
+                                        style: TextStyle(fontSize: 14),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                        const SizedBox(
+                          height: 10.0,
+                        ),
+                        Container(
+                          width: double.infinity,
+                          height: 60,
+                          decoration: const BoxDecoration(
+                            color: Colors.transparent,
+                          ),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              Expanded(
+                                flex: 1,
+                                child: Container(
+                                  height: 60,
+                                  padding: const EdgeInsets.fromLTRB(
+                                      kDefaultPadding / 2,
+                                      0,
+                                      kDefaultPadding / 2,
+                                      0),
+                                  decoration: const BoxDecoration(
+                                    color: Color.fromRGBO(180, 198, 193, 1.0),
+                                    borderRadius: BorderRadius.only(
+                                      topLeft: Radius.circular(20),
+                                      bottomLeft: Radius.circular(20),
+                                    ),
+                                  ),
+                                  child: Center(
+                                    child: Text(
+                                      '13.00 - 14.00',
+                                      style: Theme.of(context)
+                                          .textTheme
+                                          .headlineLarge!
+                                          .copyWith(fontSize: 16),
+                                    ),
+                                  ),
+                                ),
+                              ),
+                              Expanded(
+                                flex: 2,
+                                child: Container(
+                                  height: 60,
+                                  padding: const EdgeInsets.fromLTRB(
+                                      kDefaultPadding / 2,
+                                      0,
+                                      kDefaultPadding / 2,
+                                      0),
+                                  decoration: const BoxDecoration(
+                                    color: Color.fromRGBO(209, 220, 214, 1.0),
+                                    borderRadius: BorderRadius.only(
+                                      topRight: Radius.circular(20),
+                                      bottomRight: Radius.circular(20),
+                                    ),
+                                  ),
+                                  child: const Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      Text(
+                                        'Follow Up SPJ',
+                                        style: TextStyle(fontSize: 14),
+                                      ),
+                                      Text(
+                                        'Nama Customer - Tempat',
+                                        style: TextStyle(fontSize: 14),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                        const SizedBox(
+                          height: 10.0,
+                        ),
+                        Container(
+                          width: double.infinity,
+                          height: 60,
+                          decoration: const BoxDecoration(
+                            color: Colors.transparent,
+                          ),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              Expanded(
+                                flex: 1,
+                                child: Container(
+                                  height: 60,
+                                  padding: const EdgeInsets.fromLTRB(
+                                      kDefaultPadding / 2,
+                                      0,
+                                      kDefaultPadding / 2,
+                                      0),
+                                  decoration: const BoxDecoration(
+                                    color: Color.fromRGBO(180, 198, 193, 1.0),
+                                    borderRadius: BorderRadius.only(
+                                      topLeft: Radius.circular(20),
+                                      bottomLeft: Radius.circular(20),
+                                    ),
+                                  ),
+                                  child: Center(
+                                    child: Text(
+                                      '13.00 - 14.00',
+                                      style: Theme.of(context)
+                                          .textTheme
+                                          .headlineLarge!
+                                          .copyWith(fontSize: 16),
+                                    ),
+                                  ),
+                                ),
+                              ),
+                              Expanded(
+                                flex: 2,
+                                child: Container(
+                                  height: 60,
                                   padding: const EdgeInsets.fromLTRB(
                                       kDefaultPadding / 2,
                                       0,
