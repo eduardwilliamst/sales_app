@@ -8,7 +8,6 @@ import 'package:sales_app/pages/profile_sales/profile_page.dart';
 import 'package:sales_app/pages/forget_password/new_pass_page.dart';
 import 'package:sales_app/pages/login/login_page.dart';
 import 'package:sales_app/pages/forget_password/forget_pass_page.dart';
-import 'package:sales_app/sph/sph_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -27,8 +26,13 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
         navigationBarTheme: const NavigationBarThemeData(
           backgroundColor: kSecondaryColor,
-          labelBehavior: NavigationDestinationLabelBehavior.alwaysShow,
-          iconTheme: WidgetStatePropertyAll(IconThemeData(color: Colors.black)),
+          labelTextStyle: WidgetStatePropertyAll(
+            TextStyle(
+                fontFamily: 'Lato', fontSize: 14, fontWeight: FontWeight.bold),
+          ),
+          iconTheme: WidgetStatePropertyAll(
+            IconThemeData(color: Colors.black),
+          ),
           indicatorColor: Color.fromRGBO(
             170,
             142,
@@ -66,7 +70,7 @@ class MyApp extends StatelessWidget {
               color: kSecondaryColor),
         ),
       ),
-      home: const SPHHistoryPage(),
+      home: const SplashScreen(),
       routes: {
         '/login': (context) => const LoginPage(),
         '/forgetpassword': (context) => const ForgetPasswordPage(),
