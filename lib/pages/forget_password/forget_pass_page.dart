@@ -43,7 +43,7 @@ class _ForgetPasswordPageState extends State<ForgetPasswordPage> {
                     fit: BoxFit.cover,
                   ),
                 ),
-                height: MediaQuery.of(context).size.height * 0.3,
+                height: 285,
                 width: double.infinity,
               ),
             ),

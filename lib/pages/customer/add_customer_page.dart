@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:sales_app/constants.dart';
-import 'package:sales_app/pages/home/home_page.dart';
 
 class AddCustomerPage extends StatefulWidget {
   const AddCustomerPage({super.key});
@@ -39,13 +38,7 @@ class _AddCustomerPageState extends State<AddCustomerPage> {
           elevation: 0,
           leading: IconButton(
             onPressed: () {
-              Navigator.pushReplacement(
-                context,
-                MaterialPageRoute(
-                    builder: (context) => const HomePage(
-                          initialIndex: 4,
-                        )),
-              );
+              Navigator.pop(context);
             },
             icon: Image.asset('assets/images/arrow-left.png', height: 30),
           ),
@@ -202,11 +195,19 @@ class _AddCustomerPageState extends State<AddCustomerPage> {
                                     if (_formKey.currentState!.validate()) {
                                       // Perform login action
                                       debugPrint(
-                                          'Email: ${_nameController.text}');
+                                          'Customer: ${_nameController.text}');
                                       debugPrint(
                                           'Password: ${_phoneNumberController.text}');
-                                      Navigator.pushReplacementNamed(
-                                          context, '/home');
+
+                                      debugPrint(
+                                          'Email: ${_emailController.text}');
+                                      debugPrint(
+                                          'Provinsi: ${_provinceController.text}');
+                                      debugPrint(
+                                          'Kota: ${_cityController.text}');
+                                      debugPrint(
+                                          'Sumber: ${_sourceController.text}');
+                                      Navigator.pop(context);
                                     }
                                   },
                                   style: primaryButtonStyle,

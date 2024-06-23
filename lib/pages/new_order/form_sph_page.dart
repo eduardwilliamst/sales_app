@@ -63,13 +63,7 @@ class _FormSPH1PageState extends State<FormSPH1Page> {
           elevation: 0,
           leading: IconButton(
             onPressed: () {
-              Navigator.pushReplacement(
-                context,
-                MaterialPageRoute(
-                    builder: (context) => const HomePage(
-                          initialIndex: 2,
-                        )),
-              );
+              Navigator.pop(context);
             },
             icon: Image.asset('assets/images/arrow-left.png', height: 30),
           ),
@@ -522,7 +516,7 @@ class _FormSPH2PageState extends State<FormSPH2Page> {
                                   Expanded(
                                     child: ElevatedButton(
                                       onPressed: () {
-                                        Navigator.pushReplacement(
+                                        Navigator.push(
                                           context,
                                           MaterialPageRoute(
                                             builder: (context) =>

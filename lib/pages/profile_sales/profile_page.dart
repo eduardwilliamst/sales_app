@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:sales_app/constants.dart';
-import 'package:sales_app/pages/home/home_page.dart';
 import 'package:sales_app/pages/login/login_page.dart';
 import 'package:sales_app/pages/profile_sales/reset_pass_page.dart';
 
@@ -54,14 +53,7 @@ class ProfilePage extends StatelessWidget {
                         children: [
                           IconButton(
                             onPressed: () {
-                              Navigator.pushReplacement(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) => const HomePage(
-                                    initialIndex: 0,
-                                  ),
-                                ),
-                              );
+                              Navigator.pop(context);
                             },
                             icon: Image.asset('assets/images/arrow-left.png',
                                 height: 25),
@@ -198,7 +190,7 @@ class ProfilePage extends StatelessWidget {
                         textStyle: const TextStyle(fontSize: 16),
                       ),
                       onPressed: () {
-                        Navigator.push(
+                        Navigator.pushReplacement(
                           context,
                           MaterialPageRoute(
                               builder: (context) => const LoginPage()),

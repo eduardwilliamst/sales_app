@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:sales_app/constants.dart';
 import 'package:sales_app/pages/forget_password/new_pass_page.dart';
-import 'package:sales_app/pages/profile_sales/profile_page.dart';
 
 class ResetPasswordPage extends StatefulWidget {
   const ResetPasswordPage({super.key});
@@ -25,7 +24,7 @@ class _ResetPasswordPageState extends State<ResetPasswordPage> {
         debugPrint('Password: ${_passwordController.text}');
         debugPrint('RePassword: ${_repasswordController.text}');
         debugPrint('$checkpass');
-        Navigator.push(
+        Navigator.pushReplacement(
           context,
           MaterialPageRoute(builder: (context) => const NewPassInfoPage()),
         );
@@ -67,7 +66,7 @@ class _ResetPasswordPageState extends State<ResetPasswordPage> {
                   fit: BoxFit.cover,
                 ),
               ),
-              height: MediaQuery.of(context).size.height * 0.3,
+              height: 285,
               width: double.infinity,
               child: SafeArea(
                 child: Column(
@@ -77,11 +76,7 @@ class _ResetPasswordPageState extends State<ResetPasswordPage> {
                       children: [
                         IconButton(
                           onPressed: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => const ProfilePage()),
-                            );
+                            Navigator.pop(context);
                           },
                           icon: Image.asset('assets/images/arrow-left.png',
                               height: 25),

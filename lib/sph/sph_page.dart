@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:sales_app/constants.dart';
-import 'package:sales_app/pages/home/home_page.dart';
 import 'package:sales_app/sph/sph_data_page.dart';
 
 class SPHPage extends StatefulWidget {
@@ -43,13 +42,7 @@ class _SPHPageState extends State<SPHPage> {
           elevation: 0,
           leading: IconButton(
             onPressed: () {
-              Navigator.pushReplacement(
-                context,
-                MaterialPageRoute(
-                    builder: (context) => const HomePage(
-                          initialIndex: 0,
-                        )),
-              );
+              Navigator.pop(context);
             },
             icon: Image.asset('assets/images/arrow-left.png', height: 30),
           ),
@@ -481,12 +474,7 @@ class _SPHHistoryPageState extends State<SPHHistoryPage>
           ),
           leading: IconButton(
             onPressed: () {
-              Navigator.pushReplacement(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => const SPHPage(),
-                ),
-              );
+              Navigator.pop(context);
             },
             icon: Image.asset(
               'assets/images/arrow-left.png',

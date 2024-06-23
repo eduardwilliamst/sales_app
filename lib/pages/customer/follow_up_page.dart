@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:sales_app/constants.dart';
-import 'package:sales_app/pages/home/home_page.dart';
 
 class FollowUpPage extends StatefulWidget {
   const FollowUpPage({super.key});
@@ -72,13 +71,7 @@ class _FollowUpPageState extends State<FollowUpPage> {
           elevation: 0,
           leading: IconButton(
             onPressed: () {
-              Navigator.pushReplacement(
-                context,
-                MaterialPageRoute(
-                    builder: (context) => const HomePage(
-                          initialIndex: 4,
-                        )),
-              );
+              Navigator.pop(context);
             },
             icon: Image.asset('assets/images/arrow-left.png', height: 30),
           ),
@@ -276,12 +269,11 @@ class _FollowUpPageState extends State<FollowUpPage> {
                                   debugPrint(
                                       'Tanggal: ${_dateTimeController.text}');
                                   debugPrint(
-                                      'Tanggal: ${_startTimeController.text}');
+                                      'Mulai: ${_startTimeController.text}');
                                   debugPrint(
-                                      'Tanggal: ${_endTimeController.text}');
+                                      'Sampai: ${_endTimeController.text}');
                                   debugPrint('Catatan: $_notesController');
-                                  Navigator.pushReplacementNamed(
-                                      context, '/home');
+                                  Navigator.pop(context);
                                 }
                               },
                               style: primaryButtonStyle,
@@ -303,11 +295,10 @@ class _FollowUpPageState extends State<FollowUpPage> {
                                   debugPrint(
                                       'Tanggal: ${_dateTimeController.text}');
                                   debugPrint(
-                                      'Tanggal: ${_startTimeController.text}');
+                                      'Mulai: ${_startTimeController.text}');
                                   debugPrint(
-                                      'Tanggal: ${_endTimeController.text}');
-                                  Navigator.pushReplacementNamed(
-                                      context, '/home');
+                                      'Selesai: ${_endTimeController.text}');
+                                  Navigator.pop(context);
                                 }
                               },
                               style: primaryButtonStyle,

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:sales_app/constants.dart';
-import 'package:sales_app/pages/home/home_page.dart';
 
 class SPHCalculatorPage extends StatefulWidget {
   const SPHCalculatorPage({super.key});
@@ -42,13 +41,7 @@ class _SPHCalculatorPageState extends State<SPHCalculatorPage> {
           ),
           leading: IconButton(
             onPressed: () {
-              Navigator.pushReplacement(
-                context,
-                MaterialPageRoute(
-                    builder: (context) => const HomePage(
-                          initialIndex: 0,
-                        )),
-              );
+              Navigator.pop(context);
             },
             icon: Image.asset('assets/images/arrow-left.png', height: 30),
           ),

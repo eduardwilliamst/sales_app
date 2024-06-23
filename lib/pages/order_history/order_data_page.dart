@@ -1,7 +1,6 @@
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:sales_app/constants.dart';
-import 'package:sales_app/pages/home/home_page.dart';
 
 class OrderDataPage extends StatefulWidget {
   const OrderDataPage({super.key});
@@ -87,13 +86,7 @@ class _OrderDataPageState extends State<OrderDataPage> {
           elevation: 0,
           leading: IconButton(
             onPressed: () {
-              Navigator.pushReplacement(
-                context,
-                MaterialPageRoute(
-                    builder: (context) => const HomePage(
-                          initialIndex: 1,
-                        )),
-              );
+              Navigator.pop(context);
             },
             icon: Image.asset('assets/images/arrow-left.png', height: 30),
           ),
@@ -382,7 +375,6 @@ class _OrderDataPageState extends State<OrderDataPage> {
                                 child: ElevatedButton(
                                   onPressed: () {
                                     if (_formKey.currentState!.validate()) {
-                                      // Perform login action
                                       debugPrint(
                                           'Kavling ${_kavlingController.text}');
                                       debugPrint(
@@ -393,8 +385,7 @@ class _OrderDataPageState extends State<OrderDataPage> {
                                           'Status SPH: $_selectedStatusSPH');
                                       debugPrint(
                                           'Status SPR: $_selectedStatusSPR');
-                                      Navigator.pushReplacementNamed(
-                                          context, '/home');
+                                      Navigator.pop(context);
                                     }
                                   },
                                   style: primaryButtonStyle,

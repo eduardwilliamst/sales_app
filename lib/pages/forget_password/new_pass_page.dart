@@ -24,7 +24,7 @@ class _NewPasswordPageState extends State<NewPasswordPage> {
         debugPrint('Password: ${_passwordController.text}');
         debugPrint('RePassword: ${_repasswordController.text}');
         debugPrint('$checkpass');
-        Navigator.push(
+        Navigator.pushReplacement(
           context,
           MaterialPageRoute(builder: (context) => const NewPassInfoPage()),
         );
@@ -67,7 +67,7 @@ class _NewPasswordPageState extends State<NewPasswordPage> {
                     fit: BoxFit.cover,
                   ),
                 ),
-                height: MediaQuery.of(context).size.height * 0.3,
+                height: 285,
                 width: double.infinity,
               ),
             ),

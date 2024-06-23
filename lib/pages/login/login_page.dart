@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:sales_app/constants.dart';
 import 'package:sales_app/pages/forget_password/forget_pass_page.dart';
+import 'package:sales_app/pages/home/home_page.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -45,7 +46,7 @@ class _LoginPageState extends State<LoginPage> {
                     fit: BoxFit.cover,
                   ),
                 ),
-                height: MediaQuery.of(context).size.height * 0.3,
+                height: 285,
                 width: double.infinity,
               ),
             ),
@@ -154,7 +155,12 @@ class _LoginPageState extends State<LoginPage> {
                             // Perform login action
                             debugPrint('Email: ${_emailController.text}');
                             debugPrint('Password: ${_passwordController.text}');
-                            Navigator.pushReplacementNamed(context, '/home');
+                            Navigator.pushReplacement(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => const HomePage(),
+                              ),
+                            );
                           }
                         },
                         style: primaryButtonStyle,

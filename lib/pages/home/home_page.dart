@@ -136,8 +136,8 @@ class _HomeContentState extends State<HomeContent> {
                             begin: Alignment.topCenter,
                             end: Alignment.bottomCenter,
                             colors: [
-                              Color.fromRGBO(0, 0, 0, 0.01),
-                              Color.fromRGBO(0, 0, 0, 0.5)
+                              Color.fromRGBO(0, 0, 0, 0.03),
+                              Color.fromRGBO(0, 0, 0, 0.3)
                             ],
                             stops: [
                               0.75,

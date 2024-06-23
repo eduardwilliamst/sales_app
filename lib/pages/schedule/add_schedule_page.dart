@@ -1,7 +1,6 @@
 //-1 backend
 import 'package:flutter/material.dart';
 import 'package:sales_app/constants.dart';
-import 'package:sales_app/pages/schedule/schedule_page.dart';
 
 class AddSchedulePage extends StatefulWidget {
   const AddSchedulePage({super.key});
@@ -83,12 +82,7 @@ class _AddSchedulePageState extends State<AddSchedulePage> {
             actions: [
               IconButton(
                 onPressed: () {
-                  Navigator.pushReplacement(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => const SchedulePage(),
-                    ),
-                  );
+                  Navigator.pop(context);
                 },
                 icon: Image.asset(
                   'assets/images/close-square.png',
@@ -308,13 +302,11 @@ class _AddSchedulePageState extends State<AddSchedulePage> {
                                     child: ElevatedButton(
                                       onPressed: () {
                                         if (_formKey.currentState!.validate()) {
-                                          // Perform login action
                                           debugPrint(
                                               'Email: ${_eventNameController.text}');
                                           debugPrint(
                                               'Password: ${_customerNameController.text}');
-                                          Navigator.pushReplacementNamed(
-                                              context, '/home');
+                                          Navigator.pop(context);
                                         }
                                       },
                                       style: primaryButtonStyle,

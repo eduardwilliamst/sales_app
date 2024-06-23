@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:sales_app/constants.dart';
-import 'package:sales_app/sph/sph_page.dart';
 
 class SPHDataPage extends StatefulWidget {
   const SPHDataPage({super.key});
@@ -90,10 +89,7 @@ class _SPHDataPageState extends State<SPHDataPage> {
           elevation: 0,
           leading: IconButton(
             onPressed: () {
-              Navigator.pushReplacement(
-                context,
-                MaterialPageRoute(builder: (context) => const SPHPage()),
-              );
+              Navigator.pop(context);
             },
             icon: Image.asset('assets/images/arrow-left.png', height: 30),
           ),
