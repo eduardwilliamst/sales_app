@@ -4,11 +4,12 @@ import 'package:intl/intl.dart' as intl;
 import 'package:intl/date_symbol_data_local.dart';
 import 'package:sales_app/constants.dart';
 import 'package:sales_app/pages/customer/customer_page.dart';
+import 'package:sales_app/pages/ecatalog/ecatalog.dart';
 import 'package:sales_app/pages/home/notifications_modal.dart';
 import 'package:sales_app/pages/new_order/new_order_page.dart';
 import 'package:sales_app/pages/order_history/order_history_page.dart';
 import 'package:sales_app/pages/sitemap/sitemap_page.dart';
-import 'package:sales_app/sph/sph_page.dart';
+import 'package:sales_app/pages/sph/sph_page.dart';
 import '../profile_sales/profile_page.dart';
 import '../schedule/schedule_page.dart';
 
@@ -514,12 +515,6 @@ class _HomeContentState extends State<HomeContent> {
                             kDefaultPadding,
                             kDefaultPadding,
                           ),
-                          padding: const EdgeInsets.fromLTRB(
-                            kDefaultPadding,
-                            0,
-                            kDefaultPadding,
-                            kDefaultPadding,
-                          ),
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
@@ -533,15 +528,25 @@ class _HomeContentState extends State<HomeContent> {
                                     ),
                               ),
                               const SizedBox(height: 16),
-                              Container(
-                                height: 200,
-                                decoration: BoxDecoration(
-                                  image: const DecorationImage(
-                                    image:
-                                        AssetImage('assets/images/catalog.png'),
-                                    fit: BoxFit.cover,
+                              GestureDetector(
+                                onTap: () {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) => const ECatalog(),
+                                    ),
+                                  );
+                                },
+                                child: Container(
+                                  height: 200,
+                                  decoration: BoxDecoration(
+                                    image: const DecorationImage(
+                                      image: AssetImage(
+                                          'assets/images/catalog.png'),
+                                      fit: BoxFit.cover,
+                                    ),
+                                    borderRadius: BorderRadius.circular(20),
                                   ),
-                                  borderRadius: BorderRadius.circular(20),
                                 ),
                               ),
                             ],
@@ -549,9 +554,9 @@ class _HomeContentState extends State<HomeContent> {
                         ),
                         Container(
                           margin: const EdgeInsets.fromLTRB(
-                            kDefaultPadding * 2,
+                            kDefaultPadding,
                             0,
-                            kDefaultPadding * 2,
+                            kDefaultPadding,
                             kDefaultPadding,
                           ),
                           height: 200,
@@ -576,9 +581,9 @@ class _HomeContentState extends State<HomeContent> {
                           child: Container(
                             height: 200,
                             margin: const EdgeInsets.fromLTRB(
-                              kDefaultPadding * 2,
+                              kDefaultPadding,
                               0,
-                              kDefaultPadding * 2,
+                              kDefaultPadding,
                               kDefaultPadding,
                             ),
                             decoration: BoxDecoration(
@@ -596,12 +601,6 @@ class _HomeContentState extends State<HomeContent> {
                         ),
                         Container(
                           margin: const EdgeInsets.fromLTRB(
-                            kDefaultPadding,
-                            0,
-                            kDefaultPadding,
-                            kDefaultPadding,
-                          ),
-                          padding: const EdgeInsets.fromLTRB(
                             kDefaultPadding,
                             0,
                             kDefaultPadding,

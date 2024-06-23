@@ -94,9 +94,12 @@ class _NewOrderPageState extends State<NewOrderPage> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Container(
-                  decoration: BoxDecoration(
-                    color: const Color.fromRGBO(242, 242, 242, 0.4),
-                    borderRadius: BorderRadius.circular(30),
+                  decoration: const BoxDecoration(
+                    color: Color.fromRGBO(242, 242, 242, 0.4),
+                    borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(30),
+                      topRight: Radius.circular(30),
+                    ),
                   ),
                   child: Center(
                     child: SingleChildScrollView(
