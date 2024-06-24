@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:sales_app/pages/sitemap/sitemap_modal.dart';
 
 class SitemapPage extends StatefulWidget {
   const SitemapPage({super.key});
@@ -24,10 +25,15 @@ class _SitemapPageState extends State<SitemapPage> {
         backgroundColor: Colors.transparent,
         body: SafeArea(
           child: Center(
-            child: Image.asset(
-              'assets/images/Sitemap.png',
-              height: screenHeight * 0.8,
-              width: screenWidth * 0.5,
+            child: GestureDetector(
+              onTap: () {
+                showSitemapModal(context);
+              },
+              child: Image.asset(
+                'assets/images/Sitemap.png',
+                height: screenHeight * 0.8,
+                width: screenWidth * 0.5,
+              ),
             ),
           ),
         ),

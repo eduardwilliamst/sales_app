@@ -14,9 +14,16 @@ class NotificationModal extends StatelessWidget {
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(20.0),
           gradient: const LinearGradient(
-            colors: [Colors.white, Color(0xFFF5F5F5)],
+            colors: [
+              Color.fromRGBO(235, 226, 211, 0.6),
+              Color.fromRGBO(247, 229, 205, 0.5),
+            ],
             begin: Alignment.topCenter,
             end: Alignment.bottomCenter,
+            stops: [
+              0.0,
+              0.49,
+            ],
           ),
         ),
         child: Column(
@@ -25,12 +32,12 @@ class NotificationModal extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                const Text(
+                Text(
                   'Notifikasi',
-                  style: TextStyle(
-                    fontSize: 18,
-                    fontWeight: FontWeight.bold,
-                  ),
+                  style: Theme.of(context)
+                      .textTheme
+                      .headlineLarge!
+                      .copyWith(fontSize: 20),
                 ),
                 GestureDetector(
                   onTap: () {
@@ -47,12 +54,9 @@ class NotificationModal extends StatelessWidget {
               width: 100,
             ),
             const SizedBox(height: 20),
-            const Text(
+            Text(
               'Tidak ada notifikasi baru',
-              style: TextStyle(
-                fontSize: 16,
-                fontWeight: FontWeight.bold,
-              ),
+              style: Theme.of(context).textTheme.bodyLarge,
             ),
             const SizedBox(height: 20),
           ],
@@ -60,13 +64,4 @@ class NotificationModal extends StatelessWidget {
       ),
     );
   }
-}
-
-void showNotificationModal(BuildContext context) {
-  showDialog(
-    context: context,
-    builder: (BuildContext context) {
-      return const NotificationModal();
-    },
-  );
 }

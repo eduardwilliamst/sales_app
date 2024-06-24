@@ -103,787 +103,743 @@ class _HomeContentState extends State<HomeContent> {
     // final double screenHeight = MediaQuery.of(context).size.height;
     // final double screenWidth = MediaQuery.of(context).size.width;
 
-    return Container(
-      decoration: const BoxDecoration(
-        image: DecorationImage(
-          image: AssetImage('assets/images/Home.png'),
-          fit: BoxFit.fill,
-        ),
-      ),
-      child: Scaffold(
-        backgroundColor: Colors.transparent,
-        body: SafeArea(
-          child: SingleChildScrollView(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
+    return Scaffold(
+      backgroundColor: Colors.transparent,
+      body: SingleChildScrollView(
+        child: Container(
+          decoration: const BoxDecoration(
+            image: DecorationImage(
+              image: AssetImage('assets/images/Home.png'),
+              fit: BoxFit.cover,
+            ),
+          ),
+          child: SafeArea(
+            child: Stack(
               children: [
-                Stack(
-                  children: [
-                    CustomPaint(
-                      painter: HomeCardBorderPainter(),
-                      child: Container(
-                        height: 255,
+                CustomPaint(
+                  painter: HomeCardBorderPainter(),
+                  child: Container(
+                    height: 255,
+                  ),
+                ),
+                ClipPath(
+                  clipper: CustomClipperHomeCard(),
+                  clipBehavior: Clip.antiAlias,
+                  child: Container(
+                    width: double.infinity,
+                    height: 255,
+                    padding: const EdgeInsets.all(kDefaultPadding),
+                    decoration: const BoxDecoration(
+                      gradient: LinearGradient(
+                        begin: Alignment.topCenter,
+                        end: Alignment.bottomCenter,
+                        colors: [
+                          Color.fromRGBO(0, 0, 0, 0.03),
+                          Color.fromRGBO(0, 0, 0, 0.3)
+                        ],
+                        stops: [
+                          0.75,
+                          1.0,
+                        ],
                       ),
                     ),
-                    ClipPath(
-                      clipper: CustomClipperHomeCard(),
-                      clipBehavior: Clip.antiAlias,
-                      child: Container(
-                        width: double.infinity,
-                        height: 255,
-                        padding: const EdgeInsets.all(kDefaultPadding),
-                        decoration: const BoxDecoration(
-                          gradient: LinearGradient(
-                            begin: Alignment.topCenter,
-                            end: Alignment.bottomCenter,
-                            colors: [
-                              Color.fromRGBO(0, 0, 0, 0.03),
-                              Color.fromRGBO(0, 0, 0, 0.3)
-                            ],
-                            stops: [
-                              0.75,
-                              1.0,
-                            ],
-                          ),
-                        ),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                GestureDetector(
-                                  onTap: () {
-                                    Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                          builder: (context) =>
-                                              const ProfilePage()),
-                                    );
-                                  },
-                                  child: Row(
-                                    children: [
-                                      const Icon(Icons.person, size: 50),
-                                      const SizedBox(width: 10),
-                                      Column(
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.start,
-                                        children: [
-                                          LayoutBuilder(
-                                            builder: (context, constraints) {
-                                              TextStyle textStyle =
-                                                  Theme.of(context)
-                                                      .textTheme
-                                                      .headlineLarge!
-                                                      .copyWith(fontSize: 20);
-
-                                              TextPainter textPainter =
-                                                  TextPainter(
-                                                text: TextSpan(
-                                                  text: username,
-                                                  style: textStyle,
-                                                ),
-                                                textDirection:
-                                                    TextDirection.ltr,
-                                              );
-                                              textPainter.layout();
-
-                                              double textWidth =
-                                                  textPainter.width;
-
-                                              return Column(
-                                                crossAxisAlignment:
-                                                    CrossAxisAlignment.start,
-                                                children: [
-                                                  Row(
-                                                    children: [
-                                                      Text(
-                                                        username,
-                                                        style: textStyle,
-                                                      ),
-                                                    ],
-                                                  ),
-                                                  Row(
-                                                    children: [
-                                                      Container(
-                                                        margin: const EdgeInsets
-                                                            .only(top: 10.0),
-                                                        height: 4,
-                                                        width: textWidth * 0.7,
-                                                        decoration:
-                                                            const BoxDecoration(
-                                                          color: Color.fromRGBO(
-                                                              180,
-                                                              198,
-                                                              193,
-                                                              1.0),
-                                                          borderRadius:
-                                                              BorderRadius.only(
-                                                            topLeft:
-                                                                Radius.circular(
-                                                                    30.0),
-                                                            bottomLeft:
-                                                                Radius.circular(
-                                                                    30.0),
-                                                          ),
-                                                        ),
-                                                      ),
-                                                      Container(
-                                                        margin: const EdgeInsets
-                                                            .only(top: 10.0),
-                                                        height: 4,
-                                                        width: textWidth * 0.3,
-                                                        decoration:
-                                                            const BoxDecoration(
-                                                          color: Color.fromRGBO(
-                                                              209,
-                                                              220,
-                                                              214,
-                                                              1.0),
-                                                          borderRadius:
-                                                              BorderRadius.only(
-                                                            topRight:
-                                                                Radius.circular(
-                                                                    30.0),
-                                                            bottomRight:
-                                                                Radius.circular(
-                                                                    30.0),
-                                                          ),
-                                                        ),
-                                                      ),
-                                                    ],
-                                                  ),
-                                                ],
-                                              );
-                                            },
-                                          ),
-                                        ],
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                                Row(
-                                  children: [
-                                    GestureDetector(
-                                      onTap: () {
-                                        showNotificationModal(context);
-                                      },
-                                      child: const Icon(Icons.notifications),
-                                    ),
-                                    const SizedBox(width: 20),
-                                    const Icon(Icons.mail),
-                                  ],
-                                ),
-                              ],
-                            ),
-                            const SizedBox(
-                              height: 16.0,
-                            ),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceAround,
-                              children: [
-                                Container(
-                                  width: 100,
-                                  height: 100,
-                                  padding:
-                                      const EdgeInsets.fromLTRB(8, 24, 8, 0),
-                                  decoration: BoxDecoration(
-                                    shape: BoxShape.circle,
-                                    border: Border.all(
-                                      color: kSecondaryColor,
-                                      width: 2.0,
-                                    ),
-                                  ),
-                                  child: Column(
-                                    children: [
-                                      Text(
-                                        '123',
-                                        style: Theme.of(context)
-                                            .textTheme
-                                            .headlineLarge!
-                                            .copyWith(
-                                              fontSize: 20,
-                                            ),
-                                      ),
-                                      Text(
-                                        'Total pesanan',
-                                        style: Theme.of(context)
-                                            .textTheme
-                                            .bodyMedium!
-                                            .copyWith(
-                                              fontSize: 12,
-                                            ),
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                                GestureDetector(
-                                  onTap: () {
-                                    Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                        builder: (context) => const SPHPage(),
-                                      ),
-                                    );
-                                  },
-                                  child: Container(
-                                    width: 100,
-                                    height: 100,
-                                    padding:
-                                        const EdgeInsets.fromLTRB(8, 24, 8, 0),
-                                    decoration: BoxDecoration(
-                                      shape: BoxShape.circle,
-                                      border: Border.all(
-                                        color: kSecondaryColor,
-                                        width: 2.0,
-                                      ),
-                                    ),
-                                    child: Column(
-                                      children: [
-                                        Text(
-                                          '123',
-                                          style: Theme.of(context)
-                                              .textTheme
-                                              .headlineLarge!
-                                              .copyWith(
-                                                fontSize: 20,
-                                              ),
-                                        ),
-                                        Text(
-                                          'Total SPH',
-                                          style: Theme.of(context)
-                                              .textTheme
-                                              .bodyMedium!
-                                              .copyWith(
-                                                fontSize: 12,
-                                              ),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                ),
-                                Container(
-                                  width: 100,
-                                  height: 100,
-                                  padding:
-                                      const EdgeInsets.fromLTRB(8, 24, 8, 0),
-                                  decoration: BoxDecoration(
-                                    shape: BoxShape.circle,
-                                    border: Border.all(
-                                      color: kSecondaryColor,
-                                      width: 2.0,
-                                    ),
-                                  ),
-                                  child: Column(
-                                    children: [
-                                      Text(
-                                        '123',
-                                        style: Theme.of(context)
-                                            .textTheme
-                                            .headlineLarge!
-                                            .copyWith(
-                                              fontSize: 20,
-                                            ),
-                                      ),
-                                      Text(
-                                        'Total SPR',
-                                        style: Theme.of(context)
-                                            .textTheme
-                                            .bodyMedium!
-                                            .copyWith(
-                                              fontSize: 12,
-                                            ),
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
-                    Column(
+                    child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        const SizedBox(
-                          height: 230,
-                        ),
-                        if (manager == true) ...[
-                          const SizedBox(
-                            height: 10.0,
-                          ),
-                          Container(
-                            margin: const EdgeInsets.fromLTRB(
-                              kDefaultPadding,
-                              0,
-                              kDefaultPadding,
-                              kDefaultPadding,
-                            ),
-                            padding: const EdgeInsets.fromLTRB(
-                              kDefaultPadding,
-                              kDefaultPadding,
-                              kDefaultPadding,
-                              kDefaultPadding,
-                            ),
-                            decoration: BoxDecoration(
-                              color: const Color.fromRGBO(242, 242, 242, 0.4),
-                              borderRadius: BorderRadius.circular(20),
-                            ),
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(
-                                  'Jumlah Customer',
-                                  style: Theme.of(context)
-                                      .textTheme
-                                      .headlineLarge!
-                                      .copyWith(
-                                        fontSize: 22,
-                                      ),
-                                ),
-                                const SizedBox(
-                                  height: 10.0,
-                                ),
-                                AspectRatio(
-                                  aspectRatio: 2.78,
-                                  child: LineChart(
-                                    LineChartData(
-                                      titlesData: const FlTitlesData(
-                                        leftTitles: AxisTitles(
-                                          sideTitles:
-                                              SideTitles(showTitles: false),
-                                        ),
-                                        rightTitles: AxisTitles(
-                                          sideTitles:
-                                              SideTitles(showTitles: false),
-                                        ),
-                                        topTitles: AxisTitles(
-                                          sideTitles:
-                                              SideTitles(showTitles: false),
-                                        ),
-                                        bottomTitles: AxisTitles(
-                                          sideTitles:
-                                              SideTitles(showTitles: true),
-                                        ),
-                                      ),
-                                      borderData: FlBorderData(
-                                        show: false,
-                                      ),
-                                      gridData: const FlGridData(show: false),
-                                      lineBarsData: [
-                                        LineChartBarData(
-                                          spots: const [
-                                            FlSpot(0, 3),
-                                            FlSpot(2, 2),
-                                            FlSpot(4, 4),
-                                            FlSpot(6, 10),
-                                          ],
-                                          isCurved: true,
-                                          isStrokeCapRound: true,
-                                          dotData: const FlDotData(show: true),
-                                          belowBarData: BarAreaData(
-                                            show: true,
-                                            gradient: const LinearGradient(
-                                              begin: Alignment.topCenter,
-                                              end: Alignment.bottomCenter,
-                                              colors: [
-                                                Color.fromRGBO(
-                                                    197, 229, 228, 1.0),
-                                                Color.fromRGBO(
-                                                    244, 244, 244, 0.0),
-                                              ],
-                                              stops: [0.0, 1.0],
-                                            ),
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                          const SizedBox(
-                            height: 10.0,
-                          ),
-                        ],
-                        Container(
-                          margin: const EdgeInsets.fromLTRB(
-                            kDefaultPadding,
-                            0,
-                            kDefaultPadding,
-                            kDefaultPadding,
-                          ),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                'E-Catalog',
-                                style: Theme.of(context)
-                                    .textTheme
-                                    .headlineLarge!
-                                    .copyWith(
-                                      fontSize: 22,
-                                    ),
-                              ),
-                              const SizedBox(height: 16),
-                              GestureDetector(
-                                onTap: () {
-                                  Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                      builder: (context) => const ECatalog(),
-                                    ),
-                                  );
-                                },
-                                child: Container(
-                                  height: 200,
-                                  decoration: BoxDecoration(
-                                    image: const DecorationImage(
-                                      image: AssetImage(
-                                          'assets/images/catalog.png'),
-                                      fit: BoxFit.cover,
-                                    ),
-                                    borderRadius: BorderRadius.circular(20),
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                        Container(
-                          margin: const EdgeInsets.fromLTRB(
-                            kDefaultPadding,
-                            0,
-                            kDefaultPadding,
-                            kDefaultPadding,
-                          ),
-                          height: 200,
-                          decoration: BoxDecoration(
-                            color: Colors.grey[300],
-                            borderRadius: BorderRadius.circular(20),
-                          ),
-                        ),
-                        const SizedBox(
-                          height: 16.0,
-                        ),
-                        GestureDetector(
-                          onTap: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) =>
-                                    const HomePage(initialIndex: 3),
-                              ),
-                            );
-                          },
-                          child: Container(
-                            height: 200,
-                            margin: const EdgeInsets.fromLTRB(
-                              kDefaultPadding,
-                              0,
-                              kDefaultPadding,
-                              kDefaultPadding,
-                            ),
-                            decoration: BoxDecoration(
-                              color: Colors.grey[300],
-                              borderRadius: BorderRadius.circular(20),
-                              image: const DecorationImage(
-                                  image:
-                                      AssetImage('assets/images/Sitemap.png'),
-                                  fit: BoxFit.fill),
-                            ),
-                          ),
-                        ),
-                        const SizedBox(
-                          height: 10.0,
-                        ),
-                        Container(
-                          margin: const EdgeInsets.fromLTRB(
-                            kDefaultPadding,
-                            0,
-                            kDefaultPadding,
-                            kDefaultPadding,
-                          ),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            GestureDetector(
+                              onTap: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) =>
+                                          const ProfilePage()),
+                                );
+                              },
+                              child: Row(
                                 children: [
+                                  const Icon(Icons.person, size: 50),
+                                  const SizedBox(width: 10),
                                   Column(
                                     crossAxisAlignment:
                                         CrossAxisAlignment.start,
                                     children: [
-                                      Text(
-                                        'Jadwal Hari Ini',
-                                        style: Theme.of(context)
-                                            .textTheme
-                                            .headlineLarge!
-                                            .copyWith(fontSize: 22),
-                                      ),
-                                      Text(
-                                        getFormattedDate(DateTime.now()),
-                                        style: Theme.of(context)
-                                            .textTheme
-                                            .bodyMedium,
+                                      LayoutBuilder(
+                                        builder: (context, constraints) {
+                                          TextStyle textStyle =
+                                              Theme.of(context)
+                                                  .textTheme
+                                                  .headlineLarge!
+                                                  .copyWith(fontSize: 20);
+
+                                          TextPainter textPainter = TextPainter(
+                                            text: TextSpan(
+                                              text: username,
+                                              style: textStyle,
+                                            ),
+                                            textDirection: TextDirection.ltr,
+                                          );
+                                          textPainter.layout();
+
+                                          double textWidth = textPainter.width;
+
+                                          return Column(
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
+                                            children: [
+                                              Row(
+                                                children: [
+                                                  Text(
+                                                    username,
+                                                    style: textStyle,
+                                                  ),
+                                                ],
+                                              ),
+                                              Row(
+                                                children: [
+                                                  Container(
+                                                    margin:
+                                                        const EdgeInsets.only(
+                                                            top: 10.0),
+                                                    height: 4,
+                                                    width: textWidth * 0.7,
+                                                    decoration:
+                                                        const BoxDecoration(
+                                                      color: Color.fromRGBO(
+                                                          180, 198, 193, 1.0),
+                                                      borderRadius:
+                                                          BorderRadius.only(
+                                                        topLeft:
+                                                            Radius.circular(
+                                                                30.0),
+                                                        bottomLeft:
+                                                            Radius.circular(
+                                                                30.0),
+                                                      ),
+                                                    ),
+                                                  ),
+                                                  Container(
+                                                    margin:
+                                                        const EdgeInsets.only(
+                                                            top: 10.0),
+                                                    height: 4,
+                                                    width: textWidth * 0.3,
+                                                    decoration:
+                                                        const BoxDecoration(
+                                                      color: Color.fromRGBO(
+                                                          209, 220, 214, 1.0),
+                                                      borderRadius:
+                                                          BorderRadius.only(
+                                                        topRight:
+                                                            Radius.circular(
+                                                                30.0),
+                                                        bottomRight:
+                                                            Radius.circular(
+                                                                30.0),
+                                                      ),
+                                                    ),
+                                                  ),
+                                                ],
+                                              ),
+                                            ],
+                                          );
+                                        },
                                       ),
                                     ],
                                   ),
-                                  IconButton(
-                                    onPressed: () {
-                                      Navigator.push(
-                                        context,
-                                        MaterialPageRoute(
-                                            builder: (context) =>
-                                                const SchedulePage()),
-                                      );
-                                    },
-                                    icon: const Icon(Icons.date_range,
-                                        size: 30, color: Colors.black),
+                                ],
+                              ),
+                            ),
+                            Row(
+                              children: [
+                                GestureDetector(
+                                  onTap: () {
+                                    showDialog(
+                                      context: context,
+                                      builder: (BuildContext context) {
+                                        return const NotificationModal();
+                                      },
+                                    );
+                                  },
+                                  child: const Icon(Icons.notifications),
+                                ),
+                                const SizedBox(width: 20),
+                                const Icon(Icons.mail),
+                              ],
+                            ),
+                          ],
+                        ),
+                        const SizedBox(
+                          height: 16.0,
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
+                          children: [
+                            Container(
+                              width: 100,
+                              height: 100,
+                              padding: const EdgeInsets.fromLTRB(8, 24, 8, 0),
+                              decoration: BoxDecoration(
+                                shape: BoxShape.circle,
+                                border: Border.all(
+                                  color: kSecondaryColor,
+                                  width: 2.0,
+                                ),
+                              ),
+                              child: Column(
+                                children: [
+                                  Text(
+                                    '123',
+                                    style: Theme.of(context)
+                                        .textTheme
+                                        .headlineLarge!
+                                        .copyWith(
+                                          fontSize: 20,
+                                        ),
+                                  ),
+                                  Text(
+                                    'Total pesanan',
+                                    style: Theme.of(context)
+                                        .textTheme
+                                        .bodyMedium!
+                                        .copyWith(
+                                          fontSize: 12,
+                                        ),
                                   ),
                                 ],
                               ),
-                              const SizedBox(height: 10),
-                              Container(
-                                width: double.infinity,
-                                height: 60,
-                                decoration: const BoxDecoration(
-                                  color: Colors.transparent,
+                            ),
+                            GestureDetector(
+                              onTap: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => const SPHPage(),
+                                  ),
+                                );
+                              },
+                              child: Container(
+                                width: 100,
+                                height: 100,
+                                padding: const EdgeInsets.fromLTRB(8, 24, 8, 0),
+                                decoration: BoxDecoration(
+                                  shape: BoxShape.circle,
+                                  border: Border.all(
+                                    color: kSecondaryColor,
+                                    width: 2.0,
+                                  ),
                                 ),
-                                child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                child: Column(
                                   children: [
-                                    Expanded(
-                                      flex: 1,
-                                      child: Container(
-                                        height: 60,
-                                        padding: const EdgeInsets.fromLTRB(
-                                            kDefaultPadding,
-                                            0,
-                                            kDefaultPadding,
-                                            0),
-                                        decoration: const BoxDecoration(
-                                          color: Color.fromRGBO(
-                                              180, 198, 193, 1.0),
-                                          borderRadius: BorderRadius.only(
-                                            topLeft: Radius.circular(20),
-                                            bottomLeft: Radius.circular(20),
+                                    Text(
+                                      '123',
+                                      style: Theme.of(context)
+                                          .textTheme
+                                          .headlineLarge!
+                                          .copyWith(
+                                            fontSize: 20,
                                           ),
-                                        ),
-                                        child: Center(
-                                          child: Text(
-                                            '13.00 - 14.00',
-                                            style: Theme.of(context)
-                                                .textTheme
-                                                .headlineLarge!
-                                                .copyWith(fontSize: 16),
-                                          ),
-                                        ),
-                                      ),
                                     ),
-                                    Expanded(
-                                      flex: 2,
-                                      child: Container(
-                                        height: 60,
-                                        padding: const EdgeInsets.fromLTRB(
-                                            kDefaultPadding,
-                                            0,
-                                            kDefaultPadding,
-                                            0),
-                                        decoration: const BoxDecoration(
-                                          color: Color.fromRGBO(
-                                              209, 220, 214, 1.0),
-                                          borderRadius: BorderRadius.only(
-                                            topRight: Radius.circular(20),
-                                            bottomRight: Radius.circular(20),
+                                    Text(
+                                      'Total SPH',
+                                      style: Theme.of(context)
+                                          .textTheme
+                                          .bodyMedium!
+                                          .copyWith(
+                                            fontSize: 12,
                                           ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ),
+                            Container(
+                              width: 100,
+                              height: 100,
+                              padding: const EdgeInsets.fromLTRB(8, 24, 8, 0),
+                              decoration: BoxDecoration(
+                                shape: BoxShape.circle,
+                                border: Border.all(
+                                  color: kSecondaryColor,
+                                  width: 2.0,
+                                ),
+                              ),
+                              child: Column(
+                                children: [
+                                  Text(
+                                    '123',
+                                    style: Theme.of(context)
+                                        .textTheme
+                                        .headlineLarge!
+                                        .copyWith(
+                                          fontSize: 20,
                                         ),
-                                        child: const Column(
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.start,
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.center,
-                                          children: [
-                                            Text(
-                                              'Follow Up SPJ',
-                                              style: TextStyle(fontSize: 14),
-                                            ),
-                                            Text(
-                                              'Nama Customer - Tempat',
-                                              style: TextStyle(fontSize: 14),
-                                            ),
+                                  ),
+                                  Text(
+                                    'Total SPR',
+                                    style: Theme.of(context)
+                                        .textTheme
+                                        .bodyMedium!
+                                        .copyWith(
+                                          fontSize: 12,
+                                        ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    const SizedBox(
+                      height: 230,
+                    ),
+                    if (manager == true) ...[
+                      const SizedBox(
+                        height: 10.0,
+                      ),
+                      Container(
+                        margin: const EdgeInsets.fromLTRB(
+                          kDefaultPadding,
+                          0,
+                          kDefaultPadding,
+                          kDefaultPadding,
+                        ),
+                        padding: const EdgeInsets.fromLTRB(
+                          kDefaultPadding,
+                          kDefaultPadding,
+                          kDefaultPadding,
+                          kDefaultPadding,
+                        ),
+                        decoration: BoxDecoration(
+                          color: const Color.fromRGBO(242, 242, 242, 0.4),
+                          borderRadius: BorderRadius.circular(20),
+                        ),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              'Jumlah Customer',
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .headlineLarge!
+                                  .copyWith(
+                                    fontSize: 22,
+                                  ),
+                            ),
+                            const SizedBox(
+                              height: 10.0,
+                            ),
+                            AspectRatio(
+                              aspectRatio: 2.78,
+                              child: LineChart(
+                                LineChartData(
+                                  titlesData: const FlTitlesData(
+                                    leftTitles: AxisTitles(
+                                      sideTitles: SideTitles(showTitles: false),
+                                    ),
+                                    rightTitles: AxisTitles(
+                                      sideTitles: SideTitles(showTitles: false),
+                                    ),
+                                    topTitles: AxisTitles(
+                                      sideTitles: SideTitles(showTitles: false),
+                                    ),
+                                    bottomTitles: AxisTitles(
+                                      sideTitles: SideTitles(showTitles: true),
+                                    ),
+                                  ),
+                                  borderData: FlBorderData(
+                                    show: false,
+                                  ),
+                                  gridData: const FlGridData(show: false),
+                                  lineBarsData: [
+                                    LineChartBarData(
+                                      spots: const [
+                                        FlSpot(0, 3),
+                                        FlSpot(2, 2),
+                                        FlSpot(4, 4),
+                                        FlSpot(6, 10),
+                                      ],
+                                      isCurved: true,
+                                      isStrokeCapRound: true,
+                                      dotData: const FlDotData(show: true),
+                                      belowBarData: BarAreaData(
+                                        show: true,
+                                        gradient: const LinearGradient(
+                                          begin: Alignment.topCenter,
+                                          end: Alignment.bottomCenter,
+                                          colors: [
+                                            Color.fromRGBO(197, 229, 228, 1.0),
+                                            Color.fromRGBO(244, 244, 244, 0.0),
                                           ],
+                                          stops: [0.0, 1.0],
                                         ),
                                       ),
                                     ),
                                   ],
                                 ),
                               ),
-                              const SizedBox(
-                                height: 10.0,
+                            ),
+                          ],
+                        ),
+                      ),
+                      const SizedBox(
+                        height: 10.0,
+                      ),
+                    ],
+                    Container(
+                      margin: const EdgeInsets.fromLTRB(
+                        kDefaultPadding,
+                        0,
+                        kDefaultPadding,
+                        kDefaultPadding,
+                      ),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            'E-Catalog',
+                            style: Theme.of(context)
+                                .textTheme
+                                .headlineLarge!
+                                .copyWith(
+                                  fontSize: 22,
+                                ),
+                          ),
+                          const SizedBox(height: 16),
+                          GestureDetector(
+                            onTap: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => const ECatalog(),
+                                ),
+                              );
+                            },
+                            child: Container(
+                              height: 200,
+                              decoration: BoxDecoration(
+                                image: const DecorationImage(
+                                  image:
+                                      AssetImage('assets/images/catalog.png'),
+                                  fit: BoxFit.cover,
+                                ),
+                                borderRadius: BorderRadius.circular(20),
                               ),
-                              Container(
-                                width: double.infinity,
-                                height: 60,
-                                decoration: const BoxDecoration(
-                                  color: Colors.transparent,
-                                ),
-                                child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  crossAxisAlignment: CrossAxisAlignment.center,
-                                  children: [
-                                    Expanded(
-                                      flex: 1,
-                                      child: Container(
-                                        height: 60,
-                                        padding: const EdgeInsets.fromLTRB(
-                                            kDefaultPadding,
-                                            0,
-                                            kDefaultPadding,
-                                            0),
-                                        decoration: const BoxDecoration(
-                                          color: Color.fromRGBO(
-                                              180, 198, 193, 1.0),
-                                          borderRadius: BorderRadius.only(
-                                            topLeft: Radius.circular(20),
-                                            bottomLeft: Radius.circular(20),
-                                          ),
-                                        ),
-                                        child: Center(
-                                          child: Text(
-                                            '13.00 - 14.00',
-                                            style: Theme.of(context)
-                                                .textTheme
-                                                .headlineLarge!
-                                                .copyWith(fontSize: 16),
-                                          ),
-                                        ),
-                                      ),
-                                    ),
-                                    Expanded(
-                                      flex: 2,
-                                      child: Container(
-                                        height: 60,
-                                        padding: const EdgeInsets.fromLTRB(
-                                            kDefaultPadding,
-                                            0,
-                                            kDefaultPadding,
-                                            0),
-                                        decoration: const BoxDecoration(
-                                          color: Color.fromRGBO(
-                                              209, 220, 214, 1.0),
-                                          borderRadius: BorderRadius.only(
-                                            topRight: Radius.circular(20),
-                                            bottomRight: Radius.circular(20),
-                                          ),
-                                        ),
-                                        child: const Column(
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.start,
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.center,
-                                          children: [
-                                            Text(
-                                              'Follow Up SPJ',
-                                              style: TextStyle(fontSize: 14),
-                                            ),
-                                            Text(
-                                              'Nama Customer - Tempat',
-                                              style: TextStyle(fontSize: 14),
-                                            ),
-                                          ],
-                                        ),
-                                      ),
-                                    ),
-                                  ],
-                                ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    Container(
+                      margin: const EdgeInsets.fromLTRB(
+                        kDefaultPadding,
+                        0,
+                        kDefaultPadding,
+                        kDefaultPadding,
+                      ),
+                      height: 200,
+                      decoration: BoxDecoration(
+                        color: Colors.grey[300],
+                        borderRadius: BorderRadius.circular(20),
+                      ),
+                    ),
+                    const SizedBox(
+                      height: 16.0,
+                    ),
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) =>
+                                const HomePage(initialIndex: 3),
+                          ),
+                        );
+                      },
+                      child: Container(
+                        height: 200,
+                        margin: const EdgeInsets.fromLTRB(
+                          kDefaultPadding,
+                          0,
+                          kDefaultPadding,
+                          kDefaultPadding,
+                        ),
+                        decoration: BoxDecoration(
+                          color: Colors.grey[300],
+                          borderRadius: BorderRadius.circular(20),
+                          image: const DecorationImage(
+                              image: AssetImage('assets/images/Sitemap.png'),
+                              fit: BoxFit.fill),
+                        ),
+                      ),
+                    ),
+                    const SizedBox(
+                      height: 10.0,
+                    ),
+                    Container(
+                      margin: const EdgeInsets.fromLTRB(
+                        kDefaultPadding,
+                        0,
+                        kDefaultPadding,
+                        kDefaultPadding,
+                      ),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    'Jadwal Hari Ini',
+                                    style: Theme.of(context)
+                                        .textTheme
+                                        .headlineLarge!
+                                        .copyWith(fontSize: 22),
+                                  ),
+                                  Text(
+                                    getFormattedDate(DateTime.now()),
+                                    style:
+                                        Theme.of(context).textTheme.bodyMedium,
+                                  ),
+                                ],
                               ),
-                              const SizedBox(height: 10.0),
-                              Container(
-                                width: double.infinity,
-                                height: 60,
-                                decoration: const BoxDecoration(
-                                  color: Colors.transparent,
-                                ),
-                                child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  crossAxisAlignment: CrossAxisAlignment.center,
-                                  children: [
-                                    Expanded(
-                                      flex: 1,
-                                      child: Container(
-                                        height: 60,
-                                        padding: const EdgeInsets.fromLTRB(
-                                            kDefaultPadding,
-                                            0,
-                                            kDefaultPadding,
-                                            0),
-                                        decoration: const BoxDecoration(
-                                          color: Color.fromRGBO(
-                                              180, 198, 193, 1.0),
-                                          borderRadius: BorderRadius.only(
-                                            topLeft: Radius.circular(20),
-                                            bottomLeft: Radius.circular(20),
-                                          ),
-                                        ),
-                                        child: Center(
-                                          child: Text(
-                                            '13.00 - 14.00',
-                                            style: Theme.of(context)
-                                                .textTheme
-                                                .headlineLarge!
-                                                .copyWith(fontSize: 16),
-                                          ),
-                                        ),
-                                      ),
-                                    ),
-                                    Expanded(
-                                      flex: 2,
-                                      child: Container(
-                                        height: 60,
-                                        padding: const EdgeInsets.fromLTRB(
-                                            kDefaultPadding,
-                                            0,
-                                            kDefaultPadding,
-                                            0),
-                                        decoration: const BoxDecoration(
-                                          color: Color.fromRGBO(
-                                              209, 220, 214, 1.0),
-                                          borderRadius: BorderRadius.only(
-                                            topRight: Radius.circular(20),
-                                            bottomRight: Radius.circular(20),
-                                          ),
-                                        ),
-                                        child: const Column(
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.start,
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.center,
-                                          children: [
-                                            Text(
-                                              'Follow Up SPJ',
-                                              style: TextStyle(fontSize: 14),
-                                            ),
-                                            Text(
-                                              'Nama Customer - Tempat',
-                                              style: TextStyle(fontSize: 14),
-                                            ),
-                                          ],
-                                        ),
-                                      ),
-                                    ),
-                                  ],
-                                ),
+                              IconButton(
+                                onPressed: () {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) =>
+                                            const SchedulePage()),
+                                  );
+                                },
+                                icon: const Icon(Icons.date_range,
+                                    size: 30, color: Colors.black),
                               ),
                             ],
                           ),
-                        )
-                      ],
-                    ),
+                          const SizedBox(height: 10),
+                          Container(
+                            width: double.infinity,
+                            height: 60,
+                            decoration: const BoxDecoration(
+                              color: Colors.transparent,
+                            ),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                Expanded(
+                                  flex: 1,
+                                  child: Container(
+                                    height: 60,
+                                    padding: const EdgeInsets.fromLTRB(
+                                        kDefaultPadding, 0, kDefaultPadding, 0),
+                                    decoration: const BoxDecoration(
+                                      color: Color.fromRGBO(180, 198, 193, 1.0),
+                                      borderRadius: BorderRadius.only(
+                                        topLeft: Radius.circular(20),
+                                        bottomLeft: Radius.circular(20),
+                                      ),
+                                    ),
+                                    child: Center(
+                                      child: Text(
+                                        '13.00 - 14.00',
+                                        style: Theme.of(context)
+                                            .textTheme
+                                            .headlineLarge!
+                                            .copyWith(fontSize: 16),
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                                Expanded(
+                                  flex: 2,
+                                  child: Container(
+                                    height: 60,
+                                    padding: const EdgeInsets.fromLTRB(
+                                        kDefaultPadding, 0, kDefaultPadding, 0),
+                                    decoration: const BoxDecoration(
+                                      color: Color.fromRGBO(209, 220, 214, 1.0),
+                                      borderRadius: BorderRadius.only(
+                                        topRight: Radius.circular(20),
+                                        bottomRight: Radius.circular(20),
+                                      ),
+                                    ),
+                                    child: const Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      children: [
+                                        Text(
+                                          'Follow Up SPJ',
+                                          style: TextStyle(fontSize: 14),
+                                        ),
+                                        Text(
+                                          'Nama Customer - Tempat',
+                                          style: TextStyle(fontSize: 14),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                          const SizedBox(
+                            height: 10.0,
+                          ),
+                          Container(
+                            width: double.infinity,
+                            height: 60,
+                            decoration: const BoxDecoration(
+                              color: Colors.transparent,
+                            ),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                Expanded(
+                                  flex: 1,
+                                  child: Container(
+                                    height: 60,
+                                    padding: const EdgeInsets.fromLTRB(
+                                        kDefaultPadding, 0, kDefaultPadding, 0),
+                                    decoration: const BoxDecoration(
+                                      color: Color.fromRGBO(180, 198, 193, 1.0),
+                                      borderRadius: BorderRadius.only(
+                                        topLeft: Radius.circular(20),
+                                        bottomLeft: Radius.circular(20),
+                                      ),
+                                    ),
+                                    child: Center(
+                                      child: Text(
+                                        '13.00 - 14.00',
+                                        style: Theme.of(context)
+                                            .textTheme
+                                            .headlineLarge!
+                                            .copyWith(fontSize: 16),
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                                Expanded(
+                                  flex: 2,
+                                  child: Container(
+                                    height: 60,
+                                    padding: const EdgeInsets.fromLTRB(
+                                        kDefaultPadding, 0, kDefaultPadding, 0),
+                                    decoration: const BoxDecoration(
+                                      color: Color.fromRGBO(209, 220, 214, 1.0),
+                                      borderRadius: BorderRadius.only(
+                                        topRight: Radius.circular(20),
+                                        bottomRight: Radius.circular(20),
+                                      ),
+                                    ),
+                                    child: const Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      children: [
+                                        Text(
+                                          'Follow Up SPJ',
+                                          style: TextStyle(fontSize: 14),
+                                        ),
+                                        Text(
+                                          'Nama Customer - Tempat',
+                                          style: TextStyle(fontSize: 14),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                          const SizedBox(height: 10.0),
+                          Container(
+                            width: double.infinity,
+                            height: 60,
+                            decoration: const BoxDecoration(
+                              color: Colors.transparent,
+                            ),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                Expanded(
+                                  flex: 1,
+                                  child: Container(
+                                    height: 60,
+                                    padding: const EdgeInsets.fromLTRB(
+                                        kDefaultPadding, 0, kDefaultPadding, 0),
+                                    decoration: const BoxDecoration(
+                                      color: Color.fromRGBO(180, 198, 193, 1.0),
+                                      borderRadius: BorderRadius.only(
+                                        topLeft: Radius.circular(20),
+                                        bottomLeft: Radius.circular(20),
+                                      ),
+                                    ),
+                                    child: Center(
+                                      child: Text(
+                                        '13.00 - 14.00',
+                                        style: Theme.of(context)
+                                            .textTheme
+                                            .headlineLarge!
+                                            .copyWith(fontSize: 16),
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                                Expanded(
+                                  flex: 2,
+                                  child: Container(
+                                    height: 60,
+                                    padding: const EdgeInsets.fromLTRB(
+                                        kDefaultPadding, 0, kDefaultPadding, 0),
+                                    decoration: const BoxDecoration(
+                                      color: Color.fromRGBO(209, 220, 214, 1.0),
+                                      borderRadius: BorderRadius.only(
+                                        topRight: Radius.circular(20),
+                                        bottomRight: Radius.circular(20),
+                                      ),
+                                    ),
+                                    child: const Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      children: [
+                                        Text(
+                                          'Follow Up SPJ',
+                                          style: TextStyle(fontSize: 14),
+                                        ),
+                                        Text(
+                                          'Nama Customer - Tempat',
+                                          style: TextStyle(fontSize: 14),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ],
+                      ),
+                    )
                   ],
                 ),
               ],

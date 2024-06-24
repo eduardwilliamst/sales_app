@@ -1,72 +1,112 @@
 import 'package:flutter/material.dart';
 
-class NotificationModal extends StatelessWidget {
-  const NotificationModal({super.key});
+class CatalogModal extends StatelessWidget {
+  final String title;
+  final bool deluxe;
+  const CatalogModal({super.key, required this.title, required this.deluxe});
 
   @override
   Widget build(BuildContext context) {
     return Dialog(
       shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(20.0),
+        borderRadius: BorderRadius.circular(20),
       ),
       child: Container(
-        padding: const EdgeInsets.all(20.0),
+        padding: const EdgeInsets.all(20),
         decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(20.0),
-          gradient: const LinearGradient(
-            colors: [Colors.white, Color(0xFFF5F5F5)],
-            begin: Alignment.topCenter,
-            end: Alignment.bottomCenter,
-          ),
+          borderRadius: BorderRadius.circular(20),
+          color: Colors.white,
         ),
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
+            Text(
+              deluxe ? '$title Deluxe' : '$title Standard',
+              style: Theme.of(context)
+                  .textTheme
+                  .headlineLarge!
+                  .copyWith(fontSize: 16),
+            ),
+            const SizedBox(height: 20),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                const Text(
-                  'Notifikasi',
-                  style: TextStyle(
-                    fontSize: 18,
-                    fontWeight: FontWeight.bold,
-                  ),
+                Text(
+                  'Luas Tanah (LT)',
+                  style: Theme.of(context)
+                      .textTheme
+                      .bodyMedium!
+                      .copyWith(fontSize: 12, fontWeight: FontWeight.w700),
                 ),
-                GestureDetector(
-                  onTap: () {
-                    Navigator.of(context).pop();
-                  },
-                  child: const Icon(Icons.close),
+                Text(
+                  '40 M2',
+                  style: Theme.of(context)
+                      .textTheme
+                      .bodyMedium!
+                      .copyWith(fontSize: 12, fontWeight: FontWeight.w700),
                 ),
               ],
             ),
-            const SizedBox(height: 20),
-            Image.asset(
-              'assets/images/notification.png',
-              height: 100,
-              width: 100,
+            const Divider(),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(
+                  'Luas Bangunan (LB)',
+                  style: Theme.of(context)
+                      .textTheme
+                      .bodyMedium!
+                      .copyWith(fontSize: 12, fontWeight: FontWeight.w700),
+                ),
+                Text(
+                  '53 M2',
+                  style: Theme.of(context)
+                      .textTheme
+                      .bodyMedium!
+                      .copyWith(fontSize: 12, fontWeight: FontWeight.w700),
+                ),
+              ],
             ),
-            const SizedBox(height: 20),
-            const Text(
-              'Tidak ada notifikasi baru',
-              style: TextStyle(
-                fontSize: 16,
-                fontWeight: FontWeight.bold,
-              ),
+            const Divider(),
+            const Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                Icon(Icons.bed, size: 25),
+                Icon(Icons.bathtub, size: 25),
+                Icon(Icons.directions_car, size: 25),
+              ],
             ),
-            const SizedBox(height: 20),
+            const SizedBox(height: 10),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                Text(
+                  '2',
+                  style: Theme.of(context)
+                      .textTheme
+                      .bodyMedium!
+                      .copyWith(fontSize: 12, fontWeight: FontWeight.w700),
+                ),
+                Text(
+                  '1',
+                  style: Theme.of(context)
+                      .textTheme
+                      .bodyMedium!
+                      .copyWith(fontSize: 12, fontWeight: FontWeight.w700),
+                ),
+                Text(
+                  '1',
+                  style: Theme.of(context)
+                      .textTheme
+                      .bodyMedium!
+                      .copyWith(fontSize: 12, fontWeight: FontWeight.w700),
+                ),
+              ],
+            ),
+            const SizedBox(height: 10),
           ],
         ),
       ),
     );
   }
-}
-
-void showNotificationModal(BuildContext context) {
-  showDialog(
-    context: context,
-    builder: (BuildContext context) {
-      return const NotificationModal();
-    },
-  );
 }

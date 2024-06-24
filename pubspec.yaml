@@ -82,6 +82,8 @@ flutter:
     - assets/images/SitemapBackground.png
     - assets/images/BannerECatalog.png
     - assets/images/document-download.png
+    - assets/images/LogoAmesta1.png
+    - assets/images/LogoAmesta2.png
 
   fonts:
     - family: DMSerifText
