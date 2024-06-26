@@ -159,7 +159,7 @@ class _HomeContentState extends State<HomeContent> {
   @override
   Widget build(BuildContext context) {
     // final double screenHeight = MediaQuery.of(context).size.height;
-    // final double screenWidth = MediaQuery.of(context).size.width;
+    final double screenWidth = MediaQuery.of(context).size.width;
 
     return Scaffold(
       backgroundColor: Colors.transparent,
@@ -611,21 +611,43 @@ class _HomeContentState extends State<HomeContent> {
                         ],
                       ),
                     ),
+                    const SizedBox(
+                      height: 8.0,
+                    ),
                     Container(
+                      height: 200,
                       margin: const EdgeInsets.fromLTRB(
                         kDefaultPadding,
                         0,
                         kDefaultPadding,
                         kDefaultPadding,
                       ),
-                      height: 200,
-                      decoration: BoxDecoration(
-                        color: Colors.grey[300],
-                        borderRadius: BorderRadius.circular(20),
+                      child: ListView(
+                        scrollDirection: Axis.horizontal,
+                        shrinkWrap: true,
+                        children: [
+                          Container(
+                            width: screenWidth - 32,
+                            decoration: BoxDecoration(
+                              color: Colors.grey[300],
+                              borderRadius: BorderRadius.circular(20),
+                            ),
+                          ),
+                          const SizedBox(
+                            width: 16.0,
+                          ),
+                          Container(
+                            width: screenWidth - 32,
+                            decoration: BoxDecoration(
+                              color: Colors.grey[300],
+                              borderRadius: BorderRadius.circular(20),
+                            ),
+                          ),
+                        ],
                       ),
                     ),
                     const SizedBox(
-                      height: 16.0,
+                      height: 8.0,
                     ),
                     GestureDetector(
                       onTap: () {
@@ -655,7 +677,7 @@ class _HomeContentState extends State<HomeContent> {
                       ),
                     ),
                     const SizedBox(
-                      height: 10.0,
+                      height: 16.0,
                     ),
                     Container(
                       margin: const EdgeInsets.fromLTRB(
