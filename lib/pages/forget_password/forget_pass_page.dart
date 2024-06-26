@@ -17,7 +17,7 @@ class _ForgetPasswordPageState extends State<ForgetPasswordPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SingleChildScrollView(
-        child: Column(
+        child: Stack(
           children: [
             ClipPath(
               clipBehavior: Clip.antiAlias,
@@ -39,7 +39,7 @@ class _ForgetPasswordPageState extends State<ForgetPasswordPage> {
                   image: DecorationImage(
                     image:
                         AssetImage('assets/images/LoginMobileBackground.png'),
-                    alignment: Alignment.topCenter,
+                    alignment: Alignment.center,
                     fit: BoxFit.cover,
                   ),
                 ),
@@ -47,7 +47,8 @@ class _ForgetPasswordPageState extends State<ForgetPasswordPage> {
                 width: double.infinity,
               ),
             ),
-            Padding(
+            Container(
+              margin: const EdgeInsets.only(top: 260),
               padding: const EdgeInsets.all(kDefaultPadding),
               child: Form(
                 key: _formKey,

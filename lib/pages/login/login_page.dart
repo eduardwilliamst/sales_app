@@ -20,7 +20,7 @@ class _LoginPageState extends State<LoginPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SingleChildScrollView(
-        child: Column(
+        child: Stack(
           children: [
             ClipPath(
               clipBehavior: Clip.antiAlias,
@@ -42,7 +42,7 @@ class _LoginPageState extends State<LoginPage> {
                   image: DecorationImage(
                     image:
                         AssetImage('assets/images/LoginMobileBackground.png'),
-                    alignment: Alignment.topCenter,
+                    alignment: Alignment.center,
                     fit: BoxFit.cover,
                   ),
                 ),
@@ -50,7 +50,8 @@ class _LoginPageState extends State<LoginPage> {
                 width: double.infinity,
               ),
             ),
-            Padding(
+            Container(
+              margin: const EdgeInsets.only(top: 260),
               padding: const EdgeInsets.all(kDefaultPadding),
               child: Form(
                 key: _formKey,
@@ -126,24 +127,19 @@ class _LoginPageState extends State<LoginPage> {
                         return null;
                       },
                     ),
-                    const SizedBox(height: 12),
-                    Align(
-                      alignment: Alignment.centerLeft,
-                      child: InkWell(
-                        onTap: () {
-                          Navigator.pushReplacement(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) =>
-                                    const ForgetPasswordPage()),
-                          );
-                        },
-                        child: const Text(
-                          'Lupa Kata Sandi?',
-                          style: TextStyle(
-                            color: Colors.blue,
-                          ),
-                        ),
+                    const SizedBox(height: 10),
+                    InkWell(
+                      onTap: () {
+                        Navigator.pushReplacement(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const ForgetPasswordPage()),
+                        );
+                      },
+                      child: Text(
+                        'Lupa Kata Sandi?',
+                        style: Theme.of(context).textTheme.bodyLarge!.copyWith(
+                            color: const Color.fromRGBO(82, 113, 255, 1.0)),
                       ),
                     ),
                     const SizedBox(height: 20),

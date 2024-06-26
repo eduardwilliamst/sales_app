@@ -40,61 +40,63 @@ class _ResetPasswordPageState extends State<ResetPasswordPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
-        children: [
-          ClipPath(
-            clipBehavior: Clip.antiAlias,
-            clipper: CustomBannerClipper(),
-            child: Container(
-              padding: const EdgeInsets.all(kDefaultPadding),
-              decoration: const BoxDecoration(
-                gradient: LinearGradient(
-                  begin: Alignment.topCenter,
-                  end: Alignment.bottomCenter,
-                  colors: [
-                    Color.fromRGBO(235, 226, 211, 1.0),
-                    Color.fromRGBO(247, 229, 205, 1.0)
-                  ],
-                  // stops: [
-                  //   0.0,
-                  //   1.0,
-                  // ],
+      body: SingleChildScrollView(
+        child: Stack(
+          children: [
+            ClipPath(
+              clipBehavior: Clip.antiAlias,
+              clipper: CustomBannerClipper(),
+              child: Container(
+                padding: const EdgeInsets.all(kDefaultPadding),
+                decoration: const BoxDecoration(
+                  gradient: LinearGradient(
+                    begin: Alignment.topCenter,
+                    end: Alignment.bottomCenter,
+                    colors: [
+                      Color.fromRGBO(235, 226, 211, 1.0),
+                      Color.fromRGBO(247, 229, 205, 1.0)
+                    ],
+                    // stops: [
+                    //   0.0,
+                    //   1.0,
+                    // ],
+                  ),
+                  image: DecorationImage(
+                    image:
+                        AssetImage('assets/images/LoginMobileBackground.png'),
+                    alignment: Alignment.center,
+                    fit: BoxFit.cover,
+                  ),
                 ),
-                image: DecorationImage(
-                  image: AssetImage('assets/images/LoginMobileBackground.png'),
-                  alignment: Alignment.topCenter,
-                  fit: BoxFit.cover,
-                ),
-              ),
-              height: 285,
-              width: double.infinity,
-              child: SafeArea(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Row(
-                      children: [
-                        IconButton(
-                          onPressed: () {
-                            Navigator.pop(context);
-                          },
-                          icon: Image.asset('assets/images/arrow-left.png',
-                              height: 25),
-                        ),
-                        const SizedBox(width: 10),
-                        Text(
-                          'Profilku',
-                          style: Theme.of(context).textTheme.headlineLarge,
-                        ),
-                      ],
-                    ),
-                  ],
+                height: 285,
+                width: double.infinity,
+                child: SafeArea(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Row(
+                        children: [
+                          IconButton(
+                            onPressed: () {
+                              Navigator.pop(context);
+                            },
+                            icon: Image.asset('assets/images/arrow-left.png',
+                                height: 25),
+                          ),
+                          const SizedBox(width: 10),
+                          Text(
+                            'Profilku',
+                            style: Theme.of(context).textTheme.headlineLarge,
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
                 ),
               ),
             ),
-          ),
-          SingleChildScrollView(
-            child: Padding(
+            Container(
+              margin: const EdgeInsets.only(top: 260),
               padding: const EdgeInsets.all(kDefaultPadding),
               child: Form(
                 key: _formKey,
@@ -206,9 +208,9 @@ class _ResetPasswordPageState extends State<ResetPasswordPage> {
                   ],
                 ),
               ),
-            ),
-          )
-        ],
+            )
+          ],
+        ),
       ),
     );
   }

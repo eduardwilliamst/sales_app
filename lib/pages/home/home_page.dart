@@ -98,6 +98,64 @@ class _HomeContentState extends State<HomeContent> {
     return intl.DateFormat('EEEE, d MMMM yyyy', 'id_ID').format(date);
   }
 
+  Widget bottomTitleWidgets(double value, TitleMeta meta) {
+    const style = TextStyle(
+        fontSize: 12,
+        color: Color.fromRGBO(
+          24,
+          24,
+          25,
+          0.42,
+        ));
+    Widget text;
+    switch (value.toInt()) {
+      case 1:
+        text = const Text('Jan', style: style);
+        break;
+      case 2:
+        text = const Text('Feb', style: style);
+        break;
+      case 3:
+        text = const Text('Mar', style: style);
+        break;
+      case 4:
+        text = const Text('Apr', style: style);
+        break;
+      case 5:
+        text = const Text('Mei', style: style);
+        break;
+      case 6:
+        text = const Text('Jun', style: style);
+        break;
+      case 7:
+        text = const Text('Jul', style: style);
+        break;
+      case 8:
+        text = const Text('Aug', style: style);
+        break;
+      case 9:
+        text = const Text('Sep', style: style);
+        break;
+      case 10:
+        text = const Text('Oct', style: style);
+        break;
+      case 11:
+        text = const Text('Nov', style: style);
+        break;
+      case 12:
+        text = const Text('Dec', style: style);
+        break;
+      default:
+        text = const Text('', style: style);
+        break;
+    }
+
+    return SideTitleWidget(
+      axisSide: meta.axisSide,
+      child: text,
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     // final double screenHeight = MediaQuery.of(context).size.height;
@@ -280,7 +338,6 @@ class _HomeContentState extends State<HomeContent> {
                             Container(
                               width: 100,
                               height: 100,
-                              padding: const EdgeInsets.fromLTRB(8, 24, 8, 0),
                               decoration: BoxDecoration(
                                 shape: BoxShape.circle,
                                 border: Border.all(
@@ -289,6 +346,8 @@ class _HomeContentState extends State<HomeContent> {
                                 ),
                               ),
                               child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
                                   Text(
                                     '123',
@@ -323,7 +382,6 @@ class _HomeContentState extends State<HomeContent> {
                               child: Container(
                                 width: 100,
                                 height: 100,
-                                padding: const EdgeInsets.fromLTRB(8, 24, 8, 0),
                                 decoration: BoxDecoration(
                                   shape: BoxShape.circle,
                                   border: Border.all(
@@ -332,6 +390,8 @@ class _HomeContentState extends State<HomeContent> {
                                   ),
                                 ),
                                 child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                  mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
                                     Text(
                                       '123',
@@ -358,7 +418,6 @@ class _HomeContentState extends State<HomeContent> {
                             Container(
                               width: 100,
                               height: 100,
-                              padding: const EdgeInsets.fromLTRB(8, 24, 8, 0),
                               decoration: BoxDecoration(
                                 shape: BoxShape.circle,
                                 border: Border.all(
@@ -367,6 +426,8 @@ class _HomeContentState extends State<HomeContent> {
                                 ),
                               ),
                               child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
                                   Text(
                                     '123',
@@ -441,18 +502,22 @@ class _HomeContentState extends State<HomeContent> {
                               aspectRatio: 2.78,
                               child: LineChart(
                                 LineChartData(
-                                  titlesData: const FlTitlesData(
-                                    leftTitles: AxisTitles(
+                                  titlesData: FlTitlesData(
+                                    leftTitles: const AxisTitles(
                                       sideTitles: SideTitles(showTitles: false),
                                     ),
-                                    rightTitles: AxisTitles(
+                                    rightTitles: const AxisTitles(
                                       sideTitles: SideTitles(showTitles: false),
                                     ),
-                                    topTitles: AxisTitles(
+                                    topTitles: const AxisTitles(
                                       sideTitles: SideTitles(showTitles: false),
                                     ),
                                     bottomTitles: AxisTitles(
-                                      sideTitles: SideTitles(showTitles: true),
+                                      sideTitles: SideTitles(
+                                        showTitles: true,
+                                        interval: 1,
+                                        getTitlesWidget: bottomTitleWidgets,
+                                      ),
                                     ),
                                   ),
                                   borderData: FlBorderData(
@@ -462,10 +527,18 @@ class _HomeContentState extends State<HomeContent> {
                                   lineBarsData: [
                                     LineChartBarData(
                                       spots: const [
-                                        FlSpot(0, 3),
+                                        FlSpot(1, 0),
                                         FlSpot(2, 2),
+                                        FlSpot(3, 2),
                                         FlSpot(4, 4),
-                                        FlSpot(6, 10),
+                                        FlSpot(5, 10),
+                                        FlSpot(6, 0),
+                                        FlSpot(7, 2),
+                                        FlSpot(8, 2),
+                                        FlSpot(9, 4),
+                                        FlSpot(10, 10),
+                                        FlSpot(11, 12),
+                                        FlSpot(12, 3),
                                       ],
                                       isCurved: true,
                                       isStrokeCapRound: true,
@@ -486,6 +559,9 @@ class _HomeContentState extends State<HomeContent> {
                                   ],
                                 ),
                               ),
+                            ),
+                            const SizedBox(
+                              height: 10.0,
                             ),
                           ],
                         ),

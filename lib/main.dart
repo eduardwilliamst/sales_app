@@ -19,11 +19,11 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      supportedLocales: const [Locale('en', 'US'), Locale('id', 'ID')],
       debugShowCheckedModeBanner: false,
       title: 'Sales App',
       theme: ThemeData(
         useMaterial3: true,
+        fontFamily: 'Lato',
         navigationBarTheme: const NavigationBarThemeData(
           backgroundColor: kSecondaryColor,
           labelTextStyle: WidgetStatePropertyAll(
