@@ -76,301 +76,300 @@ class _SchedulePageState extends State<SchedulePage> {
         ),
         body: SafeArea(
           child: SingleChildScrollView(
-            child: Padding(
-              padding: const EdgeInsets.all(kDefaultPadding),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Container(
-                    margin: const EdgeInsets.fromLTRB(
-                        kDefaultPadding, 0, kDefaultPadding, kDefaultPadding),
-                    padding: const EdgeInsets.only(
-                        left: 8.0, right: 8.0, bottom: 8.0),
-                    decoration: BoxDecoration(
-                      color: Colors.transparent,
-                      borderRadius: BorderRadius.circular(20),
-                      border: Border.all(
-                          color: const Color.fromRGBO(122, 167, 165, 100),
-                          width: 3.0),
-                    ),
-                    child: TableCalendar(
-                      locale: 'id_ID',
-                      rowHeight: 43,
-                      headerStyle: const HeaderStyle(
-                        formatButtonVisible: false,
-                        titleCentered: true,
-                      ),
-                      availableGestures: AvailableGestures.all,
-                      selectedDayPredicate: (day) => isSameDay(day, today),
-                      focusedDay: today,
-                      firstDay: DateTime.utc(2010, 10, 16),
-                      lastDay: DateTime.utc(2030, 3, 14),
-                      onDaySelected: _onDaySelected,
-                    ),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Container(
+                  margin: const EdgeInsets.fromLTRB(
+                      kDefaultPadding, 0, kDefaultPadding, kDefaultPadding),
+                  padding: const EdgeInsets.only(
+                      left: 8.0, right: 8.0, bottom: kDefaultPadding),
+                  decoration: BoxDecoration(
+                    color: Colors.transparent,
+                    borderRadius: BorderRadius.circular(20),
+                    border: Border.all(
+                        color: const Color.fromRGBO(122, 167, 165, 100),
+                        width: 3.0),
                   ),
-                  Container(
-                    margin: const EdgeInsets.all(kDefaultPadding),
-                    padding: const EdgeInsets.all(kDefaultPadding),
-                    decoration: BoxDecoration(
-                      color: Colors.transparent,
-                      borderRadius: BorderRadius.circular(20),
-                      border: Border.all(
-                          color: const Color.fromRGBO(122, 167, 165, 100),
-                          width: 3.0),
+                  child: TableCalendar(
+                    locale: 'id_ID',
+                    rowHeight: 43,
+                    headerStyle: const HeaderStyle(
+                      formatButtonVisible: false,
+                      titleCentered: true,
                     ),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Column(
+                    daysOfWeekStyle: const DaysOfWeekStyle(
+                      weekendStyle: TextStyle(fontSize: 14),
+                      weekdayStyle: TextStyle(fontSize: 14),
+                    ),
+                    startingDayOfWeek: StartingDayOfWeek.monday,
+                    availableGestures: AvailableGestures.all,
+                    selectedDayPredicate: (day) => isSameDay(day, today),
+                    focusedDay: today,
+                    firstDay: DateTime.utc(2010, 10, 16),
+                    lastDay: DateTime.utc(2030, 3, 14),
+                    onDaySelected: _onDaySelected,
+                  ),
+                ),
+                Container(
+                  margin: const EdgeInsets.all(kDefaultPadding),
+                  padding: const EdgeInsets.all(kDefaultPadding),
+                  decoration: BoxDecoration(
+                    color: Colors.transparent,
+                    borderRadius: BorderRadius.circular(20),
+                    border: Border.all(
+                        color: const Color.fromRGBO(122, 167, 165, 100),
+                        width: 3.0),
+                  ),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Column(
+                        children: [
+                          Text(
+                            'Jadwal Hari Ini',
+                            style: Theme.of(context)
+                                .textTheme
+                                .headlineLarge!
+                                .copyWith(fontSize: 20),
+                          ),
+                          const SizedBox(height: 5),
+                          Text(
+                            getFormattedDate(today),
+                            style: Theme.of(context)
+                                .textTheme
+                                .bodyMedium!
+                                .copyWith(fontSize: 14),
+                          ),
+                        ],
+                      ),
+                      const SizedBox(height: 10),
+                      Container(
+                        width: double.infinity,
+                        height: 60,
+                        decoration: const BoxDecoration(
+                          color: Colors.transparent,
+                        ),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
-                            Text(
-                              'Jadwal Hari Ini',
-                              style: Theme.of(context)
-                                  .textTheme
-                                  .headlineLarge!
-                                  .copyWith(fontSize: 20),
+                            Expanded(
+                              flex: 1,
+                              child: Container(
+                                height: 60,
+                                padding: const EdgeInsets.fromLTRB(
+                                    kDefaultPadding / 2,
+                                    0,
+                                    kDefaultPadding / 2,
+                                    0),
+                                decoration: const BoxDecoration(
+                                  color: Color.fromRGBO(180, 198, 193, 1.0),
+                                  borderRadius: BorderRadius.only(
+                                    topLeft: Radius.circular(20),
+                                    bottomLeft: Radius.circular(20),
+                                  ),
+                                ),
+                                child: Center(
+                                  child: Text(
+                                    '13.00 - 14.00',
+                                    style: Theme.of(context)
+                                        .textTheme
+                                        .headlineLarge!
+                                        .copyWith(fontSize: 16),
+                                  ),
+                                ),
+                              ),
                             ),
-                            const SizedBox(height: 5),
-                            Text(
-                              getFormattedDate(today),
-                              style: Theme.of(context)
-                                  .textTheme
-                                  .bodyMedium!
-                                  .copyWith(fontSize: 14),
+                            Expanded(
+                              flex: 2,
+                              child: Container(
+                                height: 60,
+                                padding: const EdgeInsets.fromLTRB(
+                                    kDefaultPadding / 2,
+                                    0,
+                                    kDefaultPadding / 2,
+                                    0),
+                                decoration: const BoxDecoration(
+                                  color: Color.fromRGBO(209, 220, 214, 1.0),
+                                  borderRadius: BorderRadius.only(
+                                    topRight: Radius.circular(20),
+                                    bottomRight: Radius.circular(20),
+                                  ),
+                                ),
+                                child: const Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Text(
+                                      'Follow Up SPJ',
+                                      style: TextStyle(fontSize: 14),
+                                    ),
+                                    Text(
+                                      'Nama Customer - Tempat',
+                                      style: TextStyle(fontSize: 14),
+                                    ),
+                                  ],
+                                ),
+                              ),
                             ),
                           ],
                         ),
-                        const SizedBox(height: 10),
-                        Container(
-                          width: double.infinity,
-                          height: 60,
-                          decoration: const BoxDecoration(
-                            color: Colors.transparent,
-                          ),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            children: [
-                              Expanded(
-                                flex: 1,
-                                child: Container(
-                                  height: 60,
-                                  padding: const EdgeInsets.fromLTRB(
-                                      kDefaultPadding / 2,
-                                      0,
-                                      kDefaultPadding / 2,
-                                      0),
-                                  decoration: const BoxDecoration(
-                                    color: Color.fromRGBO(180, 198, 193, 1.0),
-                                    borderRadius: BorderRadius.only(
-                                      topLeft: Radius.circular(20),
-                                      bottomLeft: Radius.circular(20),
-                                    ),
-                                  ),
-                                  child: Center(
-                                    child: Text(
-                                      '13.00 - 14.00',
-                                      style: Theme.of(context)
-                                          .textTheme
-                                          .headlineLarge!
-                                          .copyWith(fontSize: 16),
-                                    ),
-                                  ),
-                                ),
-                              ),
-                              Expanded(
-                                flex: 2,
-                                child: Container(
-                                  height: 60,
-                                  padding: const EdgeInsets.fromLTRB(
-                                      kDefaultPadding / 2,
-                                      0,
-                                      kDefaultPadding / 2,
-                                      0),
-                                  decoration: const BoxDecoration(
-                                    color: Color.fromRGBO(209, 220, 214, 1.0),
-                                    borderRadius: BorderRadius.only(
-                                      topRight: Radius.circular(20),
-                                      bottomRight: Radius.circular(20),
-                                    ),
-                                  ),
-                                  child: const Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: [
-                                      Text(
-                                        'Follow Up SPJ',
-                                        style: TextStyle(fontSize: 14),
-                                      ),
-                                      Text(
-                                        'Nama Customer - Tempat',
-                                        style: TextStyle(fontSize: 14),
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
+                      ),
+                      const SizedBox(
+                        height: 10.0,
+                      ),
+                      Container(
+                        width: double.infinity,
+                        height: 60,
+                        decoration: const BoxDecoration(
+                          color: Colors.transparent,
                         ),
-                        const SizedBox(
-                          height: 10.0,
-                        ),
-                        Container(
-                          width: double.infinity,
-                          height: 60,
-                          decoration: const BoxDecoration(
-                            color: Colors.transparent,
-                          ),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            children: [
-                              Expanded(
-                                flex: 1,
-                                child: Container(
-                                  height: 60,
-                                  padding: const EdgeInsets.fromLTRB(
-                                      kDefaultPadding / 2,
-                                      0,
-                                      kDefaultPadding / 2,
-                                      0),
-                                  decoration: const BoxDecoration(
-                                    color: Color.fromRGBO(180, 198, 193, 1.0),
-                                    borderRadius: BorderRadius.only(
-                                      topLeft: Radius.circular(20),
-                                      bottomLeft: Radius.circular(20),
-                                    ),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            Expanded(
+                              flex: 1,
+                              child: Container(
+                                height: 60,
+                                padding: const EdgeInsets.fromLTRB(
+                                    kDefaultPadding / 2,
+                                    0,
+                                    kDefaultPadding / 2,
+                                    0),
+                                decoration: const BoxDecoration(
+                                  color: Color.fromRGBO(180, 198, 193, 1.0),
+                                  borderRadius: BorderRadius.only(
+                                    topLeft: Radius.circular(20),
+                                    bottomLeft: Radius.circular(20),
                                   ),
-                                  child: Center(
-                                    child: Text(
-                                      '13.00 - 14.00',
-                                      style: Theme.of(context)
-                                          .textTheme
-                                          .headlineLarge!
-                                          .copyWith(fontSize: 16),
-                                    ),
+                                ),
+                                child: Center(
+                                  child: Text(
+                                    '13.00 - 14.00',
+                                    style: Theme.of(context)
+                                        .textTheme
+                                        .headlineLarge!
+                                        .copyWith(fontSize: 16),
                                   ),
                                 ),
                               ),
-                              Expanded(
-                                flex: 2,
-                                child: Container(
-                                  height: 60,
-                                  padding: const EdgeInsets.fromLTRB(
-                                      kDefaultPadding / 2,
-                                      0,
-                                      kDefaultPadding / 2,
-                                      0),
-                                  decoration: const BoxDecoration(
-                                    color: Color.fromRGBO(209, 220, 214, 1.0),
-                                    borderRadius: BorderRadius.only(
-                                      topRight: Radius.circular(20),
-                                      bottomRight: Radius.circular(20),
-                                    ),
+                            ),
+                            Expanded(
+                              flex: 2,
+                              child: Container(
+                                height: 60,
+                                padding: const EdgeInsets.fromLTRB(
+                                    kDefaultPadding / 2,
+                                    0,
+                                    kDefaultPadding / 2,
+                                    0),
+                                decoration: const BoxDecoration(
+                                  color: Color.fromRGBO(209, 220, 214, 1.0),
+                                  borderRadius: BorderRadius.only(
+                                    topRight: Radius.circular(20),
+                                    bottomRight: Radius.circular(20),
                                   ),
-                                  child: const Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: [
-                                      Text(
-                                        'Follow Up SPJ',
-                                        style: TextStyle(fontSize: 14),
-                                      ),
-                                      Text(
-                                        'Nama Customer - Tempat',
-                                        style: TextStyle(fontSize: 14),
-                                      ),
-                                    ],
+                                ),
+                                child: const Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Text(
+                                      'Follow Up SPJ',
+                                      style: TextStyle(fontSize: 14),
+                                    ),
+                                    Text(
+                                      'Nama Customer - Tempat',
+                                      style: TextStyle(fontSize: 14),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                      const SizedBox(
+                        height: 10.0,
+                      ),
+                      Container(
+                        width: double.infinity,
+                        height: 60,
+                        decoration: const BoxDecoration(
+                          color: Colors.transparent,
+                        ),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            Expanded(
+                              flex: 1,
+                              child: Container(
+                                height: 60,
+                                padding: const EdgeInsets.fromLTRB(
+                                    kDefaultPadding / 2,
+                                    0,
+                                    kDefaultPadding / 2,
+                                    0),
+                                decoration: const BoxDecoration(
+                                  color: Color.fromRGBO(180, 198, 193, 1.0),
+                                  borderRadius: BorderRadius.only(
+                                    topLeft: Radius.circular(20),
+                                    bottomLeft: Radius.circular(20),
+                                  ),
+                                ),
+                                child: Center(
+                                  child: Text(
+                                    '13.00 - 14.00',
+                                    style: Theme.of(context)
+                                        .textTheme
+                                        .headlineLarge!
+                                        .copyWith(fontSize: 16),
                                   ),
                                 ),
                               ),
-                            ],
-                          ),
-                        ),
-                        const SizedBox(
-                          height: 10.0,
-                        ),
-                        Container(
-                          width: double.infinity,
-                          height: 60,
-                          decoration: const BoxDecoration(
-                            color: Colors.transparent,
-                          ),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            children: [
-                              Expanded(
-                                flex: 1,
-                                child: Container(
-                                  height: 60,
-                                  padding: const EdgeInsets.fromLTRB(
-                                      kDefaultPadding / 2,
-                                      0,
-                                      kDefaultPadding / 2,
-                                      0),
-                                  decoration: const BoxDecoration(
-                                    color: Color.fromRGBO(180, 198, 193, 1.0),
-                                    borderRadius: BorderRadius.only(
-                                      topLeft: Radius.circular(20),
-                                      bottomLeft: Radius.circular(20),
-                                    ),
-                                  ),
-                                  child: Center(
-                                    child: Text(
-                                      '13.00 - 14.00',
-                                      style: Theme.of(context)
-                                          .textTheme
-                                          .headlineLarge!
-                                          .copyWith(fontSize: 16),
-                                    ),
+                            ),
+                            Expanded(
+                              flex: 2,
+                              child: Container(
+                                height: 60,
+                                padding: const EdgeInsets.fromLTRB(
+                                    kDefaultPadding / 2,
+                                    0,
+                                    kDefaultPadding / 2,
+                                    0),
+                                decoration: const BoxDecoration(
+                                  color: Color.fromRGBO(209, 220, 214, 1.0),
+                                  borderRadius: BorderRadius.only(
+                                    topRight: Radius.circular(20),
+                                    bottomRight: Radius.circular(20),
                                   ),
                                 ),
-                              ),
-                              Expanded(
-                                flex: 2,
-                                child: Container(
-                                  height: 60,
-                                  padding: const EdgeInsets.fromLTRB(
-                                      kDefaultPadding / 2,
-                                      0,
-                                      kDefaultPadding / 2,
-                                      0),
-                                  decoration: const BoxDecoration(
-                                    color: Color.fromRGBO(209, 220, 214, 1.0),
-                                    borderRadius: BorderRadius.only(
-                                      topRight: Radius.circular(20),
-                                      bottomRight: Radius.circular(20),
+                                child: const Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Text(
+                                      'Follow Up SPJ',
+                                      style: TextStyle(fontSize: 14),
                                     ),
-                                  ),
-                                  child: const Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: [
-                                      Text(
-                                        'Follow Up SPJ',
-                                        style: TextStyle(fontSize: 14),
-                                      ),
-                                      Text(
-                                        'Nama Customer - Tempat',
-                                        style: TextStyle(fontSize: 14),
-                                      ),
-                                    ],
-                                  ),
+                                    Text(
+                                      'Nama Customer - Tempat',
+                                      style: TextStyle(fontSize: 14),
+                                    ),
+                                  ],
                                 ),
                               ),
-                            ],
-                          ),
+                            ),
+                          ],
                         ),
-                      ],
-                    ),
+                      ),
+                    ],
                   ),
-                ],
-              ),
+                ),
+              ],
             ),
           ),
         ),
