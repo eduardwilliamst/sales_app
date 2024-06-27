@@ -96,7 +96,7 @@ class _ECatalogState extends State<ECatalog> {
                     right: 0,
                     child: Container(
                       width: double.infinity,
-                      height: 50,
+                      height: 46,
                       padding: const EdgeInsets.fromLTRB(
                           kDefaultPadding, 0, kDefaultPadding, kDefaultPadding),
                       decoration: const BoxDecoration(
@@ -110,56 +110,72 @@ class _ECatalogState extends State<ECatalog> {
                   ),
                 ],
               ),
-              Padding(
-                padding: const EdgeInsets.only(
+              const SizedBox(
+                height: 0,
+              ),
+              const Padding(
+                padding: EdgeInsets.only(
                   left: kDefaultPadding,
                   right: kDefaultPadding,
                 ),
-                child: GridView.count(
-                  crossAxisSpacing: kDefaultPadding,
-                  mainAxisSpacing: kDefaultPadding,
-                  crossAxisCount: 2,
-                  childAspectRatio: 160 / 170,
-                  shrinkWrap: true,
-                  physics: const NeverScrollableScrollPhysics(),
-                  children: const <Widget>[
-                    HouseCard(
-                      imagePath: 'assets/images/BannerECatalog.png',
-                      title: 'Nora',
-                      deluxe: false,
-                    ),
-                    HouseCard(
-                      imagePath: 'assets/images/BannerECatalog.png',
-                      title: 'Sora',
-                      deluxe: true,
-                    ),
-                    HouseCard(
-                      imagePath: 'assets/images/BannerECatalog.png',
-                      title: 'Terra',
-                      deluxe: true,
-                    ),
-                    HouseCard(
-                      imagePath: 'assets/images/BannerECatalog.png',
-                      title: 'Kyra',
-                      deluxe: true,
-                    ),
-                    HouseCard(
-                      imagePath: 'assets/images/BannerECatalog.png',
-                      title: 'Severa',
-                      deluxe: true,
-                    ),
-                    HouseCard(
-                      imagePath: 'assets/images/BannerECatalog.png',
-                      title: 'Merra',
-                      deluxe: true,
-                    ),
-                  ],
-                ),
+                child: GridLayoutCatalog(),
+              ),
+              const SizedBox(
+                height: 16.0,
               ),
             ],
           ),
         ),
       ),
+    );
+  }
+}
+
+class GridLayoutCatalog extends StatelessWidget {
+  const GridLayoutCatalog({super.key});
+  @override
+  Widget build(BuildContext context) {
+    int gridCrossAxisCount = MediaQuery.of(context).size.width > 500 ? 3 : 2;
+
+    return GridView.count(
+      crossAxisSpacing: kDefaultPadding,
+      mainAxisSpacing: kDefaultPadding,
+      crossAxisCount: gridCrossAxisCount,
+      childAspectRatio: 160 / 170,
+      shrinkWrap: true,
+      physics: const NeverScrollableScrollPhysics(),
+      children: const <Widget>[
+        HouseCard(
+          imagePath: 'assets/images/BannerECatalog.png',
+          title: 'Nora',
+          deluxe: false,
+        ),
+        HouseCard(
+          imagePath: 'assets/images/BannerECatalog.png',
+          title: 'Sora',
+          deluxe: true,
+        ),
+        HouseCard(
+          imagePath: 'assets/images/BannerECatalog.png',
+          title: 'Terra',
+          deluxe: true,
+        ),
+        HouseCard(
+          imagePath: 'assets/images/BannerECatalog.png',
+          title: 'Kyra',
+          deluxe: true,
+        ),
+        HouseCard(
+          imagePath: 'assets/images/BannerECatalog.png',
+          title: 'Severa',
+          deluxe: true,
+        ),
+        HouseCard(
+          imagePath: 'assets/images/BannerECatalog.png',
+          title: 'Merra',
+          deluxe: true,
+        ),
+      ],
     );
   }
 }
@@ -184,148 +200,136 @@ class HouseCard extends StatelessWidget {
         borderRadius: BorderRadius.circular(20.0),
       ),
       elevation: 5,
-      child: Stack(
-        children: [
-          ClipRRect(
-            borderRadius: const BorderRadius.only(
-              topLeft: Radius.circular(20),
-              topRight: Radius.circular(20),
-            ),
-            child: Image.asset(
-              imagePath,
-              fit: BoxFit.cover,
-              height: MediaQuery.of(context).size.height * 0.1625,
-            ),
-          ),
-          Container(
-            margin: const EdgeInsets.only(top: 110),
-            decoration: BoxDecoration(
-              gradient: const LinearGradient(
-                begin: Alignment.topCenter,
-                end: Alignment.bottomCenter,
-                colors: [
-                  Color.fromRGBO(49, 58, 91, 0.0),
-                  Color.fromRGBO(33, 39, 61, 1.0),
-                  Color.fromRGBO(49, 58, 91, 0.22),
-                  Color.fromRGBO(33, 39, 61, 1.0),
-                ],
-                stops: [
-                  0.0,
-                  0.47,
-                  0.47,
-                  1.0,
-                ],
-              ),
-              borderRadius: BorderRadius.circular(20),
-            ),
-            child: Column(
-              children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.all(kDefaultPadding / 2),
-                      child: Text(
-                        title,
-                        style: Theme.of(context)
-                            .textTheme
-                            .headlineLarge!
-                            .copyWith(fontSize: 20, color: kSecondaryColor),
-                      ),
-                    ),
-                  ],
+      child: LayoutBuilder(
+        builder: (context, constraints) {
+          double imageHeight = constraints.maxHeight * 0.75;
+          double detailMargin = constraints.maxHeight * 0.55;
+
+          return Stack(
+            children: [
+              ClipRRect(
+                borderRadius: const BorderRadius.only(
+                  topLeft: Radius.circular(20),
+                  topRight: Radius.circular(20),
                 ),
-                if (deluxe == true) ...[
-                  Padding(
-                    padding: const EdgeInsets.only(
-                      left: kDefaultPadding,
-                      right: kDefaultPadding,
-                      bottom: kDefaultPadding / 2,
-                    ),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
-                      children: [
-                        GestureDetector(
-                          onTap: () {
-                            showDialog(
-                              context: context,
-                              builder: (BuildContext context) {
-                                return CatalogModal(
-                                  title: title,
-                                  deluxe: false,
-                                );
-                              },
-                            );
-                          },
-                          child: Text(
-                            'Standard',
-                            style: Theme.of(context)
-                                .textTheme
-                                .bodyMedium!
-                                .copyWith(color: kSecondaryColor),
-                          ),
-                        ),
-                        GestureDetector(
-                          onTap: () {
-                            showDialog(
-                              context: context,
-                              builder: (BuildContext context) {
-                                return CatalogModal(
-                                  title: title,
-                                  deluxe: true,
-                                );
-                              },
-                            );
-                          },
-                          child: Text(
-                            'Deluxe',
-                            style: Theme.of(context)
-                                .textTheme
-                                .bodyMedium!
-                                .copyWith(color: kSecondaryColor),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                ] else ...[
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: [
-                      GestureDetector(
-                        onTap: () {
-                          showDialog(
-                            context: context,
-                            builder: (BuildContext context) {
-                              return CatalogModal(
-                                title: title,
-                                deluxe: false,
-                              );
-                            },
-                          );
-                        },
-                        child: Text(
-                          'Standard',
-                          style: Theme.of(context)
-                              .textTheme
-                              .bodyMedium!
-                              .copyWith(color: kSecondaryColor),
-                        ),
-                      ),
-                      Text(
-                        'Deluxe',
-                        style: Theme.of(context)
-                            .textTheme
-                            .bodyMedium!
-                            .copyWith(color: Colors.transparent),
-                      ),
+                child: Image.asset(
+                  imagePath,
+                  fit: BoxFit.cover,
+                  width: double.infinity,
+                  height: imageHeight,
+                ),
+              ),
+              Container(
+                margin: EdgeInsets.only(top: detailMargin),
+                decoration: BoxDecoration(
+                  gradient: const LinearGradient(
+                    begin: Alignment.topCenter,
+                    end: Alignment.bottomCenter,
+                    colors: [
+                      Color.fromRGBO(49, 58, 91, 0.0),
+                      Color.fromRGBO(33, 39, 61, 1.0),
+                      Color.fromRGBO(49, 58, 91, 0.22),
+                      Color.fromRGBO(33, 39, 61, 1.0),
+                    ],
+                    stops: [
+                      0.0,
+                      0.47,
+                      0.47,
+                      1.0,
                     ],
                   ),
-                ],
-              ],
-            ),
-          ),
-        ],
+                  borderRadius: BorderRadius.circular(20),
+                ),
+              ),
+              Positioned(
+                top: detailMargin + (kDefaultPadding / 2),
+                left: kDefaultPadding,
+                child: Text(
+                  title,
+                  style: Theme.of(context)
+                      .textTheme
+                      .headlineLarge!
+                      .copyWith(fontSize: 20, color: kSecondaryColor),
+                ),
+              ),
+              if (deluxe == true) ...[
+                Positioned(
+                  left: kDefaultPadding,
+                  top: detailMargin + (kDefaultPadding * 3),
+                  child: GestureDetector(
+                    onTap: () {
+                      showDialog(
+                        context: context,
+                        builder: (BuildContext context) {
+                          return CatalogModal(
+                            title: title,
+                            deluxe: false,
+                          );
+                        },
+                      );
+                    },
+                    child: Text(
+                      'Standard',
+                      style: Theme.of(context)
+                          .textTheme
+                          .bodyMedium!
+                          .copyWith(color: kSecondaryColor),
+                    ),
+                  ),
+                ),
+                Positioned(
+                  right: kDefaultPadding,
+                  top: detailMargin + (kDefaultPadding * 3),
+                  child: GestureDetector(
+                    onTap: () {
+                      showDialog(
+                        context: context,
+                        builder: (BuildContext context) {
+                          return CatalogModal(
+                            title: title,
+                            deluxe: true,
+                          );
+                        },
+                      );
+                    },
+                    child: Text(
+                      'Deluxe',
+                      style: Theme.of(context)
+                          .textTheme
+                          .bodyMedium!
+                          .copyWith(color: kSecondaryColor),
+                    ),
+                  ),
+                ),
+              ] else ...[
+                Positioned(
+                  top: detailMargin + (kDefaultPadding * 3),
+                  left: kDefaultPadding,
+                  child: GestureDetector(
+                    onTap: () {
+                      showDialog(
+                        context: context,
+                        builder: (BuildContext context) {
+                          return CatalogModal(
+                            title: title,
+                            deluxe: false,
+                          );
+                        },
+                      );
+                    },
+                    child: Text(
+                      'Standard',
+                      style: Theme.of(context)
+                          .textTheme
+                          .bodyMedium!
+                          .copyWith(color: kSecondaryColor),
+                    ),
+                  ),
+                ),
+              ]
+            ],
+          );
+        },
       ),
     );
   }

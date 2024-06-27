@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:sales_app/constants.dart';
 import 'package:sales_app/pages/sitemap/sitemap_modal.dart';
 
 class SitemapPage extends StatefulWidget {
@@ -11,8 +12,6 @@ class SitemapPage extends StatefulWidget {
 class _SitemapPageState extends State<SitemapPage> {
   @override
   Widget build(BuildContext context) {
-    final double screenHeight = MediaQuery.of(context).size.height;
-    final double screenWidth = MediaQuery.of(context).size.height;
 
     return Container(
       decoration: const BoxDecoration(
@@ -24,15 +23,22 @@ class _SitemapPageState extends State<SitemapPage> {
       child: Scaffold(
         backgroundColor: Colors.transparent,
         body: SafeArea(
-          child: Center(
-            child: GestureDetector(
-              onTap: () {
-                showSitemapModal(context);
-              },
-              child: Image.asset(
-                'assets/images/Sitemap.png',
-                height: screenHeight * 0.8,
-                width: screenWidth * 0.5,
+          child: GestureDetector(
+            onTap: () {
+              showSitemapModal(context);
+            },
+            child: Container(
+              margin: const EdgeInsets.all(kDefaultPadding),
+              width: double.infinity,
+              height: double.infinity,
+              decoration: const BoxDecoration(
+                borderRadius: BorderRadius.all(
+                  Radius.circular(20),
+                ),
+                image: DecorationImage(
+                  image: AssetImage('assets/images/Sitemap.png'),
+                  fit: BoxFit.cover,
+                ),
               ),
             ),
           ),

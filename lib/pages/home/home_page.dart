@@ -672,7 +672,7 @@ class _HomeContentState extends State<HomeContent> {
                           borderRadius: BorderRadius.circular(20),
                           image: const DecorationImage(
                               image: AssetImage('assets/images/Sitemap.png'),
-                              fit: BoxFit.fill),
+                              fit: BoxFit.cover),
                         ),
                       ),
                     ),
