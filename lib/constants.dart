@@ -75,7 +75,7 @@ class CustomClipperHomeCard extends CustomClipper<Path> {
 
     path.lineTo(0, h / 1.2 - 20);
     path.quadraticBezierTo(20, h / 1.2, 80, h / 1.2);
-    // path.lineTo(w, h / 1.2);
+    path.lineTo(w, h / 1.2);
     path.lineTo(w - 80, h / 1.2);
     path.quadraticBezierTo(w - 20, h - 40, w, h);
     path.lineTo(w, 0);
@@ -106,7 +106,7 @@ class HomeCardBorderPainter extends CustomPainter {
     path.lineTo(
         w - 70, h / 1.2); // Adjust straight line to make curve less pronounced
     path.quadraticBezierTo(w - 20, h - 40, w, h); // Smooth second curve
-    path.lineTo(w, 0); // Close the path to the top right corner
+    // path.lineTo(w, 0); // Close the path to the top right corner
 
     canvas.drawPath(path, paint);
   }
@@ -121,13 +121,14 @@ class CustomBannerClipper extends CustomClipper<Path> {
   @override
   Path getClip(Size size) {
     Path path = Path();
-    path.lineTo(0, size.height - 100);
-    path.quadraticBezierTo(
-        size.width / 4, size.height, size.width / 2, size.height - 80);
-    path.quadraticBezierTo(
-        3 / 4 * size.width, size.height - 160, size.width, size.height - 80);
-    path.lineTo(size.width, 0);
-    path.close();
+    double w = size.width;
+    double h = size.height;
+
+    path.lineTo(0, h - 60);
+    path.quadraticBezierTo(w / 16, h, 1 / 2 * w, h - 60);
+    path.quadraticBezierTo(0.95 * w, h - 120, w, h - 60);
+    path.lineTo(w, 0);
+
     return path;
   }
 

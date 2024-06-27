@@ -96,7 +96,7 @@ class _ResetPasswordPageState extends State<ResetPasswordPage> {
               ),
             ),
             Container(
-              margin: const EdgeInsets.only(top: 260),
+              margin: const EdgeInsets.only(top: 280),
               padding: const EdgeInsets.all(kDefaultPadding),
               child: Form(
                 key: _formKey,
