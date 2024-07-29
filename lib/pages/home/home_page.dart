@@ -6,6 +6,7 @@ import 'package:sales_app/constants.dart';
 import 'package:sales_app/pages/customer/customer_page.dart';
 import 'package:sales_app/pages/ecatalog/ecatalog.dart';
 import 'package:sales_app/pages/home/notifications_modal.dart';
+import 'package:sales_app/pages/home/sph_modal.dart';
 import 'package:sales_app/pages/new_order/new_order_page.dart';
 import 'package:sales_app/pages/order_history/order_history_page.dart';
 import 'package:sales_app/pages/sitemap/sitemap_page.dart';
@@ -24,6 +25,7 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   late int _currentPageIndex = 0;
+  // bool homeOption = false;
 
   @override
   void initState() {
@@ -31,38 +33,46 @@ class _HomePageState extends State<HomePage> {
     _currentPageIndex = widget.initialIndex;
   }
 
+  void showHomeOption() {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return const SPHModal();
+      },
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      bottomNavigationBar: Stack(
-        children: [
-          NavigationBar(
-            onDestinationSelected: (int index) {
-              setState(() {
-                _currentPageIndex = index;
-              });
-            },
-            selectedIndex: _currentPageIndex,
-            destinations: const <Widget>[
-              NavigationDestination(
-                icon: Icon(Icons.home),
-                label: 'Beranda',
-              ),
-              NavigationDestination(
-                icon: Icon(Icons.shopping_cart_outlined),
-                label: 'Pesanan',
-              ),
-              NavigationDestination(
-                  icon: Icon(Icons.add_circle_outline), label: 'New'),
-              NavigationDestination(
-                icon: Icon(Icons.map),
-                label: 'Sitemap',
-              ),
-              NavigationDestination(
-                icon: Icon(Icons.person_add_alt_1),
-                label: 'Customer',
-              ),
-            ],
+      bottomNavigationBar: NavigationBar(
+        onDestinationSelected: (int index) {
+          setState(() {
+            _currentPageIndex = index;
+          });
+        },
+        selectedIndex: _currentPageIndex,
+        destinations: <Widget>[
+          NavigationDestination(
+            icon: GestureDetector(
+              onDoubleTap: showHomeOption,
+              child: const Icon(Icons.home),
+            ),
+            label: 'Beranda',
+          ),
+          const NavigationDestination(
+            icon: Icon(Icons.shopping_cart_outlined),
+            label: 'Pesanan',
+          ),
+          const NavigationDestination(
+              icon: Icon(Icons.add_circle_outline), label: 'New'),
+          const NavigationDestination(
+            icon: Icon(Icons.map),
+            label: 'Sitemap',
+          ),
+          const NavigationDestination(
+            icon: Icon(Icons.person_add_alt_1),
+            label: 'Customer',
           ),
         ],
       ),
