@@ -1,5 +1,9 @@
-import 'package:flutter/material.dart';
+// ignore_for_file: use_build_context_synchronously
+
 import 'dart:async';
+import 'dart:io';
+import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:sales_app/constants.dart';
 import 'package:sales_app/pages/home/home_page.dart';
 import 'package:sales_app/pages/new_order/new_order_page.dart';
@@ -10,7 +14,19 @@ import 'package:sales_app/pages/login/login_page.dart';
 import 'package:sales_app/pages/forget_password/forget_pass_page.dart';
 
 void main() {
+  HttpOverrides.global = MyHttpOverrides();
   runApp(const MyApp());
+}
+
+class MyHttpOverrides extends HttpOverrides {
+  @override
+  HttpClient createHttpClient(SecurityContext? context) {
+    return super.createHttpClient(context)
+      ..badCertificateCallback = (X509Certificate cert, String host, int port) {
+        //add your certificate verification logic here
+        return true;
+      };
+  }
 }
 
 class MyApp extends StatelessWidget {
@@ -95,10 +111,19 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
     super.initState();
-    Timer(const Duration(seconds: 2), () {
-      Navigator.of(context).pushReplacement(MaterialPageRoute(
-        builder: (context) => const LoginPage(),
-      ));
+    Timer(const Duration(seconds: 2), () async {
+      final prefs = await SharedPreferences.getInstance();
+      final token = prefs.getString('token');
+
+      if (token != null) {
+        Navigator.of(context).pushReplacement(MaterialPageRoute(
+          builder: (context) => const HomePage(),
+        ));
+      } else {
+        Navigator.of(context).pushReplacement(MaterialPageRoute(
+          builder: (context) => const LoginPage(),
+        ));
+      }
     });
   }
 
