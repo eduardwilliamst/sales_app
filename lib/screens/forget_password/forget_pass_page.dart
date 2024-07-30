@@ -1,41 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:sales_app/constants.dart';
-import 'package:sales_app/pages/login/login_page.dart';
+import 'package:sales_app/screens/forget_password/new_pass_page.dart';
 
-class NewPasswordPage extends StatefulWidget {
-  const NewPasswordPage({super.key});
+class ForgetPasswordPage extends StatefulWidget {
+  const ForgetPasswordPage({super.key});
 
   @override
-  State<NewPasswordPage> createState() => _NewPasswordPageState();
+  State<ForgetPasswordPage> createState() => _ForgetPasswordPageState();
 }
 
-class _NewPasswordPageState extends State<NewPasswordPage> {
+class _ForgetPasswordPageState extends State<ForgetPasswordPage> {
   final _formKey = GlobalKey<FormState>();
-  final TextEditingController _passwordController = TextEditingController();
-  final TextEditingController _repasswordController = TextEditingController();
-  bool _obscureText1 = true;
-  bool _obscureText2 = true;
-  bool checkpass = true;
-
-  void _submit() {
-    setState(() {
-      if (_passwordController.text == _repasswordController.text) {
-        checkpass = true;
-        debugPrint('Password: ${_passwordController.text}');
-        debugPrint('RePassword: ${_repasswordController.text}');
-        debugPrint('$checkpass');
-        Navigator.pushReplacement(
-          context,
-          MaterialPageRoute(builder: (context) => const NewPassInfoPage()),
-        );
-      } else {
-        checkpass = false;
-        debugPrint('Password: ${_passwordController.text}');
-        debugPrint('RePassword: ${_repasswordController.text}');
-        debugPrint('$checkpass');
-      }
-    });
-  }
+  final TextEditingController _emailController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -81,88 +57,55 @@ class _NewPasswordPageState extends State<NewPasswordPage> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      'Kata Sandi Baru',
+                      'Lupa Kata Sandi',
                       style: Theme.of(context).textTheme.headlineLarge,
                     ),
                     const SizedBox(height: 16),
                     Text(
-                      'Kata Sandi',
+                      'Email',
                       style: Theme.of(context).textTheme.bodyLarge,
                     ),
                     const SizedBox(
                       height: 4.0,
                     ),
                     TextFormField(
-                      controller: _passwordController,
-                      obscureText: _obscureText1,
+                      controller: _emailController,
                       decoration: InputDecoration(
-                        hintText: 'Password',
+                        hintText: 'Please enter your email',
                         fillColor: kTextFormFieldColor,
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(20),
                         ),
-                        suffixIcon: IconButton(
-                          icon: Icon(
-                            _obscureText1
-                                ? Icons.visibility
-                                : Icons.visibility_off,
-                          ),
-                          onPressed: () {
-                            setState(() {
-                              _obscureText1 = !_obscureText1;
-                            });
-                          },
-                        ),
                       ),
+                      keyboardType: TextInputType.emailAddress,
                       validator: (value) {
                         if (value == null || value.isEmpty) {
-                          return 'Please enter your password';
+                          return 'Please enter your email';
                         }
                         return null;
                       },
+                    ),
+                    const SizedBox(height: 8),
+                    Text(
+                      'Kami akan mengirim email untuk pemulihan akun Anda.',
+                      style: Theme.of(context).textTheme.bodySmall,
                     ),
                     const SizedBox(height: 16),
-                    Text(
-                      'Ulangi Kata Sandi',
-                      style: Theme.of(context).textTheme.bodyLarge,
-                    ),
-                    const SizedBox(
-                      height: 4.0,
-                    ),
-                    TextFormField(
-                      controller: _repasswordController,
-                      obscureText: _obscureText2,
-                      decoration: InputDecoration(
-                        hintText: 'Password',
-                        fillColor: kTextFormFieldColor,
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(20),
-                        ),
-                        suffixIcon: IconButton(
-                          icon: Icon(
-                            _obscureText2
-                                ? Icons.visibility
-                                : Icons.visibility_off,
-                          ),
-                          onPressed: () {
-                            setState(() {
-                              _obscureText2 = !_obscureText2;
-                            });
-                          },
-                        ),
-                      ),
-                      validator: (value) {
-                        if (value == null || value.isEmpty) {
-                          return 'Please enter your password';
-                        }
-                        return null;
-                      },
-                    ),
-                    const SizedBox(height: 20),
                     SizedBox(
                       width: double.infinity,
                       child: ElevatedButton(
-                        onPressed: _submit,
+                        onPressed: () {
+                          if (_formKey.currentState!.validate()) {
+                            // Perform password recovery action
+                            debugPrint('Email: ${_emailController.text}');
+                          }
+                          Navigator.pushReplacement(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) =>
+                                    const ForgetPassInfoPage()),
+                          );
+                        },
                         style: primaryButtonStyle,
                         child: Text(
                           'Kirim',
@@ -170,17 +113,6 @@ class _NewPasswordPageState extends State<NewPasswordPage> {
                         ),
                       ),
                     ),
-                    const SizedBox(height: 15),
-                    if (checkpass == false)
-                      Center(
-                          child: Text(
-                        'Password tidak sama.',
-                        style: Theme.of(context)
-                            .textTheme
-                            .bodySmall
-                            ?.copyWith(color: kErrorColor),
-                        textAlign: TextAlign.center,
-                      ))
                   ],
                 ),
               ),
@@ -192,8 +124,8 @@ class _NewPasswordPageState extends State<NewPasswordPage> {
   }
 }
 
-class NewPassInfoPage extends StatelessWidget {
-  const NewPassInfoPage({super.key});
+class ForgetPassInfoPage extends StatelessWidget {
+  const ForgetPassInfoPage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -206,7 +138,8 @@ class NewPassInfoPage extends StatelessWidget {
             children: [
               Image.asset('assets/images/Success.png', width: 200, height: 200),
               const SizedBox(height: 20),
-              const Text('Kata sandi baru anda telah berhasil dibuat.',
+              const Text(
+                  'Silakan cek email untuk mengatur kata sandi baru Anda',
                   textAlign: TextAlign.center,
                   style: TextStyle(fontWeight: FontWeight.bold)
                   //Theme.of(context).textTheme.bodyMedium,
@@ -219,7 +152,7 @@ class NewPassInfoPage extends StatelessWidget {
                     Navigator.pushReplacement(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => const LoginPage()),
+                          builder: (context) => const NewPasswordPage()),
                     );
                   },
                   style: primaryButtonStyle,

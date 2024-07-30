@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:sales_app/constants.dart';
-import 'package:sales_app/pages/sph/sph_calculator_page.dart';
+import 'package:sales_app/screens/sph/sph_calculator_page.dart';
 
 class SPHModal extends StatelessWidget {
   const SPHModal({super.key});

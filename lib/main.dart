@@ -3,13 +3,13 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:sales_app/constants.dart';
-import 'package:sales_app/pages/home/home_page.dart';
-import 'package:sales_app/pages/new_order/new_order_page.dart';
-import 'package:sales_app/pages/order_history/order_history_page.dart';
-import 'package:sales_app/pages/profile_sales/profile_page.dart';
-import 'package:sales_app/pages/forget_password/new_pass_page.dart';
-import 'package:sales_app/pages/login/login_page.dart';
-import 'package:sales_app/pages/forget_password/forget_pass_page.dart';
+import 'package:sales_app/screens/home/home_page.dart';
+import 'package:sales_app/screens/new_order/new_order_page.dart';
+import 'package:sales_app/screens/order_history/order_history_page.dart';
+import 'package:sales_app/screens/profile_sales/profile_page.dart';
+import 'package:sales_app/screens/forget_password/new_pass_page.dart';
+import 'package:sales_app/screens/login/login_page.dart';
+import 'package:sales_app/screens/forget_password/forget_pass_page.dart';
 
 void main() {
   HttpOverrides.global = MyHttpOverrides();

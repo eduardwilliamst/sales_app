@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:sales_app/constants.dart';
-import 'package:sales_app/pages/login/login_page.dart';
-import 'package:sales_app/pages/profile_sales/reset_pass_page.dart';
+import 'package:sales_app/screens/login/login_page.dart';
+import 'package:sales_app/screens/profile_sales/reset_pass_page.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class ProfilePage extends StatefulWidget {

@@ -1,9 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:sales_app/constants.dart';
-import 'package:sales_app/pages/customer/add_customer_page.dart';
-import 'package:sales_app/pages/customer/edit_customer_page.dart';
-import 'package:sales_app/pages/customer/follow_up_page.dart';
+import 'package:sales_app/screens/customer/add_customer_page.dart';
+import 'package:sales_app/screens/customer/edit_customer_page.dart';
+import 'package:sales_app/screens/customer/follow_up_page.dart';
 
 class CustomerPage extends StatefulWidget {
   const CustomerPage({super.key});

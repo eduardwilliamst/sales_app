@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:intl/date_symbol_data_local.dart';
 import 'package:sales_app/constants.dart';
-import 'package:sales_app/pages/schedule/add_schedule_page.dart';
+import 'package:sales_app/screens/schedule/add_schedule_page.dart';
 import 'package:table_calendar/table_calendar.dart';
 
 class SchedulePage extends StatefulWidget {

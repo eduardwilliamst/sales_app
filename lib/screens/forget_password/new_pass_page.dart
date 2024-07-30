@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:sales_app/constants.dart';
-import 'package:sales_app/pages/forget_password/new_pass_page.dart';
+import 'package:sales_app/screens/login/login_page.dart';
 
-class ResetPasswordPage extends StatefulWidget {
-  const ResetPasswordPage({super.key});
+class NewPasswordPage extends StatefulWidget {
+  const NewPasswordPage({super.key});
 
   @override
-  State<ResetPasswordPage> createState() => _ResetPasswordPageState();
+  State<NewPasswordPage> createState() => _NewPasswordPageState();
 }
 
-class _ResetPasswordPageState extends State<ResetPasswordPage> {
+class _NewPasswordPageState extends State<NewPasswordPage> {
   final _formKey = GlobalKey<FormState>();
   final TextEditingController _passwordController = TextEditingController();
   final TextEditingController _repasswordController = TextEditingController();
@@ -47,7 +47,6 @@ class _ResetPasswordPageState extends State<ResetPasswordPage> {
               clipBehavior: Clip.antiAlias,
               clipper: CustomBannerClipper(),
               child: Container(
-                padding: const EdgeInsets.all(kDefaultPadding),
                 decoration: const BoxDecoration(
                   gradient: LinearGradient(
                     begin: Alignment.topCenter,
@@ -70,29 +69,6 @@ class _ResetPasswordPageState extends State<ResetPasswordPage> {
                 ),
                 height: 285,
                 width: double.infinity,
-                child: SafeArea(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Row(
-                        children: [
-                          IconButton(
-                            onPressed: () {
-                              Navigator.pop(context);
-                            },
-                            icon: Image.asset('assets/images/arrow-left.png',
-                                height: 25),
-                          ),
-                          const SizedBox(width: 10),
-                          Text(
-                            'Profilku',
-                            style: Theme.of(context).textTheme.headlineLarge,
-                          ),
-                        ],
-                      ),
-                    ],
-                  ),
-                ),
               ),
             ),
             Container(
@@ -105,7 +81,7 @@ class _ResetPasswordPageState extends State<ResetPasswordPage> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      'Ubah Kata Sandi',
+                      'Kata Sandi Baru',
                       style: Theme.of(context).textTheme.headlineLarge,
                     ),
                     const SizedBox(height: 16),
@@ -202,14 +178,59 @@ class _ResetPasswordPageState extends State<ResetPasswordPage> {
                         style: Theme.of(context)
                             .textTheme
                             .bodySmall
-                            ?.copyWith(color: Colors.red),
+                            ?.copyWith(color: kErrorColor),
                         textAlign: TextAlign.center,
                       ))
                   ],
                 ),
               ),
-            )
+            ),
           ],
+        ),
+      ),
+    );
+  }
+}
+
+class NewPassInfoPage extends StatelessWidget {
+  const NewPassInfoPage({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: Center(
+        child: Padding(
+          padding: const EdgeInsets.all(kDefaultPadding),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Image.asset('assets/images/Success.png', width: 200, height: 200),
+              const SizedBox(height: 20),
+              const Text('Kata sandi baru anda telah berhasil dibuat.',
+                  textAlign: TextAlign.center,
+                  style: TextStyle(fontWeight: FontWeight.bold)
+                  //Theme.of(context).textTheme.bodyMedium,
+                  ),
+              const SizedBox(height: 40),
+              SizedBox(
+                width: double.infinity,
+                child: ElevatedButton(
+                  onPressed: () {
+                    Navigator.pushReplacement(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const LoginPage()),
+                    );
+                  },
+                  style: primaryButtonStyle,
+                  child: Text(
+                    'Kembali',
+                    style: Theme.of(context).textTheme.labelLarge,
+                  ),
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );

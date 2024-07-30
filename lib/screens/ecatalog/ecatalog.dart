@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:sales_app/constants.dart';
-import 'package:sales_app/pages/ecatalog/catalog_modal.dart';
+import 'package:sales_app/screens/ecatalog/catalog_modal.dart';
 
 class ECatalog extends StatefulWidget {
   const ECatalog({super.key});

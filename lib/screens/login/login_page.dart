@@ -4,8 +4,8 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:sales_app/constants.dart';
-import 'package:sales_app/pages/forget_password/forget_pass_page.dart';
-import 'package:sales_app/pages/home/home_page.dart';
+import 'package:sales_app/screens/forget_password/forget_pass_page.dart';
+import 'package:sales_app/screens/home/home_page.dart';
 import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
 

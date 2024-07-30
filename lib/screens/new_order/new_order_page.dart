@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_masked_text2/flutter_masked_text2.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:sales_app/constants.dart';
-import 'package:sales_app/pages/new_order/form_sph_page.dart';
+import 'package:sales_app/screens/new_order/form_sph_page.dart';
 
 class NewOrderPage extends StatefulWidget {
   const NewOrderPage({super.key});

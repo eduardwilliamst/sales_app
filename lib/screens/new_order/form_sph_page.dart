@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:sales_app/constants.dart';
-import 'package:sales_app/pages/home/home_page.dart';
+import 'package:sales_app/screens/home/home_page.dart';
 
 class FormSPH1Page extends StatefulWidget {
   const FormSPH1Page({super.key});

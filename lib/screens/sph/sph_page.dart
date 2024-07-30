@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:sales_app/constants.dart';
-import 'package:sales_app/pages/sph/sph_data_page.dart';
+import 'package:sales_app/screens/sph/sph_data_page.dart';
 
 class SPHPage extends StatefulWidget {
   const SPHPage({super.key});

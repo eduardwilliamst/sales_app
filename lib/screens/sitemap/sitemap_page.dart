@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:sales_app/constants.dart';
-import 'package:sales_app/pages/sitemap/sitemap_modal.dart';
+import 'package:sales_app/screens/sitemap/sitemap_modal.dart';
 
 class SitemapPage extends StatefulWidget {
   const SitemapPage({super.key});
