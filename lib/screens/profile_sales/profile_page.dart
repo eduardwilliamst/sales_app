@@ -172,7 +172,7 @@ class _ProfilePageState extends State<ProfilePage> {
                             border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(20),
                             ),
-                            hintText: preferences.getString('email').toString(),
+                            hintText: preferences.getString('email'),
                           ),
                           readOnly: true,
                         ),

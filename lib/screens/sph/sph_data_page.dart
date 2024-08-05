@@ -31,7 +31,7 @@ class _SPHDataPageState extends State<SPHDataPage> {
   bool accepted = false;
   bool ongoing = true;
   bool rejected = false;
-  bool manager = true;
+  bool manager = false;
 
   final List<Map<String, dynamic>> _paymentMethod = [
     {

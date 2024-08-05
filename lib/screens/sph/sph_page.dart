@@ -13,7 +13,7 @@ class _SPHPageState extends State<SPHPage> {
   bool accepted = false;
   bool ongoing = false;
   bool rejected = true;
-  bool manager = true;
+  bool manager = false;
 
   @override
   Widget build(BuildContext context) {
@@ -405,6 +405,135 @@ class _SPHPageState extends State<SPHPage> {
               ],
             ),
           ),
+        ),
+      ),
+    );
+  }
+}
+
+class SPHItemWidget extends StatelessWidget {
+  final Map<String, dynamic> item;
+
+  const SPHItemWidget({super.key, required this.item});
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => const SPHDataPage(),
+          ),
+        );
+      },
+      child: Container(
+        margin: const EdgeInsets.all(kDefaultPadding),
+        padding: const EdgeInsets.all(kDefaultPadding),
+        decoration: BoxDecoration(
+          gradient: const LinearGradient(
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter,
+            colors: [
+              Color.fromRGBO(242, 242, 242, 0.5),
+              Color.fromRGBO(212, 232, 231, 0.5)
+            ],
+            stops: [0.0, 1.0],
+          ),
+          borderRadius: BorderRadius.circular(20),
+          border: Border.all(color: kSecondaryColor, width: 3.0),
+        ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      'Sales',
+                      style: Theme.of(context)
+                          .textTheme
+                          .headlineLarge!
+                          .copyWith(fontSize: 17),
+                    ),
+                    const SizedBox(height: 10),
+                    Text(
+                      'Customer',
+                      style: Theme.of(context)
+                          .textTheme
+                          .headlineLarge!
+                          .copyWith(fontSize: 17),
+                    ),
+                    const SizedBox(height: 10),
+                    Text(
+                      'Kavling',
+                      style: Theme.of(context)
+                          .textTheme
+                          .headlineLarge!
+                          .copyWith(fontSize: 17),
+                    ),
+                  ],
+                ),
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      item['sales_name'] ?? 'N/A',
+                      style: Theme.of(context).textTheme.bodyMedium,
+                    ),
+                    const SizedBox(height: 10),
+                    Text(
+                      item['customer_name'] ?? 'N/A',
+                      style: Theme.of(context).textTheme.bodyMedium,
+                    ),
+                    const SizedBox(height: 10),
+                    Text(
+                      item['kavling_number'] ?? 'N/A',
+                      style: Theme.of(context).textTheme.bodyMedium,
+                    ),
+                  ],
+                ),
+                Row(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    SizedBox(
+                      height: 40,
+                      child: ElevatedButton(
+                        onPressed: () {},
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: kSuccessColor,
+                          padding: const EdgeInsets.symmetric(vertical: 8),
+                          shape: const CircleBorder(),
+                        ),
+                        child: const Icon(
+                          Icons.check,
+                          color: Colors.white,
+                        ),
+                      ),
+                    ),
+                    SizedBox(
+                      height: 40,
+                      child: ElevatedButton(
+                        onPressed: () {},
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: kErrorColor,
+                          padding: const EdgeInsets.symmetric(vertical: 8),
+                          shape: const CircleBorder(),
+                        ),
+                        child: const Icon(
+                          Icons.close,
+                          color: Colors.white,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ],
+            ),
+          ],
         ),
       ),
     );

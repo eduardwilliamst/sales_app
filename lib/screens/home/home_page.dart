@@ -98,7 +98,7 @@ class HomeContent extends StatefulWidget {
 class _HomeContentState extends State<HomeContent> {
   late SharedPreferences preferences;
   DateTime today = DateTime.now();
-  final bool manager = true;
+  bool manager = false;
   bool isLoading = false;
 
   @override
@@ -265,7 +265,7 @@ class _HomeContentState extends State<HomeContent> {
                                                     TextPainter(
                                                   text: TextSpan(
                                                     text:
-                                                        'Hi, ${preferences.getString('name').toString()}',
+                                                        'Hi, ${preferences.getString('name')}',
                                                     style: textStyle,
                                                   ),
                                                   textDirection:
@@ -283,7 +283,7 @@ class _HomeContentState extends State<HomeContent> {
                                                     Row(
                                                       children: [
                                                         Text(
-                                                          'Hi, ${preferences.getString('name').toString()}',
+                                                          'Hi, ${preferences.getString('name')}',
                                                           style: textStyle,
                                                         ),
                                                       ],
